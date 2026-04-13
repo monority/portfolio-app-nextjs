@@ -1,0 +1,399 @@
+{
+    "hero": {
+        "title": "SALUT, MOI C'EST RONAN",
+        "subtitle": "DÉVELOPPEUR FRONT-END ORIENTÉ PRODUIT",
+        "profileImage": {
+            "src": "https://ronanchenu.vercel.app/images/avatar.webp",
+            "alt": "Photo de profil de Ronan C."
+        },
+        "location": "LILLE · JAVASCRIPT / C# · INTERFACES PRODUIT",
+        "availability": "CDD CDI TEMPS PARTIEL — RÉPONSE < 24H",
+        "cta": {
+            "discuss": "DISCUTONS DE TON PROJET",
+            "viewProjects": "VOIR MES PROJETS"
+        }
+    },
+    "navigation": {
+        "profile": "PROFIL",
+        "experience": "EXPÉRIENCE",
+        "tech": "STACK",
+        "web": "WEB",
+        "games": "JEUX",
+        "cv": "Ouvrir le CV"
+    },
+    "intro": {
+        "primary": "Je fais surtout du front-end, avec un vrai intérêt pour les interfaces simples à comprendre, agréables à utiliser et propres à faire évoluer.",
+        "secondary": "Je peux aussi poser le socle back quand il faut brancher proprement le produit, surtout avec Node.js, des APIs et une logique métier simple à faire tenir.",
+        "practice": "EN PRATIQUE",
+        "preferences": "Je préfère les interfaces qui donnent confiance tout de suite: lisibles, calmes, bien rangées, et pensées pour un vrai usage plutôt que pour impressionner au premier scroll."
+    },
+    "stats": {
+        "projects": "7PROJETS EN LIGNE",
+        "repos": "62REPOS GITHUB",
+        "commits": "1,651COMMITS GITHUB",
+        "experience": "3.2ANS D'EXPÉRIENCE",
+        "highlights": {
+            "simpleUI": "UI simple à lire",
+            "reusableComponents": "Composants réutilisables",
+            "cleanFront": "Front propre"
+        }
+    },
+    "profile": {
+        "sectionTitle": "Là où je peux être utile assez vite",
+        "description": "Une vue rapide de ma façon de travailler, de ce que j'aime faire, et de ce que je peux prendre en main sur un produit.",
+        "expertise": {
+            "title": "Ce que je prends bien en main",
+            "workStyle": "MA FAÇON DE TRAVAILLER",
+            "workStyleDesc": "Je suis plus à l'aise sur des interfaces qu'il faut rendre compréhensibles, calmes et solides que sur des écrans pensés pour en mettre plein la vue. J'aime quand le front aide vraiment le produit à mieux se faire comprendre.",
+            "skills": [
+                {
+                    "number": "01",
+                    "title": "Écrans et parcours front",
+                    "description": "Construire des pages et des flows qui se lisent vite, se parcourent facilement et tiennent bien sur desktop comme sur mobile."
+                },
+                {
+                    "number": "02",
+                    "title": "Composants et base UI",
+                    "description": "Mettre en place des briques réutilisables et des règles simples pour éviter de réinventer la même chose à chaque écran."
+                },
+                {
+                    "number": "03",
+                    "title": "Branchement front / métier",
+                    "description": "Relier l'interface à des APIs, des données et des cas d'usage concrets, avec Node.js quand il faut poser une couche back simple et lisible."
+                },
+                {
+                    "number": "04",
+                    "title": "Finition et qualité",
+                    "description": "Reprendre ce qui fait parfois la différence à la fin: responsive, accessibilité, confort de lecture et cohérence générale."
+                }
+            ]
+        },
+        "cvSummary": {
+            "title": "Résumé CV",
+            "description": "Les infos les plus utiles si tu veux comprendre rapidement mon profil avant d'ouvrir le CV complet.",
+            "items": [
+                {
+                    "label": "INTITULÉ",
+                    "value": "Développeur front-end / full-stack JavaScript, Node.js & .NET"
+                },
+                {
+                    "label": "LOCALISATION",
+                    "value": "Lille"
+                },
+                {
+                    "label": "DISPONIBILITÉ",
+                    "value": "CDD, CDI, temps partiel"
+                },
+                {
+                    "label": "STACK CLÉ",
+                    "value": "React, JavaScript, CSS, Node.js, APIs, .NET, Vercel, Firebase"
+                }
+            ],
+            "cvButton": "OUVRIR LE CV"
+        }
+    },
+    "workProcess": {
+        "sectionTitle": "Une manière de travailler simple, cadrée et tournée vers l'usage",
+        "intro": "J'aime partir d'un besoin un peu flou et le transformer en parcours plus net, plus cohérent, et plus facile à faire vivre.",
+        "steps": [
+            {
+                "title": "Comprendre le besoin",
+                "description": "Je commence par ce qu'il faut vraiment résoudre, pour qui, et dans quel ordre les choses doivent se comprendre."
+            },
+            {
+                "title": "Rendre l'usage évident",
+                "description": "Je fais attention au rythme de lecture, aux hiérarchies, et aux détails qui rendent une page plus naturelle à utiliser."
+            },
+            {
+                "title": "Poser une base saine",
+                "description": "Je préfère un front bien découpé, des composants utiles, et un socle Node ou API suffisamment clair pour éviter l'effet bricolage entre écrans et données."
+            },
+            {
+                "title": "Aller jusqu'au bout",
+                "description": "Je fais attention à la finition: responsive, clavier, performance, cohérence visuelle, et quand il le faut un branchement Node/API qui tient jusqu'au build."
+            }
+        ]
+    },
+    "techStack": {
+        "sectionTitle": "Ma stack technique",
+        "description": "Les outils que j'utilise le plus souvent selon le type de produit, le besoin côté interface, et ce qu'il faut brancher derrière.",
+        "categories": [
+            {
+                "name": "Front-end",
+                "tools": [
+                    "React",
+                    "Next.js",
+                    "Figma",
+                    "Framer Motion"
+                ]
+            },
+            {
+                "name": "Back / données",
+                "tools": [
+                    "Node.js",
+                    ".NET",
+                    "PHP",
+                    "SQL",
+                    "Firebase",
+                    "Supabase",
+                    "Neon"
+                ]
+            },
+            {
+                "name": "Méthode / livraison",
+                "tools": [
+                    "GitHub",
+                    "Docker",
+                    "Scrum",
+                    "Anthropic, OpenAI, Google et autres outils d'IA",
+                    "Railway"
+                ]
+            },
+            {
+                "name": "En cours",
+                "tools": [
+                    "TypeScript",
+                    "Svelte"
+                ]
+            }
+        ]
+    },
+    "projects": {
+        "sectionTitle": "Une sélection de projets récents",
+        "description": "Des projets avec des contextes différents, mais une même intention: rendre un produit plus simple à comprendre, plus agréable à parcourir et plus solide côté front.",
+        "filters": {
+            "all": "TOUS",
+            "selected": "SÉLECTION",
+            "webapp": "WEB APP",
+            "vitrine": "VITRINE",
+            "dashboard": "DASHBOARD",
+            "platform": "PLATEFORME"
+        },
+        "visibleCount": "8 PROJETS VISIBLES, DONT 3 SÉLECTIONNÉS",
+        "items": [
+            {
+                "id": "dashboard",
+                "name": "Dashboard",
+                "type": "Dashboard",
+                "image": {
+                    "src": "https://ronanchenu.vercel.app/images/projects/dashboard.webp",
+                    "alt": "Dashboard"
+                },
+                "links": {
+                    "live": "Live",
+                    "selection": "Sélection",
+                    "caseStudy": "Étude de cas"
+                },
+                "lastCommit": "DERNIER COMMIT LE 9 AVRIL 2026",
+                "description": "Dashboard de pilotage pour suivre l'activité et aider la prise de décision.",
+                "objective": "L'objectif n'était pas d'afficher plus de données, mais d'aider à lire les bonnes plus vite.",
+                "year": "2026",
+                "repo": "dashboard",
+                "stack": "React / Vercel / tech.typescript",
+                "technologies": [
+                    "React",
+                    "Vercel",
+                    "TypeScript"
+                ]
+            },
+            {
+                "id": "humanworkforce",
+                "name": "HumanWorkForce",
+                "type": "Plateforme",
+                "image": {
+                    "src": "https://ronanchenu.vercel.app/images/projects/hwc.webp",
+                    "alt": "HumanWorkForce"
+                },
+                "links": {
+                    "live": "Live",
+                    "selection": "Sélection",
+                    "caseStudy": "Étude de cas"
+                },
+                "lastCommit": "DERNIER COMMIT LE 24 MARS 2026",
+                "description": "Plateforme de recrutement orientée produit avec expérience candidate moderne.",
+                "objective": "Le point d'équilibre à trouver était entre image de marque, lisibilité du parcours et base front suffisamment saine pour continuer à itérer.",
+                "year": "2026",
+                "repo": "ai-agent-project",
+                "stack": "React / Vercel / i18n",
+                "technologies": [
+                    "React",
+                    "Vercel",
+                    "i18n",
+                    "Motion"
+                ]
+            },
+            {
+                "id": "skillswap",
+                "name": "Skillswap",
+                "type": "Plateforme",
+                "image": {
+                    "src": "https://ronanchenu.vercel.app/images/projects/skillswap.webp",
+                    "alt": "Skillswap"
+                },
+                "links": {
+                    "live": "Live",
+                    "selection": "Sélection",
+                    "caseStudy": "Étude de cas"
+                },
+                "lastCommit": "DERNIER COMMIT LE 7 AVRIL 2026",
+                "tagline": "Échange des compétences, pas ton temps.",
+                "description": "Plateforme d'échange de compétences.",
+                "objective": "L'idée était de vérifier si le matching et l'échange de compétences tenaient vraiment, avec un produit assez crédible pour être testé mais assez simple pour rester itérable.",
+                "year": "2026",
+                "repo": "skillswap-local",
+                "stack": "React / Vercel / Railway",
+                "technologies": [
+                    "React",
+                    "Vercel",
+                    "Railway",
+                    "Neon"
+                ]
+            },
+            {
+                "id": "todoapp",
+                "name": "Todo App",
+                "type": "Web app",
+                "image": {
+                    "src": "https://ronanchenu.vercel.app/images/projects/hero.webp",
+                    "alt": "Todo App"
+                },
+                "links": {
+                    "live": "Live"
+                },
+                "lastCommit": "DERNIER COMMIT LE 19 FÉVRIER 2025",
+                "description": "Application de productivité avec authentification, comptes utilisateurs et base front structurée.",
+                "objective": "Un projet pensé pour montrer que je peux concevoir une application utilitaire complète sans surcharger l'expérience.",
+                "year": "2025",
+                "repo": "todo_appv2",
+                "stack": "React / Firebase / Sass",
+                "technologies": [
+                    "React",
+                    "Firebase",
+                    "Sass"
+                ]
+            },
+            {
+                "id": "cesarlezard",
+                "name": "CL",
+                "type": "Vitrine",
+                "image": {
+                    "src": "https://ronanchenu.vercel.app/images/projects/cesarlezard.webp",
+                    "alt": "CL"
+                },
+                "links": {
+                    "live": "Live"
+                },
+                "lastCommit": "DERNIER COMMIT LE 26 FÉVRIER 2026",
+                "description": "Site vitrine premium pour renforcer la présence en ligne d'un artiste local.",
+                "objective": "Un site vitrine pensé pour servir une identité visuelle forte sans sacrifier la lisibilité ni la simplicité de navigation.",
+                "year": "2025",
+                "repo": "dev-val",
+                "stack": "Next.js / Sass / NPM",
+                "technologies": [
+                    "Next.js",
+                    "Sass"
+                ]
+            },
+            {
+                "id": "shoptemplate",
+                "name": "Shop Template",
+                "type": "Web app",
+                "image": {
+                    "src": "https://ronanchenu.vercel.app/images/projects/shop.webp",
+                    "alt": "Shop Template"
+                },
+                "links": {
+                    "live": "Live"
+                },
+                "lastCommit": "DERNIER COMMIT LE 12 AVRIL 2026",
+                "description": "Base e-commerce réutilisable pour lancer une boutique avec une structure front déjà posée.",
+                "objective": "Un projet de template pensé moins comme une démo que comme un point de départ crédible pour un besoin commerce.",
+                "year": "2023",
+                "repo": "shop_templatev2",
+                "stack": "React / Sass / Firebase",
+                "technologies": [
+                    "React",
+                    "Sass",
+                    "Firebase",
+                    "Vercel"
+                ]
+            },
+            {
+                "id": "artistpage",
+                "name": "Artist's Page",
+                "type": "Vitrine",
+                "image": {
+                    "src": "https://ronanchenu.vercel.app/images/projects/artistpage.webp",
+                    "alt": "Artist's Page"
+                },
+                "links": {
+                    "live": "Live"
+                },
+                "lastCommit": "DERNIER COMMIT LE 10 AVRIL 2026",
+                "description": "Portfolio visuel pour valoriser des œuvres et faciliter la prise de contact.",
+                "objective": "Un portfolio artistique conçu pour mettre les œuvres au centre et créer une visite simple, fluide et immédiatement compréhensible.",
+                "year": "2026",
+                "repo": "paint-project-nesw",
+                "stack": "React / Firebase",
+                "technologies": [
+                    "React",
+                    "Firebase"
+                ]
+            },
+            {
+                "id": "modelapp",
+                "name": "Model App",
+                "type": "Web app",
+                "image": {
+                    "src": "https://ronanchenu.vercel.app/images/projects/model-app.webp",
+                    "alt": "Model App"
+                },
+                "lastCommit": "DERNIER COMMIT LE 4 AVRIL 2026",
+                "description": "Starter React + Vite pensé pour poser rapidement une architecture front claire.",
+                "objective": "Un socle front-end conçu pour éviter le prototype jetable et gagner du temps sur les premiers arbitrages d'architecture.",
+                "year": "2026",
+                "repo": "model-app",
+                "stack": "React / i18n",
+                "technologies": [
+                    "React",
+                    "i18n"
+                ]
+            }
+        ]
+    },
+    "games": {
+        "sectionTitle": "Expérimentations de jeu et créations Source",
+        "description": "Une petite sélection de créations personnelles autour du level design, des interfaces et de l'expérimentation vidéoludique.",
+        "items": [
+            {
+                "name": "Maps CS:S",
+                "url": "https://gamebanana.com/members/1448278"
+            },
+            {
+                "name": "GUIs CS:S",
+                "url": "https://gamebanana.com/members/1448278"
+            },
+            {
+                "name": "Jeu Itch.io",
+                "url": "https://iej-nouvelles-images.itch.io/rezan"
+            }
+        ]
+    },
+    "footer": {
+        "aboutAvailability": "Disponible pour travailler sur des interfaces produit, des bases front propres et des projets qu'il faut rendre plus faciles à utiliser.",
+        "contactCTA": "ME CONTACTER",
+        "downloadCV": "TÉLÉCHARGER LE CV",
+        "cvUrl": "https://ronanchenu.vercel.app/assets/CV.pdf",
+        "copyright": "© 2026 Ronan C. — Tous droits réservés.",
+        "links": {
+            "cv": "Ouvrir le CV",
+            "github": "Profil GitHub",
+            "linkedin": "Profil LinkedIn"
+        },
+        "socialLinks": {
+            "github": "https://github.com/monority",
+            "linkedin": "https://www.linkedin.com/in/ronanchenu/"
+        },
+        "skipToMain": "Aller au contenu principal"
+    }
+}
