@@ -1,3 +1,53 @@
+.icon-xs {
+    width: 2rem;
+    height: 2rem;
+}
+
+.icon-sm {
+    width: 4rem;
+    height: 4rem;
+}
+
+.icon-md {
+    width: 6rem;
+    height: 6rem;
+}
+
+.icon-lg {
+    width: 8rem;
+    height: 8rem;
+}
+
+.icon-xl {
+    width: 10rem;
+    height: 10rem;
+}
+
+.icon-2xl {
+    width: 12rem;
+    height: 12rem;
+}
+
+.icon-primary {
+    color: var(--accent);
+}
+
+.icon-secondary {
+    color: var(--text-secondary);
+}
+
+.icon-success {
+    color: var(--success, #10b981);
+}
+
+.icon-warning {
+    color: var(--warning, #f59e0b);
+}
+
+.icon-error {
+    color: var(--error, #ef4444);
+}
+
 .btn {
     display: flex;
     align-items: center;
@@ -7,6 +57,7 @@
     background-color: var(--card);
     padding: var(--space-md);
     transition: background-color var(--transition-base), border-color var(--transition-base);
+    font-size: var(--font-size-base);
 
     &:hover {
         background-color: var(--hover);

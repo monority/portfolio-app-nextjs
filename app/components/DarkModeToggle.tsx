@@ -12,7 +12,7 @@ export default function DarkModeToggle({ className }: DarkModeToggleProps) {
   return (
     <button
       onClick={toggleTheme}
-      className={`theme-toggle ${className || ""} btn`}
+      className={`theme-toggle ${className || ""} icon-sm`}
       aria-label="Toggle dark mode"
     >
       {resolvedTheme === "dark" ? (

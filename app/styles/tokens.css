@@ -11,8 +11,8 @@
 
     --space: 0.25rem;
     --space-xs: calc(var(--space) * 1);
-    --space-sm: calc(var(--space) * 2);
-    --space-md: calc(var(--space) * 4);
+    --space-sm: calc(var(--space) * 1.5);
+    --space-md: calc(var(--space) * 2);
     --space-lg: calc(var(--space) * 6);
     --space-xl: calc(var(--space) * 8);
 

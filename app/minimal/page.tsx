@@ -2,6 +2,7 @@
 
 import DarkModeToggle from "../components/DarkModeToggle";
 import { motion } from "framer-motion";
+import Header from './Header';
 export default function MinimalPage() {
   return (
     <motion.div
@@ -12,10 +13,8 @@ export default function MinimalPage() {
     >
       <div className="minimal-page__content">
         <div className="minimal-page__header">
-          <DarkModeToggle />
+          <Header />
         </div>
-        <h1 className="minimal-page__title">Ronan Chenu</h1>
-        <p className="minimal-page__subtitle">Creative Developer</p>
       </div>
     </motion.div>
   );
