@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
-
-export default function MinimalLayout({ children }: { children: ReactNode }) {
+export type MinimalLayoutProps = {
+    children: ReactNode;
+};
+export default function MinimalLayout({ children }: MinimalLayoutProps) {
     return (
-        <html lang="en">
-            <body>
-                {children}
-            </body>
-        </html>
+        <main className="page-shell">
+            {children}
+        </main>
     );
 }

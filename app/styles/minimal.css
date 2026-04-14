@@ -1,0 +1,44 @@
+.page-shell {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background);
+    color: var(--foreground);
+    transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+.minimal-page__content {
+    width: 100%;
+    max-width: 40rem;
+    padding: var(--space-lg);
+}
+
+.minimal-page__header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: var(--space-md);
+}
+
+.minimal-page__title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--space-sm);
+}
+
+.minimal-page__subtitle {
+    font-size: var(--font-size-md);
+    color: var(--muted);
+    line-height: var(--line-height-relaxed);
+}
+
+@media (max-width: 640px) {
+    .minimal-page__content {
+        padding: var(--space-md);
+    }
+
+    .minimal-page__title {
+        font-size: var(--font-size-xl);
+    }
+}

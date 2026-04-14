@@ -1,0 +1,25 @@
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: var(--border-radius-lg);
+    border: var(--border-width) solid var(--card-border);
+    background-color: var(--card);
+    padding: var(--space-md);
+    transition: background-color var(--transition-base), border-color var(--transition-base);
+
+    &:hover {
+        background-color: var(--hover);
+    }
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--background);
+
+    &:hover {
+        background-color: var(--hover);
+        border-color: var(--hover);
+    }
+}
