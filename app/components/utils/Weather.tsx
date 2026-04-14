@@ -1,13 +1,26 @@
 import { useEffect, useState } from 'react'
 
-const API_KEY = import.meta.env.VITE_WEATHER_API_KEY
+interface WeatherData {
+    temperature: number
+    icon: string
+    label: string
+}
+
+interface WeatherProps {
+    city?: string
+    className?: string
+}
+
+type WeatherStatus = 'loading' | 'success' | 'error'
+
+const API_KEY = process.env.NEXT_PUBLIC_WEATHER_API_KEY
 
 export default function Weather({
     city = 'Lille',
     className = '',
-}) {
-    const [weather, setWeather] = useState(null)
-    const [status, setStatus] = useState('loading')
+}: WeatherProps) {
+    const [weather, setWeather] = useState<WeatherData | null>(null)
+    const [status, setStatus] = useState<WeatherStatus>('loading')
 
     useEffect(() => {
         const controller = new AbortController()
@@ -35,7 +48,7 @@ export default function Weather({
 
                 setStatus('success')
             } catch (error) {
-                if (error.name !== 'AbortError') {
+                if (error instanceof Error && error.name !== 'AbortError') {
                     setStatus('error')
                 }
             }

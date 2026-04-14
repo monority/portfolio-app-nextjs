@@ -42,3 +42,7 @@
         font-size: var(--font-size-xl);
     }
 }
+
+.minimal-header__icon {
+    color: var(--foreground);
+}

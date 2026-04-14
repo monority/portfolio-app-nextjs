@@ -31,6 +31,8 @@ import SupabaseIcon from './icons/SupabaseIcon'
 import SvelteIcon from './icons/SvelteIcon'
 import ThemeIcon from './icons/ThemeIcon'
 import DarkModeToggleIcon from './icons/DarkModeToggleIcon'
+import DarkModeIcon from './icons/DarkModeIcon'
+import LightModeIcon from './icons/LightModeIcon'
 
 import type { IconName } from './types'
 
@@ -74,4 +76,6 @@ export const iconRegistry: Record<IconName, IconComponent> = {
     svelte: SvelteIcon,
     theme: ThemeIcon,
     darkModeToggle: DarkModeToggleIcon,
+    darkMode: DarkModeIcon,
+    lightMode: LightModeIcon,
 }

@@ -56,3 +56,5 @@ export type IconName =
     | 'svelte'
     | 'theme'
     | 'darkModeToggle'
+    | 'darkMode'
+    | 'lightMode'

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import type { IconProps } from '../types'
+import type { IconProps } from '@/components/ui/icon/types'
 
 const NeonIcon = React.memo(({
     size = 24,

@@ -1,31 +1,31 @@
 .icon-xs {
-    width: 2rem;
-    height: 2rem;
+    width: var(--icon-xs);
+    height: var(--icon-xs);
 }
 
 .icon-sm {
-    width: 4rem;
-    height: 4rem;
+    width: var(--icon-sm);
+    height: var(--icon-sm);
 }
 
 .icon-md {
-    width: 6rem;
-    height: 6rem;
+    width: var(--icon-md);
+    height: var(--icon-md);
 }
 
 .icon-lg {
-    width: 8rem;
-    height: 8rem;
+    width: var(--icon-lg);
+    height: var(--icon-lg);
 }
 
 .icon-xl {
-    width: 10rem;
-    height: 10rem;
+    width: var(--icon-xl);
+    height: var(--icon-xl);
 }
 
 .icon-2xl {
-    width: 12rem;
-    height: 12rem;
+    width: var(--icon-2xl);
+    height: var(--icon-2xl);
 }
 
 .icon-primary {
@@ -46,31 +46,4 @@
 
 .icon-error {
     color: var(--error, #ef4444);
-}
-
-.btn {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: var(--border-radius-lg);
-    border: var(--border-width) solid var(--card-border);
-    background-color: var(--card);
-    padding: var(--space-md);
-    transition: background-color var(--transition-base), border-color var(--transition-base);
-    font-size: var(--font-size-base);
-
-    &:hover {
-        background-color: var(--hover);
-    }
-}
-
-.btn-primary {
-    background-color: var(--accent);
-    border-color: var(--accent);
-    color: var(--background);
-
-    &:hover {
-        background-color: var(--hover);
-        border-color: var(--hover);
-    }
 }

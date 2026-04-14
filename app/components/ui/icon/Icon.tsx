@@ -1,8 +1,8 @@
 'use client'
 
 import { useMemo } from 'react'
-import { iconRegistry } from './registry'
-import type { IconProps, IconName } from './types'
+import { iconRegistry } from '@/components/ui/icon/registry'
+import type { IconProps, IconName } from '@/components/ui/icon/types'
 
 interface IconComponentProps extends Omit<IconProps, 'size'> {
     name: IconName
@@ -25,7 +25,6 @@ const Icon = ({
         return null
     }
 
-    // Combiner les classes CSS
     const combinedClassName = [
         sizeClass,
         className

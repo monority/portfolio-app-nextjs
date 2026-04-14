@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import type { IconProps } from '../types'
-import { useTheme } from '../../ThemeProvider'
+import type { IconProps } from '@/components/ui/icon/types'
+import { useTheme } from '@/components/ThemeProvider'
 
 const DarkModeToggleIcon = React.memo(({
     size = 24,

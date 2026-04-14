@@ -1,0 +1,26 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: var(--border-radius-lg);
+  border: var(--border-width) solid var(--card-border);
+  background-color: var(--card);
+  padding: var(--padding-md);
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+  font-size: var(--font-size-base);
+
+  &:hover {
+    background-color: var(--hover);
+  }
+}
+
+.btn-primary {
+  background-color: var(--card);
+  border-color: var(--card-border);
+  color: var(--background);
+
+  &:hover {
+    background-color: var(--hover);
+    border-color: var(--hover);
+  }
+}

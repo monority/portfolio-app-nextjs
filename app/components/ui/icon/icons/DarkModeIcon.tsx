@@ -3,8 +3,8 @@
 import React from 'react'
 import type { IconProps } from '@/components/ui/icon/types'
 
-const SupabaseIcon = React.memo(({
-    size = 22,
+const DarkModeIcon = React.memo(({
+    size = 24,
     className = '',
     title,
     ...props
@@ -13,25 +13,23 @@ const SupabaseIcon = React.memo(({
         <svg
             width={size}
             height={size}
-            viewBox="0 0 32 32"
+            viewBox="0 0 24 24"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className={className}
             aria-hidden={title ? undefined : true}
             role={title ? 'img' : undefined}
             {...props}
         >
             {title && <title>{title}</title>}
-            <g>
-                <path
-                    d="M16.7 3.2c-.4-.6-1.3-.6-1.7 0L3.7 19.2c-.5.7 0 1.8.9 1.8h7.6l-2.2 7.8c-.2.7.7 1.2 1.2.7l15.3-16.1c.6-.6.1-1.7-.8-1.7h-7.2l2.2-7.7z"
-                    fill="#3ECF8E"
-                />
-            </g>
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
     )
 })
 
-SupabaseIcon.displayName = 'SupabaseIcon'
+DarkModeIcon.displayName = 'DarkModeIcon'
 
-export default SupabaseIcon
+export default DarkModeIcon

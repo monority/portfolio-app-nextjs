@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import DarkModeToggle from "./components/DarkModeToggle";
+import DarkModeToggle from "@/components/DarkModeToggle";
 
 export default function Home() {
     return (

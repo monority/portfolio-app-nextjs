@@ -1,8 +1,7 @@
 "use client";
 
-import DarkModeToggle from "../components/DarkModeToggle";
 import { motion } from "framer-motion";
-import Header from './Header';
+import Header from '@/minimal/Header';
 export default function MinimalPage() {
   return (
     <motion.div
