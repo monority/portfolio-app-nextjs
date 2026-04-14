@@ -58,3 +58,5 @@ export type IconName =
     | 'darkModeToggle'
     | 'darkMode'
     | 'lightMode'
+    | 'language'
+

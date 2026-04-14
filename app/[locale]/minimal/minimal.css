@@ -27,6 +27,11 @@
     margin-bottom: var(--space-sm);
 }
 
+.minimal-header__network {
+    display: flex;
+    gap: var(--space-sm);
+}
+
 .minimal-page__subtitle {
     font-size: var(--font-size-md);
     color: var(--muted);
