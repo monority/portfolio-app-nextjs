@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useLayoutEffect, useEffect, ReactNode } from "react";
+import { createContext, useContext, useState, useLayoutEffect, useEffect, useCallback, useMemo, ReactNode } from "react";
 
 interface ThemeContextType {
   darkMode: boolean;
@@ -11,17 +11,20 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("darkMode");
+      if (saved !== null) {
+        return saved === "true";
+      }
+      return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
+    return false;
+  });
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const saved = localStorage.getItem("darkMode");
-    if (saved !== null) {
-      setDarkMode(saved === "true"); // eslint-disable-line react-hooks/set-state-in-effect
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setDarkMode(true); // eslint-disable-line react-hooks/set-state-in-effect
-    }
-    setMounted(true);
+    setMounted(true); // 
   }, []);
 
   useLayoutEffect(() => {
@@ -35,10 +38,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     }
   }, [darkMode, mounted]);
 
-  const toggleDarkMode = () => setDarkMode(!darkMode);
+  const toggleDarkMode = useCallback(() => setDarkMode(d => !d), []);
+
+  const value = useMemo(() => ({ darkMode, toggleDarkMode, mounted }), [darkMode, toggleDarkMode, mounted]);
 
   return (
-    <ThemeContext.Provider value={{ darkMode, toggleDarkMode, mounted }}>
+    <ThemeContext.Provider value={value}>
       {children}
     </ThemeContext.Provider>
   );
