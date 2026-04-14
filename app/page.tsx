@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useLayoutEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import DarkModeToggle from "./components/DarkModeToggle";
 
 type Version = "minimal" | "design";
 
@@ -33,26 +34,6 @@ const versions: { id: Version; label: string; description: string; features: str
 
 export default function Home() {
   const [activeVersion, setActiveVersion] = useState<Version>("minimal");
-  const [darkMode, setDarkMode] = useState(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("darkMode");
-      if (saved !== null) {
-        return saved === "true";
-      } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        return true;
-      }
-    }
-    return false;
-  });
-
-  useLayoutEffect(() => {
-    localStorage.setItem("darkMode", String(darkMode));
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [darkMode]);
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-[#f7f6f3] px-6 dark:bg-[#1a1a18]">
@@ -69,51 +50,7 @@ export default function Home() {
             </h1>
             <p className="mt-2 text-sm text-[#6b6b6b]">Portfolio</p>
           </div>
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className="rounded-lg p-2 transition-colors hover:bg-[#e5e5e5] dark:hover:bg-[#2d2d2a]"
-            aria-label="Toggle dark mode"
-          >
-            <span className="text-[#6b6b6b] dark:text-[#a0a0a0]">
-            {darkMode ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx="12" cy="12" r="5" />
-                <line x1="12" y1="1" x2="12" y2="3" />
-                <line x1="12" y1="21" x2="12" y2="23" />
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                <line x1="1" y1="12" x2="3" y2="12" />
-                <line x1="21" y1="12" x2="23" y2="12" />
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-              </svg>
-            ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-              </svg>
-            )}
-            </span>
-          </button>
+          <DarkModeToggle />
         </header>
 
         <nav className="mb-8 flex gap-1 rounded-lg bg-[#eaeaea] p-1 dark:bg-[#2d2d2a]">
