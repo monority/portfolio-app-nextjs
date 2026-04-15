@@ -21,7 +21,9 @@ const Icon = ({
     const Component = useMemo(() => iconRegistry[name], [name])
 
     if (!Component) {
-        console.warn(`Icon "${name}" not found in registry`)
+        if (process.env.NODE_ENV === 'development') {
+            console.warn(`Icon "${name}" not found in registry`)
+        }
         return null
     }
 

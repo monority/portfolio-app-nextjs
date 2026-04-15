@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Header from '@/minimal/Header';
+import Header from './Header';
 export default function MinimalPage() {
   return (
     <motion.div

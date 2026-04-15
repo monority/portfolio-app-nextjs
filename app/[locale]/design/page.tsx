@@ -1,6 +1,6 @@
 "use client";
 
-import DarkModeToggle from "../components/DarkModeToggle";
+import DarkModeToggle from "@/components/DarkModeToggle";
 
 export default function DesignPage() {
   return (
@@ -11,7 +11,7 @@ export default function DesignPage() {
         </div>
         <h1 className="design-page__title">Ronan Chenu</h1>
         <p className="design-page__subtitle">
-          Creative Developer — Design / Artist Version
+          Creative Developer Â© Design / Artist Version
         </p>
       </div>
       <svg width="120" height="40" viewBox="0 0 120 40" fill="none" className="design-page__logo">

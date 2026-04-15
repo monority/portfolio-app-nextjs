@@ -60,7 +60,11 @@ export default function Weather({
     }, [city])
 
     if (status === 'error') {
-        return null
+        return (
+            <div className={`weather weather--error ${className}`.trim()}>
+                <span className="weather__error">--°C</span>
+            </div>
+        )
     }
 
     return (

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Icon } from '@/app/components/ui/icon'
+import { Icon } from '@/components/ui/icon'
 export function IconShowcase() {
     return (
         <div className="space-y-8">

@@ -2,6 +2,6 @@
 @import "@/styles/tokens.css";
 @import "@/styles/globals.css";
 @import "@/styles//home.css";
-@import "@/minimal/minimal.css";
+@import "@/[locale]/minimal/minimal.css";
 @import "@/styles/design.css";
 @import "@/styles/components.css";

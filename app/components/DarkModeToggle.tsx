@@ -2,7 +2,7 @@
 
 import { useTheme } from "@/components/ThemeProvider";
 import { Icon } from "@/components/ui/icon";
-import Button from "./ui/button";
+import Button from "@/components/ui/button";
 
 interface DarkModeToggleProps {
   className?: string;

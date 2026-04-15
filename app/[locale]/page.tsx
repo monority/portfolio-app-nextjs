@@ -1,10 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import DarkModeToggle from "@/components/DarkModeToggle";
 
 export default function Home() {
+    const params = useParams();
+    const locale = params.locale as string || 'en';
+
     return (
         <div className="app-home__container">
             <motion.div
@@ -19,7 +23,7 @@ export default function Home() {
                 </header>
 
                 <div className="app-home__content">
-                    <Link href="/minimal" className="btn">
+                    <Link href={`/${locale}/minimal`} className="btn">
                         <div className="app-home__content-item">
                             <h2 className="app-home__content-item-title">Minimal</h2>
                             <svg
@@ -33,7 +37,7 @@ export default function Home() {
                         </div>
                     </Link>
 
-                    <Link href="/design" className="btn">
+                    <Link href={`/${locale}/design`} className="btn">
                         <div className="app-home__content-item">
                             <h2 className="app-home__content-item-title">Design</h2>
                             <svg
