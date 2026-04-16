@@ -6,7 +6,7 @@ import { Icon } from "@/components/ui/icon"
 import { useTranslations } from 'next-intl';
 
 export default function Header() {
-    const t = useTranslations('header');
+    const t = useTranslations('minimal.header');
 
     return (
         <>

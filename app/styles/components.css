@@ -63,3 +63,12 @@
     border: var(--border-width) solid var(--border-color);
     box-shadow: var(--shadow-md);
 }
+
+.card-muted {
+    background: var(--muted);
+    border: var(--border-width) solid var(--border-color);
+    color: var(--foreground);
+    padding: var(--padding-md);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+}

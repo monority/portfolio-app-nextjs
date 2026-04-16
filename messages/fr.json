@@ -11,5 +11,15 @@
   "common": {
     "loading": "Chargement...",
     "error": "Une erreur est survenue"
+  },
+  "minimal": {
+    "header": {
+      "available": "Disponible pour travailler"
+    },
+    "hero": {
+      "descriptions": {
+        "projectOnline": "Projet en ligne"
+      }
+    }
   }
 }

@@ -11,5 +11,15 @@
   "common": {
     "loading": "Loading...",
     "error": "An error occurred"
+  },
+  "minimal": {
+    "header": {
+      "available": "Available for work"
+    },
+    "hero": {
+      "descriptions": {
+        "projectOnline": "Project online"
+      }
+    }
   }
 }
