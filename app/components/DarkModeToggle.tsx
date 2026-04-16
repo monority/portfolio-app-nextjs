@@ -20,7 +20,7 @@ export default function DarkModeToggle({ className }: DarkModeToggleProps) {
       <Icon
         name={resolvedTheme === "dark" ? "lightMode" : "darkMode"}
         title={resolvedTheme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-        className="minimal-header__icon icon-md"
+        className="minimal-header__icon icon-sm"
       />
     </Button>
   );

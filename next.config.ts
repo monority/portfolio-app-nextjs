@@ -4,7 +4,7 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // PostCSS is auto-detected via postcss.config.mjs
 };
 
 export default withNextIntl(nextConfig);

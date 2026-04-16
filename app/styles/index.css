@@ -1,7 +1,19 @@
-@import "@/styles/reset.css";
-@import "@/styles/tokens.css";
-@import "@/styles/globals.css";
-@import "@/styles//home.css";
-@import "@/[locale]/minimal/minimal.css";
-@import "@/styles/design.css";
-@import "@/styles/components.css";
+@import "reset.css" layer(reset);
+@import "tokens.css" layer(tokens);
+@import "components.css" layer(components);
+@import "home.css" layer(layout);
+@import "@/[locale]/minimal/minimal.css" layer(layout);
+@import "design.css" layer(layout);
+
+@import "utilites.css" layer(utilities);
+
+
+@layer reset, tokens {
+    html {
+        color-scheme: light;
+    }
+
+    :root.dark {
+        color-scheme: dark;
+    }
+}

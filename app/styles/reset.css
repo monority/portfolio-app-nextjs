@@ -10,6 +10,7 @@
 
 html {
     font-size: 62.5%;
+    font-family: var(--font-family-sans);
 }
 
 body {
@@ -21,6 +22,12 @@ body {
     font-weight: 400;
     letter-spacing: -0.05rem;
     tab-size: 4;
+    line-height: var(--line-height-normal);
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: inherit;
+    line-height: inherit;
+    transition: background-color var(--transition-base), color var(--transition-base);
     word-spacing: 0.01rem;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;

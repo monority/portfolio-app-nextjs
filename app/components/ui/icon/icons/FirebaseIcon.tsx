@@ -4,7 +4,7 @@ import React from 'react'
 import type { IconProps } from '@/components/ui/icon/types'
 
 const FirebaseIcon = React.memo(({
-    size = 24,
+    size = 48,
     className = '',
     title,
     ...props

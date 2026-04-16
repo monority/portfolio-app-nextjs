@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Header from './Header';
+import Header from '@/[locale]/minimal/features/Header';
+import Hero from "@/[locale]/minimal/Hero";
 export default function MinimalPage() {
   return (
     <motion.div
@@ -11,9 +12,9 @@ export default function MinimalPage() {
       className="page-shell"
     >
       <div className="minimal-page__content">
-        <div className="minimal-page__header">
-          <Header />
-        </div>
+
+        <Header />
+        <Hero />
       </div>
     </motion.div>
   );

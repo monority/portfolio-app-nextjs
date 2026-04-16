@@ -2,14 +2,27 @@
     /* Colors */
     --background: #ffffff;
     --foreground: #1a1a18;
-    --muted: #6b6b6b;
+    --muted: #292929;
     --nav: #eaeaea;
     --card: #f3f3f3;
+    --card-gradient: linear-gradient(135deg, #ffffff 0%, #f8f8f8 50%, #ffffff 100%);
     --card-border: #e5e5e5;
     --hover: #e7e7e7;
     --accent: #1a1a18;
 
-    --space: 0.25rem;
+    --breakpoint-md: 640px;
+    /* Premium dark gradient - subtle */
+    --premium-gradient: linear-gradient(145deg, #f1f1f1 0%, #eeeeee 100%);
+    --premium-gradient-hover: linear-gradient(145deg, #cfcfcf 0%, #b9b9b9 100%);
+    --premium-border: #cfcfcf;
+    --premium-shadow: 0 4px 20px rgba(22, 22, 22, 0.15);
+    --premium-shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.25);
+
+    /* Accent - subtle gold hint */
+    --accent-gradient: linear-gradient(135deg, #2d2d2d 0%, #1a1a18 100%);
+    --accent-gradient-hover: linear-gradient(135deg, #3d3d35 0%, #252520 100%);
+
+    --space: 0.5rem;
     --space-xs: calc(var(--space) * 1);
     --space-sm: calc(var(--space) * 2);
     --space-md: calc(var(--space) * 3);
@@ -17,19 +30,19 @@
     --space-xl: calc(var(--space) * 5);
 
     --padding: 0.25rem;
-    --padding-xs: calc(var(--padding) * 1.25);
-    --padding-sm: calc(var(--padding) * 1.5);
-    --padding-md: calc(var(--padding) * 1.75);
-    --padding-lg: calc(var(--padding) * 2);
-    --padding-xl: calc(var(--padding) * 2.25);
+    --padding-xs: calc(var(--padding) * 2);
+    --padding-sm: calc(var(--padding) * 3);
+    --padding-md: calc(var(--padding) * 4);
+    --padding-lg: calc(var(--padding) * 5);
+    --padding-xl: calc(var(--padding) * 6);
 
     --icon: .5rem;
-    --icon-xs: calc(var(--icon) * 1);
-    --icon-sm: calc(var(--icon) * 2);
-    --icon-md: calc(var(--icon) * 3);
-    --icon-lg: calc(var(--icon) * 4);
-    --icon-xl: calc(var(--icon) * 5);
-    --icon-2xl: calc(var(--icon) * 6);
+    --icon-xs: calc(var(--icon) * 2);
+    --icon-sm: calc(var(--icon) * 3);
+    --icon-md: calc(var(--icon) * 4);
+    --icon-lg: calc(var(--icon) * 5);
+    --icon-xl: calc(var(--icon) * 6);
+    --icon-2xl: calc(var(--icon) * 8);
 
     --font-family-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
     --font-family-mono: "Geist Mono", SFMono-Regular, Courier, monospace;
@@ -77,12 +90,25 @@
 
 /* Dark Mode */
 :root.dark {
-    --background: #111111;
-    --foreground: #eeeeee;
-    --muted: #a0a0a0;
-    --nav: #2d2d2a;
-    --card: linear-gradient(135deg, #1a1a1a 0%, #1f1f1f 50%, #151515 100%);
-    --card-border: #2e2e2e;
-    --hover: #222220;
-    --accent: #f7f6f3;
+    --background: #0a0a0a;
+    --foreground: #f0f0f0;
+    --muted: #888888;
+    --nav: #1a1a1a;
+
+    --card: #161616;
+    --card-gradient: linear-gradient(135deg, #1e1e1e 0%, #141414 50%, #1a1a1a 100%);
+    --card-border: #2a2a2a;
+    --hover: #1f1f1f;
+    --accent: #e9b5709d;
+
+    /* Premium dark gradient - darker mode */
+    --premium-gradient: linear-gradient(145deg, #1f1f1f 0%, #0a0a0a 100%);
+    --premium-gradient-hover: linear-gradient(145deg, #525252 0%, #333333 100%);
+    --premium-border: #222222;
+    --premium-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    --premium-shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.5);
+
+    /* Accent - subtle gold hint */
+    --accent-gradient: linear-gradient(135deg, #252520 0%, #151512 100%);
+    --accent-gradient-hover: linear-gradient(135deg, #353530 0%, #20201d 100%);
 }

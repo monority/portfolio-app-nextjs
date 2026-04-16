@@ -4,7 +4,7 @@ export type MinimalLayoutProps = {
 };
 export default function MinimalLayout({ children }: MinimalLayoutProps) {
     return (
-        <main className="page-shell">
+        <main className="main-shell">
             {children}
         </main>
     );

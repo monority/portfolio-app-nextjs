@@ -1,3 +1,10 @@
+.icon {
+    width: var(--icon-md);
+    height: var(--icon-md);
+    display: inline-block;
+    flex-shrink: 0;
+}
+
 .icon-xs {
     width: var(--icon-xs);
     height: var(--icon-xs);
@@ -46,4 +53,13 @@
 
 .icon-error {
     color: var(--error, #ef4444);
+}
+
+.card-full {
+    width: 100%;
+    padding: var(--padding-md);
+    border-radius: var(--border-radius-md);
+    background: var(--card);
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: var(--shadow-md);
 }

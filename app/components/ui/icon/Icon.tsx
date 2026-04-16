@@ -13,7 +13,7 @@ interface IconComponentProps extends Omit<IconProps, 'size'> {
 
 const Icon = ({
     name,
-    size = 24,
+    size,
     sizeClass,
     className = '',
     ...props
@@ -28,13 +28,14 @@ const Icon = ({
     }
 
     const combinedClassName = [
+        'icon',
         sizeClass,
         className
     ].filter(Boolean).join(' ')
 
     return (
         <Component
-            size={sizeClass ? undefined : size}
+            style={size && !sizeClass ? { width: size, height: size } : undefined}
             className={combinedClassName}
             {...props}
         />

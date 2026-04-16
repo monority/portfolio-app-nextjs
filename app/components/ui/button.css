@@ -2,26 +2,43 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: var(--border-radius-lg);
+  border-radius: var(--border-radius-md);
   border: var(--border-width) solid var(--card-border);
-  background-color: var(--card);
+  background: var(--card);
   padding: var(--padding-md);
-  transition: background-color var(--transition-base), border-color var(--transition-base);
+  transition: all var(--transition-base);
   font-size: var(--font-size-base);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
 
-  &:hover {
-    background-color: var(--hover);
+  &>* {
+    position: relative;
+    z-index: 1;
   }
 }
 
 .btn-primary {
-  background-color: var(--card);
-  border-color: var(--card-border);
-  color: var(--background);
+  background: var(--premium-gradient);
+  border-color: var(--premium-border);
+  color: #ffffff;
+  box-shadow: var(--premium-shadow);
 
   &:hover {
-    background-color: var(--hover);
-    border-color: var(--hover);
+    background: var(--premium-gradient-hover);
+    box-shadow: var(--premium-shadow-hover);
+  }
+}
+
+.btn-secondary {
+  background: var(--accent-gradient);
+  border-color: var(--premium-border);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background: var(--accent-gradient-hover);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   }
 }
 

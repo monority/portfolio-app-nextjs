@@ -11,8 +11,10 @@ export default function Header() {
     return (
         <>
             <header className="minimal-header">
+
                 <div className="minimal-header__availability">
-                    <span>{t('available')}</span>
+                    <span className="availability-dot"></span>
+                    <p className="muted minimal-header__text-availability">{t('available')}</p>
 
                 </div>
                 <ul className="minimal-header__network">
@@ -22,22 +24,27 @@ export default function Header() {
                     </li>
                     <li className="minimal-header__item">
                         <Button variant="primary" size="md" loading={false}>
-                            <Icon name="linkedin" title="linkedin" sizeClass="icon-md" className="minimal-header__icon" />
+                            <Icon name="linkedin" title="linkedin" sizeClass="icon-sm" className="minimal-header__icon" />
                         </Button>
                     </li>
                     <li className="minimal-header__item">
                         <Button variant="primary" size="md" loading={false}>
-                            <Icon name="github" title="github" sizeClass="icon-md" className="minimal-header__icon" />
+                            <Icon name="language" title="language" sizeClass="icon-sm" className="minimal-header__icon" />
                         </Button>
                     </li>
                     <li className="minimal-header__item">
                         <Button variant="primary" size="md" loading={false}>
-                            <Icon name="email" title="email" sizeClass="icon-md" className="minimal-header__icon" />
+                            <Icon name="github" title="github" sizeClass="icon-sm" className="minimal-header__icon" />
                         </Button>
                     </li>
                     <li className="minimal-header__item">
                         <Button variant="primary" size="md" loading={false}>
-                            <Icon name="phone" title="phone" sizeClass="icon-md" className="minimal-header__icon" />
+                            <Icon name="email" title="email" sizeClass="icon-sm" className="minimal-header__icon" />
+                        </Button>
+                    </li>
+                    <li className="minimal-header__item">
+                        <Button variant="primary" size="md" loading={false}>
+                            <Icon name="phone" title="phone" sizeClass="icon-sm" className="minimal-header__icon" />
                         </Button>
                     </li>
                 </ul>
