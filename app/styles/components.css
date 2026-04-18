@@ -44,15 +44,15 @@
 }
 
 .icon-success {
-    color: var(--success, #10b981);
+    color: var(--color-success);
 }
 
 .icon-warning {
-    color: var(--warning, #f59e0b);
+    color: var(--color-warning);
 }
 
 .icon-error {
-    color: var(--error, #ef4444);
+    color: var(--color-error);
 }
 
 .card-full {

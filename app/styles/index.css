@@ -6,14 +6,3 @@
 @import "design.css" layer(layout);
 
 @import "utilites.css" layer(utilities);
-
-
-@layer reset, tokens {
-    html {
-        color-scheme: light;
-    }
-
-    :root.dark {
-        color-scheme: dark;
-    }
-}

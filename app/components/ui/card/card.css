@@ -1,0 +1,189 @@
+/* ─── Base ─────────────────────────────────────────── */
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--card);
+    border: var(--border-width) solid var(--card-border);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-base);
+    cursor: pointer;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+/* ─── Stack link wrapper ───────────────────────────── */
+.card-stack .card__link {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ─── Overlay link cover ───────────────────────────── */
+.card-overlay .card__link {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+}
+
+/* ─── Media ────────────────────────────────────────── */
+.card__media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: var(--hover);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.card__img {
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.card:hover .card__img {
+    transform: scale(1.04);
+}
+
+/* ─── Body ─────────────────────────────────────────── */
+.card__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--padding-md);
+    flex: 1;
+}
+
+/* ─── Meta ─────────────────────────────────────────── */
+.card__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.card__badge {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--foreground);
+    background: var(--hover);
+    border: var(--border-width) solid var(--card-border);
+    border-radius: var(--border-radius-sm);
+    padding: 2px 6px;
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-loose);
+}
+
+.card__category {
+    font-size: var(--font-size-sm);
+    color: var(--muted);
+}
+
+/* ─── Title ────────────────────────────────────────── */
+.card__title {
+    margin: 0;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--foreground);
+    letter-spacing: var(--letter-spacing-tight);
+    line-height: var(--line-height-tight);
+}
+
+/* ─── Description ──────────────────────────────────── */
+.card__desc {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    color: var(--muted);
+    line-height: var(--line-height-relaxed);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ─── Footer ───────────────────────────────────────── */
+.card__footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-xs);
+    margin-top: auto;
+    padding-top: var(--space-xs);
+}
+
+.card__year {
+    font-size: var(--font-size-sm);
+    color: var(--muted);
+}
+
+.card__tag {
+    font-size: var(--font-size-sm);
+    color: var(--muted);
+    border: var(--border-width) solid var(--card-border);
+    border-radius: var(--border-radius-sm);
+    padding: 1px 6px;
+}
+
+/* ─── Size variants ────────────────────────────────── */
+.card-sm .card__body {
+    padding: var(--padding-sm);
+}
+
+.card-sm .card__title {
+    font-size: var(--font-size-sm);
+}
+
+.card-lg .card__body {
+    padding: var(--padding-lg);
+}
+
+.card-lg .card__title {
+    font-size: var(--font-size-md);
+}
+
+/* ─── Overlay layout ───────────────────────────────── */
+.card-overlay {
+    aspect-ratio: 4 / 3;
+}
+
+.card-overlay .card__media {
+    position: absolute;
+    inset: 0;
+    aspect-ratio: unset;
+    width: 100%;
+    height: 100%;
+}
+
+.card-overlay .card__body {
+    position: absolute;
+    inset: 0;
+    justify-content: flex-end;
+    padding: var(--padding-md);
+    background: linear-gradient(to top, rgb(0 0 0 / 0.72) 0%, transparent 60%);
+    z-index: 1;
+}
+
+.card-overlay .card__title,
+.card-overlay .card__desc {
+    color: oklch(100% 0 0);
+}
+
+.card-overlay .card__category,
+.card-overlay .card__year {
+    color: oklch(100% 0 0 / 65%);
+}
+
+.card-overlay .card__badge {
+    background: oklch(100% 0 0 / 12%);
+    border-color: oklch(100% 0 0 / 25%);
+    color: oklch(100% 0 0);
+}
+
+.card-overlay .card__tag {
+    border-color: oklch(100% 0 0 / 25%);
+    color: oklch(100% 0 0 / 65%);
+}

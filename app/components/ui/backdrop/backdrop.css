@@ -1,0 +1,27 @@
+.backdrop {
+    position: relative;
+    border-radius: var(--radius, 0.75rem);
+    padding: var(--padding-md);
+    overflow: hidden;
+}
+
+.backdrop--card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+}
+
+.backdrop--muted {
+    background: var(--muted);
+    color: var(--background);
+}
+
+.backdrop--premium {
+    background: var(--premium-gradient);
+    border: 1px solid var(--premium-border);
+    box-shadow: var(--premium-shadow);
+}
+
+.backdrop--accent {
+    background: var(--accent-gradient);
+    color: var(--background);
+}
