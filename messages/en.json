@@ -2,11 +2,10 @@
   "header": {
     "available": "Available for work",
     "nav": {
-      "about": "About",
-      "tech": "Tech",
-      "timeline": "Journey",
-      "projects": "Projects",
-      "contact": "Contact"
+      "about": "home",
+      "tech": "tech",
+      "projects": "projects",
+      "contact": "contact"
     }
   },
   "hero": {

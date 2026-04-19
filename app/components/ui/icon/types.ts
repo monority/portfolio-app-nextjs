@@ -59,4 +59,5 @@ export type IconName =
     | 'darkMode'
     | 'lightMode'
     | 'language'
-
+    | 'user'
+    | 'message'

@@ -7,6 +7,10 @@ export default function HomePage() {
     return (
         <>
             <Header />
+            <main>
+                <Hero />
+
+            </main>
         </>
     );
 }

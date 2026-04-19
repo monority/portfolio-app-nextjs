@@ -72,3 +72,11 @@
     border-radius: var(--border-radius-md);
     box-shadow: var(--shadow-md);
 }
+
+.element {
+    border: var(--border-width) solid var(--border-color);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--border-radius-sm);
+    background: var(--card);
+    color: var(--foreground);
+}

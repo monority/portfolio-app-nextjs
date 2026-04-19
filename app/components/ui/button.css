@@ -21,8 +21,7 @@
 .btn-primary {
   background: var(--premium-gradient);
   border-color: var(--premium-border);
-  color: #ffffff;
-  box-shadow: var(--premium-shadow);
+  color: var(--foreground);
 
   &:hover {
     background: var(--premium-gradient-hover);
@@ -33,13 +32,20 @@
 .btn-secondary {
   background: var(--accent-gradient);
   border-color: var(--premium-border);
-  color: #ffffff;
+  color: var(--background);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 
   &:hover {
     background: var(--accent-gradient-hover);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   }
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--foreground);
+  box-shadow: none;
 }
 
 /* Button icon styling */

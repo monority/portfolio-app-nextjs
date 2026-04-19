@@ -2,11 +2,10 @@
   "header": {
     "available": "Disponible",
     "nav": {
-      "about": "À propos",
-      "tech": "Tech",
-      "timeline": "Parcours",
-      "projects": "Projets",
-      "contact": "Contact"
+      "about": "accueil",
+      "tech": "tech",
+      "projects": "projets",
+      "contact": "contact"
     }
   },
   "hero": {

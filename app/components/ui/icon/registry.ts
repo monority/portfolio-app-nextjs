@@ -36,6 +36,8 @@ import LightModeIcon from './icons/LightModeIcon'
 
 import type { IconName } from './types'
 import LanguageIcon from './icons/LanguageIcon'
+import User from './icons/User'
+import MessageIcon from './icons/MessageIcon'
 
 type IconComponent = React.FC<any>
 
@@ -80,4 +82,6 @@ export const iconRegistry: Record<IconName, IconComponent> = {
     darkMode: DarkModeIcon,
     lightMode: LightModeIcon,
     language: LanguageIcon,
+    user: User,
+    message: MessageIcon
 }

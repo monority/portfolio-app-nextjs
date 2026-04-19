@@ -5,12 +5,12 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import DarkModeToggle from "@/components/DarkModeToggle";
 import { Icon } from "@/components/ui/icon";
+import Button from "@/components/ui/button";
 
-const NAV_KEYS = ["about", "tech", "timeline", "projects", "contact"] as const;
+const NAV_KEYS = ["about", "tech", "projects", "contact"] as const;
 
 export default function Header() {
     const locale = useLocale();
-    const tNav = useTranslations("header.nav");
 
 
     return (
@@ -29,24 +29,44 @@ export default function Header() {
                                         </div>
                                     </Link>
                                 </div>
-                                <nav id="nav">
-                                    <ul className="header-nav__list">
-                                        {NAV_KEYS.map((key) => (
-                                            <li key={key} className="header-nav__item">
-                                                <Link href={`/${locale}#${key}`} className="header-nav__link">
-                                                    {tNav(key)}
+                                <nav id="header-nav" className="header-nav">
 
-                                                </Link>
+                                    <div className="header-network">
+                                        <ul className="header-network__list">
+                                            <li className="header-network__item">
+                                                <span className="header-network__user-active">1</span>
+                                                <Icon name="user" title="User" sizeClass="icon-sm" className="header-network__icon" />
                                             </li>
-                                        ))}
-                                    </ul>
+                                            <li className="header-network__item element">
+                                                <Icon name="message" title="Message" sizeClass="icon-sm" className="header-network__icon" />
+                                                <span className="header-network__user-active">message</span>
+                                            </li>
+                                            <li className="header-network__item">
+                                                <DarkModeToggle />
+                                            </li>
+                                            <li className="header-network__item">
+                                                <Button variant="primary" >
+                                                    <Icon name="github" title="GitHub" sizeClass="icon-sm" className="header-network__icon" />
+
+                                                </Button>
+
+                                            </li>
+                                            <li className="header-network__item">
+                                                <Button variant="primary" >
+                                                    <Icon name="language" title="Language" sizeClass="icon-sm" className="header-network__icon" />
+
+                                                </Button>
+
+                                            </li>
+
+                                        </ul>
+
+                                    </div>
+
                                 </nav>
-                                <nav className="header-network">
-                                    <DarkModeToggle />
-                                    <Link href="https://www.linkedin.com/in/ronan-davies/" target="_blank" className="header-network__link">
-                                        <Icon name="linkedin" title="linkedin" sizeClass="icon-sm" className="header-network__icon" />
-                                    </Link>
-                                </nav>
+
+
+
                             </div>
                         </div>
 

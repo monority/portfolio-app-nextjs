@@ -1,9 +1,10 @@
-@layer reset, tokens, components, utilities, layout;
+@layer reset, tokens, components, utilities, layout, bae;
 
 @import "reset.css" layer(reset);
 @import "tokens.css" layer(tokens);
 @import "components.css" layer(components);
 @import "utilites.css" layer(utilities);
+@import "base.css" layer(base);
 
 @import "../[locale]/features/header.css" layer(layout);
 @import "../[locale]/Hero.css" layer(layout);
