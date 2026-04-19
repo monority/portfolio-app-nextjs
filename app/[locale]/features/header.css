@@ -1,0 +1,15 @@
+.header-layout {
+  max-width: 100rem;
+  margin: 0 auto;
+  display: flex;
+}
+
+.header-nav__list {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.header-shell {
+  border-bottom: var(--border-width) solid var(--border);
+  height: 4rem;
+}

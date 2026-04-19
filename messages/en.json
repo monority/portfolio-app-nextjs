@@ -1,25 +1,17 @@
 {
-  "nav": {
-    "home": "Home",
-    "about": "About",
-    "projects": "Projects",
-    "contact": "Contact"
-  },
   "header": {
-    "available": "Available for work"
-  },
-  "common": {
-    "loading": "Loading...",
-    "error": "An error occurred"
-  },
-  "minimal": {
-    "header": {
-      "available": "Available for work"
-    },
-    "hero": {
-      "descriptions": {
-        "projectOnline": "Project online"
-      }
+    "available": "Available for work",
+    "nav": {
+      "about": "About",
+      "tech": "Tech",
+      "timeline": "Journey",
+      "projects": "Projects",
+      "contact": "Contact"
     }
+  },
+  "hero": {
+    "role": "Creative Developer",
+    "meta": "Lille · 3 yrs · Full-Stack",
+    "cta": "See my work"
   }
 }

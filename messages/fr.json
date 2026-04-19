@@ -1,25 +1,17 @@
 {
-  "nav": {
-    "home": "Accueil",
-    "about": "À propos",
-    "projects": "Projets",
-    "contact": "Contact"
-  },
   "header": {
-    "available": "Disponible pour travailler"
-  },
-  "common": {
-    "loading": "Chargement...",
-    "error": "Une erreur est survenue"
-  },
-  "minimal": {
-    "header": {
-      "available": "Disponible pour travailler"
-    },
-    "hero": {
-      "descriptions": {
-        "projectOnline": "Projet en ligne"
-      }
+    "available": "Disponible",
+    "nav": {
+      "about": "À propos",
+      "tech": "Tech",
+      "timeline": "Parcours",
+      "projects": "Projets",
+      "contact": "Contact"
     }
+  },
+  "hero": {
+    "role": "Creative Developer",
+    "meta": "Lille · 3 ans · Full-Stack",
+    "cta": "Voir mes projets"
   }
 }

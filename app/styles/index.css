@@ -1,8 +1,9 @@
+@layer reset, tokens, components, utilities, layout;
+
 @import "reset.css" layer(reset);
 @import "tokens.css" layer(tokens);
 @import "components.css" layer(components);
-@import "home.css" layer(layout);
-@import "@/[locale]/minimal/minimal.css" layer(layout);
-@import "design.css" layer(layout);
-
 @import "utilites.css" layer(utilities);
+
+@import "../[locale]/features/header.css" layer(layout);
+@import "../[locale]/Hero.css" layer(layout);
