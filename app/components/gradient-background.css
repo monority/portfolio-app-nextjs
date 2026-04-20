@@ -1,0 +1,86 @@
+/* ─────────────────────────────────────────────────────────────────
+   GRADIENT BACKGROUND — Vercel / shadcn style
+   Dot grid  +  top-center radial glow  +  edge shimmer line.
+   Purely monochromatic, adapts to theme via light-dark().
+   ───────────────────────────────────────────────────────────────── */
+
+/* ── Root container ─────────────────────────────────────────────── */
+.gb-root {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ── Dot grid ───────────────────────────────────────────────────── */
+.gb-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    light-dark(oklch(74% 0 0), oklch(26% 0 0)) 1px,
+    transparent 1px
+  );
+  background-size: 28px 28px;
+  /* fade grid from top-center toward edges and bottom */
+  mask-image: radial-gradient(
+    ellipse 100% 65% at 50% 0%,
+    black 15%,
+    transparent 72%
+  );
+}
+
+/* ── Top-center radial glow ─────────────────────────────────────── */
+.gb-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 75% 40% at 50% -2%,
+    light-dark(oklch(93% 0.025 264), oklch(20% 0.07 264)),
+    transparent 68%
+  );
+  animation: gb-breathe 8s ease-in-out infinite;
+}
+
+/* ── SVG overlay ────────────────────────────────────────────────── */
+.gb-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* ── Top edge shimmer — gradient stop ───────────────────────────── */
+.gb-line-mid {
+  stop-color: light-dark(oklch(52% 0.07 264 / 0.55), oklch(72% 0.10 264 / 0.6));
+  stop-opacity: 1;
+}
+
+/* ── Top edge shimmer — line element ────────────────────────────── */
+.gb-topline {
+  animation: gb-shimmer 8s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+/* ── Keyframes ──────────────────────────────────────────────────── */
+@keyframes gb-breathe {
+  0%,  100% { opacity: 0.5; }
+  50%        { opacity: 0.9; }
+}
+
+@keyframes gb-shimmer {
+  0%,  100% { opacity: 0.35; }
+  50%        { opacity: 1.0;  }
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .gb-glow,
+  .gb-topline {
+    animation: none;
+    opacity: 0.7;
+  }
+}

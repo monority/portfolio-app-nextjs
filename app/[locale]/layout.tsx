@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { AnimationProvider } from '@components/animations/AnimationProvider';
+import { GradientBackground } from '@/components/GradientBackground';
 import "../styles/index.css";
 
 import { Geist } from 'next/font/google';
@@ -29,6 +30,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={geist.variable}>
       <body>
+        <GradientBackground />
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
             <AnimationProvider>
