@@ -36,7 +36,7 @@ export type IconName =
     | 'location'
     | 'motion'
     | 'neon'
-    | 'net'
+    | 'dotnet'
     | 'nextjs'
     | 'node'
     | 'phone'

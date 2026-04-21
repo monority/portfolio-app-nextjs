@@ -1,0 +1,131 @@
+header {
+    z-index: 1;
+}
+
+.hero-header__skills {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.hero-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.hero-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.hero-header__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-header__image {
+    display: block;
+    width: min(25rem, 45vw);
+    height: auto;
+    object-fit: cover;
+    object-position: center 18%;
+    border-radius: calc(var(--border-radius-xl) * 1.2);
+    filter: saturate(0.94) contrast(1.04);
+}
+
+.hero__description {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    align-items: flex-start;
+
+    h2 {
+        margin: 0;
+        font-weight: 400;
+    }
+}
+
+span,
+h2,
+p {
+    font-family: var(--font-family-mono);
+}
+
+.hero__city,
+.hero__availability {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: var(--font-size-md);
+}
+
+.hero__availability-dot {
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 999px;
+    background: var(--color-success);
+    box-shadow: 0 0 0 0.25rem color-mix(in oklab, var(--color-success) 16%, transparent);
+    flex: 0 0 auto;
+}
+
+.hero__description-text,
+.hero__city,
+.hero__availability {
+    color: var(--text-secondary);
+}
+
+.hero__text-muted {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    font-family: var(--font-family-mono);
+    color: var(--text-secondary);
+
+}
+
+.hero-header__tech {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.hero-header__legend {
+    display: flex;
+    gap: var(--space-md);
+    flex-direction: column;
+    flex-wrap: wrap;
+
+}
+
+@media (max-width: 768px) {
+    .hero-layout {
+        gap: var(--space-lg);
+    }
+
+    .hero-header {
+        gap: var(--space-lg);
+    }
+
+    .hero-header__tech {
+        align-items: center;
+        justify-content: center;
+    }
+
+    p,
+    h1,
+    h2 {
+        text-align: center;
+    }
+
+    .hero__description {
+        align-items: center;
+    }
+}

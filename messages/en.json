@@ -1,6 +1,16 @@
 {
   "header": {
-    "available": "Available for work",
+    "brand": {
+      "name": "ronan",
+      "avatarAlt": "Portrait of Ronan",
+      "homeLabel": "Back to home"
+    },
+    "message": "message",
+    "themeToggle": "Toggle theme",
+    "github": "View GitHub profile",
+    "language": "Change language",
+    "languageTarget": "FR",
+    "languageSwitchTo": "Switch site to French",
     "nav": {
       "about": "home",
       "tech": "tech",
@@ -9,8 +19,12 @@
     }
   },
   "hero": {
+    "name": "Ronan Chenu",
     "role": "Creative Developer",
-    "meta": "Lille · 3 yrs · Full-Stack",
-    "cta": "See my work"
+    "meta": "Lille | 3 yrs | Full-Stack",
+    "imageAlt": "Editorial portrait of Ronan",
+    "description": "Performant, clean and responsive application",
+    "city": "Based in Lille, France",
+    "availability": "Available for CDI / CDD / Remote"
   }
 }

@@ -1,6 +1,18 @@
 {
   "header": {
-    "available": "Disponible",
+    "brand": {
+      "name": "ronan",
+      "avatarAlt": "Portrait de Ronan",
+      "homeLabel": "Retour a l'accueil"
+    },
+    "available": "Disponible pour de nouvelles missions",
+    "message": "message",
+    "themeToggle": "Changer de theme",
+    "github": "Voir le profil GitHub",
+    "language": "Changer de langue",
+    "languageLabel": "FR",
+    "languageTarget": "EN",
+    "languageSwitchTo": "Passer le site en anglais",
     "nav": {
       "about": "accueil",
       "tech": "tech",
@@ -9,8 +21,12 @@
     }
   },
   "hero": {
-    "role": "Creative Developer",
-    "meta": "Lille · 3 ans · Full-Stack",
-    "cta": "Voir mes projets"
+    "name": "Ronan Chenu",
+    "role": "Développeur Créatif",
+    "meta": "Lille | 3 ans | Full-Stack",
+    "imageAlt": "Portrait editorialisé de Ronan",
+    "description": "Application performante, propre et responsive",
+    "city": "Réside a Lille centre",
+    "availability": "Disponible CDI / CDD / Remote"
   }
 }

@@ -7,9 +7,15 @@ import { GradientBackground } from '@/components/GradientBackground';
 import "../styles/index.css";
 
 import { Geist } from 'next/font/google';
+import { JetBrains_Mono } from 'next/font/google';
 const geist = Geist({
   subsets: ['latin'],
   variable: '--font-geist',
+  display: 'swap',
+});
+const jetMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jet-mono',
   display: 'swap',
 });
 export const metadata: Metadata = {
@@ -28,7 +34,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={geist.variable}>
+    <html lang={locale} className={`${geist.variable} ${jetMono.variable}`}>
       <body>
         <GradientBackground />
         <NextIntlClientProvider messages={messages}>

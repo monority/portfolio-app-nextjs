@@ -8,3 +8,4 @@
 
 @import "../[locale]/features/header.css" layer(layout);
 @import "../[locale]/Hero.css" layer(layout);
+@import "../[locale]/features/sidenav.css" layer(layout);

@@ -6,9 +6,10 @@ import Button from "@/components/ui/button";
 
 interface DarkModeToggleProps {
   className?: string;
+  ariaLabel?: string;
 }
 
-export default function DarkModeToggle({ className }: DarkModeToggleProps) {
+export default function DarkModeToggle({ className, ariaLabel }: DarkModeToggleProps) {
   const { resolvedTheme, toggleTheme } = useTheme();
 
   return (
@@ -16,7 +17,7 @@ export default function DarkModeToggle({ className }: DarkModeToggleProps) {
       variant="primary"
       onClick={toggleTheme}
       className={`theme-toggle ${className || ""}`}
-      aria-label="Toggle dark mode"
+      aria-label={ariaLabel || "Toggle dark mode"}
     >
       <Icon
         name={resolvedTheme === "dark" ? "lightMode" : "darkMode"}

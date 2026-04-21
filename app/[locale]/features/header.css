@@ -4,7 +4,8 @@
   display: flex;
   padding-top: var(--space-sm);
   padding-bottom: var(--space-sm);
-  justify-content: space-between
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header-network__list,
@@ -25,6 +26,36 @@
   font-size: var(--font-size-base);
 }
 
+
+
 .header-shell {
+  position: sticky;
+  top: 0;
+  z-index: 20;
   border-bottom: var(--border-width) solid var(--border);
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--background) 92%, transparent) 0%, color-mix(in oklab, var(--background) 82%, transparent) 100%);
+  backdrop-filter: blur(18px);
+}
+
+.header-title__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: inherit;
+  text-decoration: none;
+}
+
+
+
+@media (max-width: 640px) {
+  .header-layout {
+    gap: var(--space-sm);
+  }
+
+  .header-network__list {
+    gap: var(--space-xs);
+  }
+
+
 }

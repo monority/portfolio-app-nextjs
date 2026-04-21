@@ -1,5 +1,5 @@
 main {
-    max-width: var(--max-width);
+    width: min(80vw, 150rem);
     margin: 0 auto;
     margin-block-start: calc(var(--space) * 32);
 }

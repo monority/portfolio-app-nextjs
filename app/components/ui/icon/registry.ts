@@ -59,7 +59,7 @@ export const iconRegistry: Record<IconName, IconComponent> = {
     location: LocationIcon,
     motion: MotionIcon,
     neon: NeonIcon,
-    net: NETIcon,
+    dotnet: NETIcon,
     nextjs: NextJsIcon,
     node: NodeIcon,
     phone: PhoneIcon,
