@@ -11,6 +11,7 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  max-height: 4rem;
 
   &>* {
     position: relative;
@@ -89,6 +90,13 @@
 .btn-lg {
   padding: var(--padding-lg);
   font-size: var(--font-size-lg);
+}
+
+.btn-tech {
+  background: var(--card-gradient);
+  border-color: var(--card-border);
+  color: var(--foreground);
+  box-shadow: var(--shadow-sm);
 }
 
 @keyframes btn-spin {

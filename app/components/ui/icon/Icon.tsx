@@ -1,6 +1,5 @@
 'use client'
 
-import { useMemo } from 'react'
 import { iconRegistry } from '@/components/ui/icon/registry'
 import type { IconProps, IconName } from '@/components/ui/icon/types'
 
@@ -18,7 +17,7 @@ const Icon = ({
     className = '',
     ...props
 }: IconComponentProps) => {
-    const Component = useMemo(() => iconRegistry[name], [name])
+    const Component = iconRegistry[name]
 
     if (!Component) {
         if (process.env.NODE_ENV === 'development') {

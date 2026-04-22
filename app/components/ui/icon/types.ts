@@ -72,3 +72,4 @@ export type IconName =
     | 'postman'
     | 'javascript'
     | 'csharp'
+    | 'photoshop'

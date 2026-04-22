@@ -15,7 +15,7 @@ export default function Hero() {
                 <div className="hero-layout">
                     <div className="hero-header">
                         <div className="hero-header__titles">
-                            <h1 className="hero-header__job">
+                            <h1 className="hero-header__job heading-title">
                                 {t("role").split(" ").map((word, index) => (
                                     <span key={`${word}-${index}`}>
                                         {index > 0 ? <br /> : null}

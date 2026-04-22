@@ -35,6 +35,14 @@
     },
     "about": {
         "title": "A propos",
-        "description": "Développeur React, Next.js, Node.js et TypeScript, orienté front-end et conception d’expériences web modernes.\nJe conçois des interfaces performantes et cohérentes, avec une approche centrée sur la pratique, le produit et l’impact utilisateur.\n\nMon travail s’appuie sur des projets concrets, pensés pour être utiles, visibles et réellement différenciants.\n\n  À découvrir :\nronanchenu.vercel.app\n\nEn dehors du développement, je puise mon inspiration dans le sport, la musique et les moments partagés entre amis."
+        "description": "Développeur React, Next.js, Node.js et TypeScript, orienté front-end et conception d’expériences web modernes.\nJe conçois des interfaces performantes et cohérentes, avec une approche centrée sur la pratique, le produit et l’impact utilisateur.\n\nMon travail s’appuie sur des projets concrets, pensés pour être utiles, visibles et réellement différenciants.\nEn dehors du développement, je puise mon inspiration dans le sport, la musique et les moments partagés entre amis.",
+        "tech": {
+            "title": "Tech",
+            "frontend": "Frontend",
+            "backend": "Backend",
+            "hosting": "Hosting",
+            "languages": "Languages",
+            "tools": "Outils"
+        }
     }
 }

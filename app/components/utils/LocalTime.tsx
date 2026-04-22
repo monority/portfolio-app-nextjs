@@ -2,6 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
+import capitalizeFirstLetter from './capitalizeFirstLetter';
 
 interface LocalTimeProps {
     className?: string;
@@ -10,13 +11,13 @@ interface LocalTimeProps {
 
 type CityStatus = "idle" | "loading" | "success" | "error";
 
-function capitalizeFirstLetter(value: string) {
-    if (!value) {
-        return value;
-    }
+// function capitalizeFirstLetter(value: string) {
+//     if (!value) {
+//         return value;
+//     }
 
-    return value.charAt(0).toUpperCase() + value.slice(1);
-}
+//     return value.charAt(0).toUpperCase() + value.slice(1);
+// }
 
 function formatLocalDateTime(date: Date, locale: string, timeZone?: string) {
     try {

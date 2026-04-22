@@ -49,6 +49,7 @@ import VscodeIcon from './icons/VscodeIcon'
 import PostmanIcon from './icons/PostmanIcon'
 import JSIcon from './icons/JSIcon'
 import CSharpIcon from './icons/CSharpIcon'
+import PhotoshopIcon from './icons/PhotoshopIcon'
 
 type IconComponent = React.FC<any>
 
@@ -106,4 +107,5 @@ export const iconRegistry: Record<IconName, IconComponent> = {
     postman: PostmanIcon,
     javascript: JSIcon,
     csharp: CSharpIcon,
+    photoshop: PhotoshopIcon
 }

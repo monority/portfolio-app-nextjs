@@ -1,4 +1,4 @@
-h1 {
+.heading-title {
     font-size: clamp(calc(var(--font-size-lg) * 1.6),
             6vw,
             calc(var(--font-size-2xl) * 2.2));

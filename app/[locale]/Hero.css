@@ -114,7 +114,9 @@ p {
         gap: var(--space-lg);
     }
 
-    .hero-header__tech {
+    .hero-header__tech,
+    .hero__city,
+    .hero__availability {
         align-items: center;
         justify-content: center;
     }

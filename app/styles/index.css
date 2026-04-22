@@ -3,9 +3,12 @@
 @import "reset.css" layer(reset);
 @import "tokens.css" layer(tokens);
 @import "components.css" layer(components);
-@import "utilites.css" layer(utilities);
+@import "utilities.css" layer(utilities);
 @import "base.css" layer(base);
 
 @import "../[locale]/features/header.css" layer(layout);
-@import "../[locale]/hero.css" layer(layout);
 @import "../[locale]/features/sidenav.css" layer(layout);
+
+
+@import "../[locale]/hero.css" layer(layout);
+@import "../[locale]/about.css" layer(layout);
