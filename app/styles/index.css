@@ -7,5 +7,5 @@
 @import "base.css" layer(base);
 
 @import "../[locale]/features/header.css" layer(layout);
-@import "../[locale]/Hero.css" layer(layout);
+@import "../[locale]/hero.css" layer(layout);
 @import "../[locale]/features/sidenav.css" layer(layout);

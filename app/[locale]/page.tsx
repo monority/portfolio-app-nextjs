@@ -3,6 +3,7 @@
 import Header from "@/[locale]/features/Header";
 import Hero from "@/[locale]/Hero";
 import SideNav from "@/[locale]/features/SideNav";
+import About from "@/[locale]/About";
 
 export default function HomePage() {
     return (
@@ -11,6 +12,7 @@ export default function HomePage() {
             <Header />
             <main>
                 <Hero />
+                <About />
 
             </main>
         </>

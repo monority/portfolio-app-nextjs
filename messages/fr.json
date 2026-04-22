@@ -27,6 +27,13 @@
     "imageAlt": "Portrait editorialisé de Ronan",
     "description": "Application performante, propre et responsive",
     "city": "Réside a Lille centre",
-    "availability": "Disponible CDI / CDD / Remote"
+    "availability": "Disponible CDI, CDD, Remote et Freelance"
+  },
+  "localTime": {
+    "loadingCity": "Recherche de la ville...",
+    "cityUnavailable": "Ville indisponible"
+  },
+  "about": {
+    "title": "A propos"
   }
 }

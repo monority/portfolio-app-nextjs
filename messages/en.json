@@ -5,10 +5,12 @@
       "avatarAlt": "Portrait of Ronan",
       "homeLabel": "Back to home"
     },
+    "available": "Available for new projects",
     "message": "message",
     "themeToggle": "Toggle theme",
     "github": "View GitHub profile",
     "language": "Change language",
+    "languageLabel": "EN",
     "languageTarget": "FR",
     "languageSwitchTo": "Switch site to French",
     "nav": {
@@ -25,6 +27,13 @@
     "imageAlt": "Editorial portrait of Ronan",
     "description": "Performant, clean and responsive application",
     "city": "Based in Lille, France",
-    "availability": "Available for CDI / CDD / Remote"
+    "availability": "Available for CDI / CDD / Remote, Freelance"
+  },
+  "localTime": {
+    "loadingCity": "Finding city...",
+    "cityUnavailable": "City unavailable"
+  },
+  "about": {
+    "title": "About"
   }
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 
 interface LocalTimeProps {
@@ -9,19 +10,56 @@ interface LocalTimeProps {
 
 type CityStatus = "idle" | "loading" | "success" | "error";
 
-function formatLocalTime(date: Date) {
-    return new Intl.DateTimeFormat("fr-FR", {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-    }).format(date);
+function capitalizeFirstLetter(value: string) {
+    if (!value) {
+        return value;
+    }
+
+    return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+function formatLocalDateTime(date: Date, locale: string, timeZone?: string) {
+    try {
+        const day = new Intl.DateTimeFormat(locale, {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            timeZone,
+        }).format(date);
+
+        const time = new Intl.DateTimeFormat(locale, {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            timeZone,
+        }).format(date);
+
+        return { day, time };
+    } catch {
+        const day = new Intl.DateTimeFormat(locale, {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+        }).format(date);
+
+        const time = new Intl.DateTimeFormat(locale, {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+        }).format(date);
+
+        return { day, time };
+    }
 }
 
 export default function LocalTime({
     className = "",
 }: LocalTimeProps) {
+    const locale = useLocale();
+    const t = useTranslations("localTime");
     const [currentDate, setCurrentDate] = useState(() => new Date());
     const [city, setCity] = useState("");
+    const [timeZone, setTimeZone] = useState(() => Intl.DateTimeFormat().resolvedOptions().timeZone);
     const [cityStatus, setCityStatus] = useState<CityStatus>("idle");
 
     useEffect(() => {
@@ -47,7 +85,7 @@ export default function LocalTime({
                 try {
                     setCityStatus("loading");
 
-                    const params = new URLSearchParams({
+                    const coordinatesParams = new URLSearchParams({
                         format: "jsonv2",
                         lat: String(coords.latitude),
                         lon: String(coords.longitude),
@@ -55,23 +93,35 @@ export default function LocalTime({
                         addressdetails: "1",
                     });
 
-                    const response = await fetch(`https://nominatim.openstreetmap.org/reverse?${params.toString()}`, {
-                        headers: {
-                            Accept: "application/json",
-                        },
-                    });
+                    const [cityResponse, timeZoneResponse] = await Promise.all([
+                        fetch(`https://nominatim.openstreetmap.org/reverse?${coordinatesParams.toString()}`, {
+                            headers: {
+                                Accept: "application/json",
+                            },
+                        }),
+                        fetch(
+                            `https://timeapi.io/api/Time/current/coordinate?latitude=${coords.latitude}&longitude=${coords.longitude}`
+                        ),
+                    ]);
 
-                    if (!response.ok) {
+                    if (!cityResponse.ok) {
                         throw new Error("Failed to resolve city");
                     }
 
-                    const data = await response.json();
+                    const cityData = await cityResponse.json();
                     const resolvedCity =
-                        data.address?.city ||
-                        data.address?.town ||
-                        data.address?.village ||
-                        data.address?.municipality ||
-                        data.address?.county;
+                        cityData.address?.city ||
+                        cityData.address?.town ||
+                        cityData.address?.village ||
+                        cityData.address?.municipality ||
+                        cityData.address?.county;
+
+                    if (!timeZoneResponse.ok) {
+                        throw new Error("Failed to resolve timezone");
+                    }
+
+                    const timeZoneData = await timeZoneResponse.json();
+                    const resolvedTimeZone = typeof timeZoneData.timeZone === "string" ? timeZoneData.timeZone : "";
 
                     if (!cancelled) {
                         if (resolvedCity) {
@@ -79,6 +129,10 @@ export default function LocalTime({
                             setCityStatus("success");
                         } else {
                             setCityStatus("error");
+                        }
+
+                        if (resolvedTimeZone) {
+                            setTimeZone(resolvedTimeZone);
                         }
                     }
                 } catch {
@@ -104,24 +158,30 @@ export default function LocalTime({
         };
     }, []);
 
-    const localTime = useMemo(() => formatLocalTime(currentDate), [currentDate]);
+    const { day, time } = useMemo(
+        () => formatLocalDateTime(currentDate, locale, timeZone),
+        [currentDate, locale, timeZone]
+    );
     const cityLabel = useMemo(() => {
         if (cityStatus === "loading" || cityStatus === "idle") {
-            return "Recherche de la ville...";
+            return t("loadingCity");
         }
 
         if (cityStatus === "error") {
-            return "Ville indisponible";
+            return t("cityUnavailable");
         }
 
         return city;
-    }, [city, cityStatus]);
+    }, [city, cityStatus, t]);
 
     return (
         <div className={["local-time", className].filter(Boolean).join(" ")}>
             <div className="local-time__body">
                 <div className="local-time__content">
-                    <strong className="local-time__value">{localTime}</strong>
+                    <strong className="local-time__value">
+                        <span>{capitalizeFirstLetter(day)}</span>
+                        <span> {time}</span>
+                    </strong>
                     <span className="local-time__meta">{cityLabel}</span>
                 </div>
             </div>
