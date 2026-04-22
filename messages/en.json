@@ -34,6 +34,7 @@
     "cityUnavailable": "City unavailable"
   },
   "about": {
-    "title": "About"
+    "title": "About",
+    "description": "React, Next.js, Node.js and TypeScript developer, focused on front-end and modern web experiences.\nI build performant and coherent interfaces, with a practice, product and user impact centered approach.\n\nMy work is based on concrete projects, designed to be useful, visible and truly differentiated.\n\n  To discover:\nronanchenu.vercel.app\n\nOutside of development, I draw inspiration from sports, music and moments shared with friends."
   }
 }

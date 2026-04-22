@@ -71,6 +71,26 @@
   opacity: 0.75;
 }
 
+.btn-xs {
+  padding: var(--padding-xs);
+  font-size: var(--font-size-xs);
+}
+
+.btn-sm {
+  padding: var(--padding-sm);
+  font-size: var(--font-size-sm);
+}
+
+.btn-md {
+  padding: var(--padding-md);
+  font-size: var(--font-size-base);
+}
+
+.btn-lg {
+  padding: var(--padding-lg);
+  font-size: var(--font-size-lg);
+}
+
 @keyframes btn-spin {
   from {
     transform: rotate(0deg);

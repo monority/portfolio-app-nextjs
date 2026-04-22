@@ -57,12 +57,15 @@ export default function LocalTime({
 }: LocalTimeProps) {
     const locale = useLocale();
     const t = useTranslations("localTime");
-    const [currentDate, setCurrentDate] = useState(() => new Date());
+    const [currentDate, setCurrentDate] = useState<Date | null>(null);
     const [city, setCity] = useState("");
-    const [timeZone, setTimeZone] = useState(() => Intl.DateTimeFormat().resolvedOptions().timeZone);
+    const [timeZone, setTimeZone] = useState("");
     const [cityStatus, setCityStatus] = useState<CityStatus>("idle");
 
     useEffect(() => {
+        setCurrentDate(new Date());
+        setTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone);
+
         const intervalId = window.setInterval(() => {
             setCurrentDate(new Date());
         }, 1000);
@@ -158,10 +161,13 @@ export default function LocalTime({
         };
     }, []);
 
-    const { day, time } = useMemo(
-        () => formatLocalDateTime(currentDate, locale, timeZone),
-        [currentDate, locale, timeZone]
-    );
+    const { day, time } = useMemo(() => {
+        if (!currentDate) {
+            return { day: "--", time: "--:--:--" };
+        }
+
+        return formatLocalDateTime(currentDate, locale, timeZone || undefined);
+    }, [currentDate, locale, timeZone]);
     const cityLabel = useMemo(() => {
         if (cityStatus === "loading" || cityStatus === "idle") {
             return t("loadingCity");

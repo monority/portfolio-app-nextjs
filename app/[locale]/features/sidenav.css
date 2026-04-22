@@ -1,7 +1,7 @@
 .side-nav {
     position: fixed;
     top: 8rem;
-    right: 10rem;
+    right: 5rem;
     display: flex;
     align-items: flex-start;
     height: 100vh;

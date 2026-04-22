@@ -38,6 +38,17 @@ import type { IconName } from './types'
 import LanguageIcon from './icons/LanguageIcon'
 import User from './icons/User'
 import MessageIcon from './icons/MessageIcon'
+import TailwindIcon from './icons/TailwindIcon'
+import RenderIcon from './icons/RenderIcon'
+import AstroIcon from './icons/AstroIcon'
+import ExpressIcon from './icons/ExpressIcon'
+import MongoIcon from './icons/MongoIcon'
+import JWTIcon from './icons/JWTIcon'
+import NodemonIcon from './icons/NodemonIcon'
+import VscodeIcon from './icons/VscodeIcon'
+import PostmanIcon from './icons/PostmanIcon'
+import JSIcon from './icons/JSIcon'
+import CSharpIcon from './icons/CSharpIcon'
 
 type IconComponent = React.FC<any>
 
@@ -83,5 +94,16 @@ export const iconRegistry: Record<IconName, IconComponent> = {
     lightMode: LightModeIcon,
     language: LanguageIcon,
     user: User,
-    message: MessageIcon
+    message: MessageIcon,
+    tailwind: TailwindIcon,
+    render: RenderIcon,
+    astro: AstroIcon,
+    express: ExpressIcon,
+    mongo: MongoIcon,
+    jwt: JWTIcon,
+    nodemon: NodemonIcon,
+    vscode: VscodeIcon,
+    postman: PostmanIcon,
+    javascript: JSIcon,
+    csharp: CSharpIcon,
 }

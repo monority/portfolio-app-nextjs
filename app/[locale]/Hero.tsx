@@ -10,7 +10,7 @@ export default function Hero() {
     const t = useTranslations("hero");
 
     return (
-        <section className="hero">
+        <section id="hero">
             <div className="hero-shell">
                 <div className="hero-layout">
                     <div className="hero-header">
