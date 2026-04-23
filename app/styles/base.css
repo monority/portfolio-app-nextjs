@@ -3,3 +3,7 @@ main {
     margin: 0 auto;
     margin-block-start: calc(var(--space) * 32);
 }
+
+section {
+    margin-block-end: calc(var(--space) * 32);
+}

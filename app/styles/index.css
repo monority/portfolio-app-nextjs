@@ -1,14 +1,15 @@
-@layer reset, tokens, components, utilities, layout, bae;
+@layer reset, tokens, base, components, layout, page, utilities;
 
 @import "reset.css" layer(reset);
 @import "tokens.css" layer(tokens);
-@import "components.css" layer(components);
-@import "utilities.css" layer(utilities);
 @import "base.css" layer(base);
+@import "components.css" layer(components);
+@import "layout.css" layer(layout);
+@import "utilities.css" layer(utilities);
 
 @import "../[locale]/features/header.css" layer(layout);
 @import "../[locale]/features/sidenav.css" layer(layout);
-
-
-@import "../[locale]/hero.css" layer(layout);
-@import "../[locale]/about.css" layer(layout);
+@import "../[locale]/hero.css" layer(page);
+@import "../[locale]/about.css" layer(page);
+@import "../[locale]/profile.css" layer(page);
+@import "../[locale]/projects.css" layer(page);

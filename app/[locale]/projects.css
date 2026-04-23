@@ -1,0 +1,192 @@
+/* â”€â”€â”€ Shell â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.projects-shell {
+    display: grid;
+    gap: var(--space-xl);
+    padding-block: var(--space-xl);
+}
+
+/* â”€â”€â”€ 1. Filter bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.projects-filters {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--border);
+}
+
+.projects-filter {
+    appearance: none;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-xl);
+    padding: 0.3rem var(--space-sm);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition:
+        background var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast);
+    white-space: nowrap;
+}
+
+.projects-filter:hover {
+    background: var(--hover);
+    color: var(--foreground);
+}
+
+.projects-filter--active {
+    background: var(--background);
+    color: var(--foreground);
+}
+
+.projects-filters__count {
+    margin-left: auto;
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+    letter-spacing: 0.1em;
+}
+
+/* â”€â”€â”€ 2. Grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.projects-grid {
+    display: grid;
+    gap: var(--space-sm);
+    grid-template-columns: 1fr;
+}
+
+/* â”€â”€â”€ 3. Project card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.project-card {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-md);
+    background: var(--card);
+    overflow: hidden;
+    transition:
+        border-color var(--transition-base),
+        transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+
+.project-card:hover {
+    border-color: var(--foreground);
+    transform: translateY(-2px);
+}
+
+.project-card__visual {
+    position: relative;
+    height: 4px;
+    background: var(--border);
+    overflow: visible;
+}
+
+.project-card__visual-bar {
+    position: absolute;
+    inset: 0;
+    background: var(--project-accent, var(--foreground));
+    transform-origin: left;
+    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    transform: scaleX(0);
+}
+
+.project-card:hover .project-card__visual-bar {
+    transform: scaleX(1);
+}
+
+.project-card__selection {
+    position: absolute;
+    top: calc(100% + var(--space-xs));
+    right: var(--space-sm);
+    font-family: var(--font-family-mono);
+    font-size: calc(var(--font-size-xs) * 0.9);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--project-accent, var(--foreground));
+    pointer-events: none;
+}
+
+.project-card__body {
+    display: grid;
+    grid-template-rows: auto 1fr auto auto;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+}
+
+.project-card__top {
+    display: grid;
+    gap: var(--space-xs);
+}
+
+.project-card__year {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.15em;
+    color: var(--text-secondary);
+}
+
+.project-card__title {
+    margin: 0;
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-tight);
+    color: var(--foreground);
+    line-height: 1.2;
+}
+
+.project-card__tagline {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.project-card__desc {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--text-secondary);
+}
+
+.project-card__tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.project-card__links {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: center;
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--border);
+}
+
+.project-card__link:hover {
+    transform: none;
+}
+
+.project-card--featured {
+    border-left: 3px solid var(--project-accent, var(--foreground));
+}
+
+/* â”€â”€â”€ Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+@media (min-width: 640px) {
+    .projects-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

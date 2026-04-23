@@ -35,7 +35,16 @@
   },
   "about": {
     "title": "About",
-    "description": "React, Next.js, Node.js and TypeScript developer, focused on front-end and modern web experiences.\nI build performant and coherent interfaces, with a practice, product and user impact centered approach.\n\nMy work is based on concrete projects, designed to be useful, visible and truly differentiated.\nOutside of development, I draw inspiration from sports, music and moments shared with friends.",
+    "description": "React, Next.js, Node.js and TypeScript developer focused on building modern, performant and maintainable web interfaces.\nI mainly contribute on front-end topics, with strong attention to execution quality, journey clarity and product consistency.\n\nMy work is grounded in real projects designed to solve concrete needs and create visible impact for both users and the business.\nOutside of development, I stay curious through sports, music and creative environments.",
+    "availability": "Available",
+    "stats": {
+      "years": "3+",
+      "yearsLabel": "years experience",
+      "projects": "~10",
+      "projectsLabel": "projects shipped",
+      "location": "Lille",
+      "locationLabel": "CDI / Freelance"
+    },
     "tech": {
       "title": "Tech",
       "frontend": "Frontend",
@@ -44,5 +53,70 @@
       "languages": "Languages",
       "tools": "Tools"
     }
+  },
+  "profile": {
+    "sectionLabel": "Profile & Experience",
+    "heading": "A fast, structured and product-minded contribution",
+    "intro": "I contribute best in environments where an interface needs to be designed, structured and pushed forward with high standards, while keeping business needs and product priorities clearly in view.",
+    "qualities": {
+      "screens": {
+        "title": "Interfaces & flows",
+        "desc": "Designing clear, well-structured screens that make journeys easier to understand and smoother to use across desktop and mobile.",
+        "context": "HWF · SkillSwap · Sneakara"
+      },
+      "components": {
+        "title": "UI systems & components",
+        "desc": "Setting up reusable components, a consistent UI foundation and simple conventions to speed up delivery without lowering quality.",
+        "context": "Dashboard · Monority Base"
+      },
+      "backend": {
+        "title": "Front-end / API integration",
+        "desc": "Connecting interfaces to APIs and real use cases, with a clear and pragmatic Node.js layer when the project needs it.",
+        "context": "SkillSwap · Dashboard RCH"
+      },
+      "finish": {
+        "title": "Execution quality",
+        "desc": "Finishing the details that strengthen product perception: responsive behavior, accessibility, performance, reading comfort and visual consistency.",
+        "context": "Every project"
+      }
+    },
+    "method": {
+      "sectionLabel": "Approach",
+      "heading": "A clear, reliable and delivery-focused approach",
+      "understand": {
+        "title": "Frame the need",
+        "desc": "Clarify the problem to solve, the users involved and the functional priorities so the work starts on the right foundation."
+      },
+      "usage": {
+        "title": "Clarify the experience",
+        "desc": "Shape information hierarchy, reading rhythm and interactions so the product feels more intuitive and efficient to use."
+      },
+      "foundation": {
+        "title": "Build a solid foundation",
+        "desc": "Create a clean front-end structure, useful components and readable technical integration that support long-term product evolution."
+      },
+      "finish": {
+        "title": "Deliver with care",
+        "desc": "Validate the details that matter in production: responsive behavior, keyboard support, performance, visual consistency and robust integration."
+      }
+    }
+  },
+  "projects": {
+    "sectionLabel": "Projects",
+    "heading": "A selection of recent work",
+    "intro": "Different contexts, one intention: make a product easier to understand, more enjoyable to use and more solid on the front.",
+    "filterLabel": "Filter projects",
+    "filters": {
+      "all": "All",
+      "featured": "Featured",
+      "saas": "SaaS",
+      "plateforme": "Platform",
+      "vitrine": "Showcase",
+      "dashboard": "Dashboard",
+      "open source": "Open Source"
+    },
+    "live": "Live",
+    "github": "Source",
+    "selection": "SELECTION"
   }
 }

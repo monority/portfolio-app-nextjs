@@ -1,48 +1,122 @@
 {
-    "header": {
-        "brand": {
-            "name": "ronan",
-            "avatarAlt": "Portrait de Ronan",
-            "homeLabel": "Retour a l'accueil"
-        },
-        "available": "Disponible pour de nouvelles missions",
-        "message": "message",
-        "themeToggle": "Changer de theme",
-        "github": "Voir le profil GitHub",
-        "language": "Changer de langue",
-        "languageLabel": "FR",
-        "languageTarget": "EN",
-        "languageSwitchTo": "Passer le site en anglais",
-        "nav": {
-            "about": "accueil",
-            "tech": "tech",
-            "projects": "projets",
-            "contact": "contact"
-        }
+  "header": {
+    "brand": {
+      "name": "ronan",
+      "avatarAlt": "Portrait de Ronan",
+      "homeLabel": "Retour a l'accueil"
     },
-    "hero": {
-        "name": "Ronan Chenu",
-        "role": "Développeur Créatif",
-        "meta": "Lille | 3 ans | Full-Stack",
-        "imageAlt": "Portrait editorialisé de Ronan",
-        "description": "Application performante, propre et responsive",
-        "city": "Réside a Lille centre",
-        "availability": "Disponible CDI, CDD, Remote et Freelance"
-    },
-    "localTime": {
-        "loadingCity": "Recherche de la ville...",
-        "cityUnavailable": "Ville indisponible"
-    },
-    "about": {
-        "title": "A propos",
-        "description": "Développeur React, Next.js, Node.js et TypeScript, orienté front-end et conception d’expériences web modernes.\nJe conçois des interfaces performantes et cohérentes, avec une approche centrée sur la pratique, le produit et l’impact utilisateur.\n\nMon travail s’appuie sur des projets concrets, pensés pour être utiles, visibles et réellement différenciants.\nEn dehors du développement, je puise mon inspiration dans le sport, la musique et les moments partagés entre amis.",
-        "tech": {
-            "title": "Tech",
-            "frontend": "Frontend",
-            "backend": "Backend",
-            "hosting": "Hosting",
-            "languages": "Languages",
-            "tools": "Outils"
-        }
+    "available": "Disponible pour de nouvelles missions",
+    "message": "message",
+    "themeToggle": "Changer de theme",
+    "github": "Voir le profil GitHub",
+    "language": "Changer de langue",
+    "languageLabel": "FR",
+    "languageTarget": "EN",
+    "languageSwitchTo": "Passer le site en anglais",
+    "nav": {
+      "about": "accueil",
+      "tech": "tech",
+      "projects": "projets",
+      "contact": "contact"
     }
+  },
+  "hero": {
+    "name": "Ronan Chenu",
+    "role": "Developpeur Creatif",
+    "meta": "Lille | 3 ans | Full-Stack",
+    "imageAlt": "Portrait editorialise de Ronan",
+    "description": "Application performante, propre et responsive",
+    "city": "Reside a Lille centre",
+    "availability": "Disponible CDI, CDD, Remote et Freelance"
+  },
+  "localTime": {
+    "loadingCity": "Recherche de la ville...",
+    "cityUnavailable": "Ville indisponible"
+  },
+  "about": {
+    "title": "A propos",
+    "description": "Developpeur React, Next.js, Node.js et TypeScript, specialise dans la conception d'interfaces web modernes, performantes et maintenables.\nJ'interviens principalement sur des sujets front-end, avec une attention forte portee a la qualite d'execution, a la lisibilite des parcours et a la coherence produit.\n\nMon approche s'appuie sur des projets concrets, penses pour repondre a des besoins reels et produire un impact visible pour les utilisateurs comme pour l'entreprise.\nEn dehors du developpement, je nourris ma curiosite a travers le sport, la musique et les environnements creatifs.",
+    "availability": "Disponible",
+    "stats": {
+      "years": "3+",
+      "yearsLabel": "ans d'experience",
+      "projects": "~10",
+      "projectsLabel": "projets realises",
+      "location": "Lille",
+      "locationLabel": "CDI / Freelance"
+    },
+    "tech": {
+      "title": "Tech",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "hosting": "Hosting",
+      "languages": "Languages",
+      "tools": "Outils"
+    }
+  },
+  "profile": {
+    "sectionLabel": "Profil & Experience",
+    "heading": "Une contribution rapide, structuree et orientee produit",
+    "intro": "J'interviens sur des environnements ou il faut concevoir, structurer et faire avancer une interface avec exigence, tout en gardant une lecture claire des besoins metier et des priorites produit.",
+    "qualities": {
+      "screens": {
+        "title": "Interfaces & parcours",
+        "desc": "Concevoir des ecrans lisibles, hierarchises et coherents, penses pour rendre les parcours plus fluides sur desktop comme sur mobile.",
+        "context": "HWF · SkillSwap · Sneakara"
+      },
+      "components": {
+        "title": "Systemes UI & composants",
+        "desc": "Mettre en place des composants reutilisables, une base UI coherente et des conventions simples pour accelerer la production sans degrader la qualite.",
+        "context": "Dashboard · Monority Base"
+      },
+      "backend": {
+        "title": "Integration front-end / API",
+        "desc": "Connecter l'interface a des APIs et a des usages concrets, avec une couche Node.js claire et pragmatique lorsque le projet le necessite.",
+        "context": "SkillSwap · Dashboard RCH"
+      },
+      "finish": {
+        "title": "Qualite d'execution",
+        "desc": "Finaliser les details qui renforcent la perception du produit : responsive, accessibilite, performance, confort de lecture et coherence visuelle.",
+        "context": "Tous les projets"
+      }
+    },
+    "method": {
+      "sectionLabel": "Methode",
+      "heading": "Une approche claire, fiable et orientee livraison",
+      "understand": {
+        "title": "Cadrer le besoin",
+        "desc": "Identifier le probleme a resoudre, les utilisateurs concernes et les priorites fonctionnelles pour poser une base de travail pertinente."
+      },
+      "usage": {
+        "title": "Clarifier l'usage",
+        "desc": "Travailler la hierarchie de l'information, le rythme de lecture et les interactions pour rendre l'experience plus intuitive et plus efficace."
+      },
+      "foundation": {
+        "title": "Structurer une base solide",
+        "desc": "Mettre en place un front-end propre, des composants utiles et une integration technique lisible pour faciliter l'evolution du produit."
+      },
+      "finish": {
+        "title": "Soigner la livraison",
+        "desc": "Verifier les points qui font la difference en production : responsive, clavier, performance, coherence visuelle et robustesse de l'integration."
+      }
+    }
+  },
+  "projects": {
+    "sectionLabel": "Projets",
+    "heading": "Une selection de projets recents",
+    "intro": "Des contextes differents, une meme intention : rendre un produit plus simple a comprendre, plus agreable a utiliser et plus solide cote front.",
+    "filterLabel": "Filtrer les projets",
+    "filters": {
+      "all": "Tous",
+      "featured": "Selection",
+      "saas": "SaaS",
+      "plateforme": "Plateforme",
+      "vitrine": "Vitrine",
+      "dashboard": "Dashboard",
+      "open source": "Open Source"
+    },
+    "live": "Live",
+    "github": "Source",
+    "selection": "SELECTION"
+  }
 }

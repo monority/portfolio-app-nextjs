@@ -1,108 +1,198 @@
+/* â”€â”€â”€ Shell â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .about-shell {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-xl);
+}
+
+.about-available__text {
+    font-size: var(--font-size-md);
+}
+
+/* â”€â”€â”€ 1. Content : stats + bio â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.about-content {
+    display: grid;
     gap: var(--space-lg);
     align-items: start;
-
-    >* {
-        min-width: 0;
-    }
 }
 
-.about-header {
+.about-left {
     display: grid;
-    gap: var(--space-sm);
-    align-content: start;
-}
-
-.about-header__title {
-    margin: 0;
-    line-height: var(--line-height-tight);
-    letter-spacing: var(--letter-spacing-tight);
-}
-
-.about-header__description {
-    margin: 0;
-    color: var(--muted);
-    font-family: var(--font-family-mono);
-    font-size: var(--font-size-md);
-    line-height: var(--line-height-relaxed);
-    white-space: pre-line;
-}
-
-.about-tech {
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
     gap: var(--space-md);
 }
 
-.about-tech__front,
-.about-tech-back,
-.about-tech-hosting,
-.about-tech-language,
-.about-tech-tools {
-    display: grid;
-    gap: var(--space-sm);
-    padding: var(--padding-lg);
-    border: var(--border-width) solid var(--border-color);
-    border-radius: var(--border-radius-lg);
-    background: var(--card-gradient);
-    box-shadow: var(--shadow-sm);
+.about-stats {
+    display: flex;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
 }
 
-.about-tech__title,
-.about-tech-front__title {
-    margin: 0;
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-semibold);
-    line-height: var(--line-height-tight);
+.about-stat {
+    display: grid;
+    gap: 0.2rem;
+}
+
+.about-stat:not(:last-child) {
+    padding-right: var(--space-lg);
+    border-right: 1px solid var(--border);
+}
+
+.about-stat__value {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-tight);
+    line-height: 1;
     color: var(--foreground);
 }
 
-.front-tech__list,
-.about-tech-back__list,
-.about-tech-hosting__list,
-.about-tech-language__list,
-.about-tech-tools__list {
+.about-stat__label {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+}
+
+.about-available {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+}
+
+.about-available__dot {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: var(--color-success);
+    flex-shrink: 0;
+    animation: about-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes about-pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.35;
+    }
+}
+
+.about-bio {
+    margin: 0;
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-relaxed);
+    color: var(--foreground);
+    white-space: pre-line;
+}
+
+/* â”€â”€â”€ 2. Marquee infini â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.about-marquee {
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: var(--space-sm) 0;
+    mask-image: linear-gradient(to right,
+            transparent 0%,
+            black 8%,
+            black 92%,
+            transparent 100%);
+    -webkit-mask-image: linear-gradient(to right,
+            transparent 0%,
+            black 8%,
+            black 92%,
+            transparent 100%);
+}
+
+.about-marquee__track {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+    width: max-content;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    animation: about-scroll 28s linear infinite;
+}
+
+.about-marquee__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+@keyframes about-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* â”€â”€â”€ 3. Tableau tech flat â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.about-tech {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--border);
+}
+
+.about-tech-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-sm) var(--space-xs);
+    border-bottom: 1px solid var(--border);
+    border-radius: 2px;
+    margin: 0 calc(var(--space-xs) * -1);
+    transition: background 0.15s ease;
+}
+
+.about-tech-row:hover {
+    background: var(--hover);
+}
+
+.about-tech-row__title {
+    margin: 0;
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-normal);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+    min-width: 6rem;
+}
+
+.about-tech-row__list {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-sm);
+    gap: var(--space-xs);
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.front-tech__item,
-.about-tech-back__item,
-.about-tech-hosting__item,
-.about-tech-language__item,
-.about-tech-tools__item {
+.about-tech-row__item {
     display: flex;
 }
 
-.front-tech__item .btn,
-.about-tech-back__item .btn,
-.about-tech-hosting__item .btn,
-.about-tech-language__item .btn,
-.about-tech-tools__item .btn {
-    justify-content: center;
-    min-width: 4rem;
-}
-
+/* â”€â”€â”€ Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (min-width: 768px) {
-    .about-tech {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (min-width: 1024px) {
-    .about-shell {
+    .about-content {
         grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-        gap: calc(var(--space-xl) + var(--space-sm));
     }
 
-    .about-header {
-        position: sticky;
-        top: var(--space-lg);
+    .about-left {
+        border-right: 1px solid var(--border);
+        padding-right: var(--space-xl);
     }
 }
