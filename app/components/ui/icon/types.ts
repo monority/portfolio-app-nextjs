@@ -73,3 +73,4 @@ export type IconName =
     | 'javascript'
     | 'csharp'
     | 'photoshop'
+    | 'cloudfare'

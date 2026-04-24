@@ -9,7 +9,7 @@
 
 @import "../[locale]/features/header.css" layer(layout);
 @import "../[locale]/features/sidenav.css" layer(layout);
-@import "../[locale]/hero.css" layer(page);
+@import "../[locale]/Hero.css" layer(page);
 @import "../[locale]/about.css" layer(page);
 @import "../[locale]/profile.css" layer(page);
 @import "../[locale]/projects.css" layer(page);

@@ -6,6 +6,7 @@ export interface Project {
   titleDisplay: string     // "Human Work Force" — usage courant
   tagline: string
   description: { fr: string; en: string }
+  longDescription?: { fr: string; en: string }
   tech: string[]
   live?: string
   github?: string
@@ -14,6 +15,7 @@ export interface Project {
   featured?: boolean
   visual: string           // '/images/projects/xxx.webp'
   accentColor?: string
+  gallery?: string[]
 }
 
 export interface TimelineEntry {

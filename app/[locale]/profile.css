@@ -1,15 +1,19 @@
-/* â”€â”€â”€ Shell â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .profile-shell {
     display: grid;
     gap: var(--space-xl);
     padding-block: var(--space-xl);
 }
 
-/* â”€â”€â”€ 1. Quality cards grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .profile-qualities {
     display: grid;
     gap: var(--space-sm);
     grid-template-columns: 1fr;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--space-xl) * 4);
 }
 
 .profile-quality {
@@ -76,7 +80,6 @@
     text-transform: uppercase;
 }
 
-/* â”€â”€â”€ 2. Methodology â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .profile-method {
     display: grid;
     gap: var(--space-lg);
@@ -92,7 +95,7 @@
     align-items: center;
     gap: var(--space-sm);
     font-family: var(--font-family-mono);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-base);
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--text-secondary);
@@ -158,7 +161,6 @@
     color: var(--text-secondary);
 }
 
-/* â”€â”€â”€ Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (min-width: 640px) {
     .profile-qualities {
         grid-template-columns: 1fr 1fr;

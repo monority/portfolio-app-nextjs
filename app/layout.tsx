@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { GradientBackground } from "@/components/GradientBackground";
 import { AnimationProvider } from "@components/animations/AnimationProvider";
 import "./styles/index.css";
-
+import { Google_Sans_Code } from "next/font/google";
 const geist = Geist({
   subsets: ["latin"],
   variable: "--font-geist",
@@ -16,6 +16,12 @@ const geist = Geist({
 const jetMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jet-mono",
+  display: "swap",
+});
+
+const googleSansCode = Google_Sans_Code({
+  subsets: ["latin"],
+  variable: "--font-google-sans-code",
   display: "swap",
 });
 
@@ -32,7 +38,7 @@ export default async function RootLayout({
   const locale = await getLocale();
 
   return (
-    <html lang={locale} className={`${geist.variable} ${jetMono.variable}`}>
+    <html lang={locale} className={`${geist.variable} ${jetMono.variable} ${googleSansCode.variable}`}>
       <body>
         <GradientBackground />
         <ThemeProvider>

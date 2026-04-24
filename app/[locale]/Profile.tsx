@@ -43,85 +43,88 @@ export default function Profile() {
                 >
                     <SectionEyebrow number="02" label={t("sectionLabel")} />
                 </motion.div>
+                <div className="profile-container">
 
-                <motion.div
-                    variants={sectionFadeUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={sectionViewport}
-                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                >
-                    <SectionHeader
-                        title={t("heading")}
-                        intro={t("intro")}
-                        className="profile-hero"
-                        titleClassName="profile-heading"
-                        introClassName="profile-intro"
-                    />
-                </motion.div>
 
-                <motion.div
-                    className="profile-qualities"
-                    variants={sectionStagger}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={sectionViewport}
-                >
-                    {qualityCards.map((card, index) => (
-                        <motion.article
-                            key={card.number}
-                            className="profile-quality"
-                            variants={sectionFadeUp}
-                            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: index * 0.08 }}
-                        >
-                            <div className="profile-quality__top">
-                                <span className="profile-quality__number">{card.number}</span>
-                            </div>
-                            <h3 className="profile-quality__title">{card.title}</h3>
-                            <p className="profile-quality__desc">{card.desc}</p>
-                            <div className="profile-quality__footer">
-                                <span className="profile-quality__context">{card.context}</span>
-                            </div>
-                        </motion.article>
-                    ))}
-                </motion.div>
-
-                <div className="profile-method">
                     <motion.div
-                        className="profile-method__header"
-                        variants={sectionFadeLeft}
+                        variants={sectionFadeUp}
                         initial="hidden"
                         whileInView="visible"
                         viewport={sectionViewport}
                         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <div className="profile-method__label">
-                            <span className="profile-method__label-text">{t("method.sectionLabel")}</span>
-                            <span className="profile-method__label-line" aria-hidden="true" />
-                        </div>
-                        <h2 className="profile-method__heading">{t("method.heading")}</h2>
+                        <SectionHeader
+                            title={t("heading")}
+                            intro={t("intro")}
+                            className="profile-hero"
+                            titleClassName="profile-heading"
+                            introClassName="profile-intro"
+                        />
                     </motion.div>
 
                     <motion.div
-                        className="profile-method__steps"
+                        className="profile-qualities"
                         variants={sectionStagger}
                         initial="hidden"
                         whileInView="visible"
                         viewport={sectionViewport}
                     >
-                        {methodSteps.map((step, index) => (
-                            <motion.div
-                                key={step.number}
-                                className="profile-method__step"
+                        {qualityCards.map((card, index) => (
+                            <motion.article
+                                key={card.number}
+                                className="profile-quality"
                                 variants={sectionFadeUp}
                                 transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: index * 0.08 }}
                             >
-                                <span className="profile-method__step-number">{step.number}</span>
-                                <h3 className="profile-method__step-title">{step.title}</h3>
-                                <p className="profile-method__step-desc">{step.desc}</p>
-                            </motion.div>
+                                <div className="profile-quality__top">
+                                    <span className="profile-quality__number">{card.number}</span>
+                                </div>
+                                <h3 className="profile-quality__title">{card.title}</h3>
+                                <p className="profile-quality__desc">{card.desc}</p>
+                                <div className="profile-quality__footer">
+                                    <span className="profile-quality__context">{card.context}</span>
+                                </div>
+                            </motion.article>
                         ))}
                     </motion.div>
+
+                    <div className="profile-method">
+                        <motion.div
+                            className="profile-method__header"
+                            variants={sectionFadeLeft}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={sectionViewport}
+                            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                        >
+                            <div className="profile-method__label">
+                                <span className="profile-method__label-text">{t("method.sectionLabel")}</span>
+                                <span className="profile-method__label-line" aria-hidden="true" />
+                            </div>
+                            <h2 className="profile-method__heading">{t("method.heading")}</h2>
+                        </motion.div>
+
+                        <motion.div
+                            className="profile-method__steps"
+                            variants={sectionStagger}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={sectionViewport}
+                        >
+                            {methodSteps.map((step, index) => (
+                                <motion.div
+                                    key={step.number}
+                                    className="profile-method__step"
+                                    variants={sectionFadeUp}
+                                    transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: index * 0.08 }}
+                                >
+                                    <span className="profile-method__step-number">{step.number}</span>
+                                    <h3 className="profile-method__step-title">{step.title}</h3>
+                                    <p className="profile-method__step-desc">{step.desc}</p>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </div>
                 </div>
             </div>
         </section>

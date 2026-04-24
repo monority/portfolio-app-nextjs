@@ -1,9 +1,9 @@
 'use client'
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Button from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
-import type { IconName } from "@/components/ui/icon/types";
 import { SectionEyebrow } from "@/components/ui/section";
 import {
     sectionFadeLeft,
@@ -11,74 +11,20 @@ import {
     sectionViewport,
 } from "@/components/ui/section/motion";
 import type { TechStackGroup } from "@/components/ui/tech-stack";
-import capitalizeFirstLetter from "@/components/utils/capitalizeFirstLetter";
-import { useTranslations } from "next-intl";
+import { MARQUEE_ITEMS, TECH_ROW_CLASSES } from "@constants/data";
+import type { IconName } from "@/components/ui/icon/types";
 
 const TECH_CONTAINER = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } },
 };
 
-const marqueeItems: { icon: IconName; label: string }[] = [
-    { icon: "react", label: "React" },
-    { icon: "nextjs", label: "Next.js" },
-    { icon: "astro", label: "Astro" },
-    { icon: "tailwind", label: "Tailwind CSS" },
-    { icon: "sass", label: "Sass" },
-    { icon: "motion", label: "Motion" },
-    { icon: "node", label: "Node.js" },
-    { icon: "express", label: "Express" },
-    { icon: "mongo", label: "MongoDB" },
-    { icon: "typescript", label: "TypeScript" },
-    { icon: "javascript", label: "JavaScript" },
-    { icon: "docker", label: "Docker" },
-    { icon: "figma", label: "Figma" },
-    { icon: "github", label: "GitHub" },
-    { icon: "vercel", label: "Vercel" },
-    { icon: "railway", label: "Railway" },
-];
-
 const techGroups: readonly Omit<TechStackGroup, "title">[] = [
-    {
-        id: "frontend",
-        items: ["react", "nextjs", "astro", "tailwind", "sass", "motion"],
-        wrapperClassName: "about-tech-row",
-        titleClassName: "about-tech-row__title",
-        listClassName: "about-tech-row__list",
-        itemClassName: "about-tech-row__item",
-    },
-    {
-        id: "backend",
-        items: ["node", "express", "mongo", "jwt", "nodemon", "sql"],
-        wrapperClassName: "about-tech-row",
-        titleClassName: "about-tech-row__title",
-        listClassName: "about-tech-row__list",
-        itemClassName: "about-tech-row__item",
-    },
-    {
-        id: "hosting",
-        items: ["vercel", "railway", "supabase", "render", "neon"],
-        wrapperClassName: "about-tech-row",
-        titleClassName: "about-tech-row__title",
-        listClassName: "about-tech-row__list",
-        itemClassName: "about-tech-row__item",
-    },
-    {
-        id: "languages",
-        items: ["typescript", "javascript", "csharp"],
-        wrapperClassName: "about-tech-row",
-        titleClassName: "about-tech-row__title",
-        listClassName: "about-tech-row__list",
-        itemClassName: "about-tech-row__item",
-    },
-    {
-        id: "tools",
-        items: ["github", "vscode", "postman", "figma", "docker", "photoshop"],
-        wrapperClassName: "about-tech-row",
-        titleClassName: "about-tech-row__title",
-        listClassName: "about-tech-row__list",
-        itemClassName: "about-tech-row__item",
-    },
+    { id: "frontend", items: ["react", "nextjs", "astro", "tailwind", "sass", "motion"], ...TECH_ROW_CLASSES },
+    { id: "backend", items: ["node", "express", "mongo", "jwt", "nodemon", "sql"], ...TECH_ROW_CLASSES },
+    { id: "hosting", items: ["vercel", "railway", "supabase", "render", "neon", "firebase", "cloudfare"], ...TECH_ROW_CLASSES },
+    { id: "languages", items: ["typescript", "javascript", "csharp"], ...TECH_ROW_CLASSES },
+    { id: "tools", items: ["github", "vscode", "postman", "figma", "docker", "photoshop"], ...TECH_ROW_CLASSES },
 ] as const;
 
 export default function About() {
@@ -97,7 +43,7 @@ export default function About() {
     ] as const;
 
     return (
-        <section className="about" id="about">
+        <section className="about shell" id="about">
             <div className="about-shell">
                 <motion.div
                     className="about-label"
@@ -158,7 +104,7 @@ export default function About() {
 
                 <div className="about-marquee" aria-hidden="true">
                     <ul className="about-marquee__track">
-                        {[...marqueeItems, ...marqueeItems].map((item, index) => (
+                        {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, index) => (
                             <li key={`${item.label}-${index}`} className="about-marquee__item">
                                 <Icon name={item.icon} sizeClass="icon-sm" />
                                 <span>{item.label}</span>
@@ -187,7 +133,7 @@ export default function About() {
                                     <li key={tech} className={group.itemClassName}>
                                         <Button className="btn-primary btn-tech">
                                             <Icon name={tech} aria-hidden="true" focusable="false" />
-                                            <span className="sr-only">{capitalizeFirstLetter(tech)}</span>
+                                            <span style={{ textTransform: 'capitalize' }}>{tech}</span>
                                         </Button>
                                     </li>
                                 ))}

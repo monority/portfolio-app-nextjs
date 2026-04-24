@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { memo } from 'react'
 import { Icon } from '@/components/ui/icon'
 import type { IconName } from '@/components/ui/icon/types'
 import './action-link.css'
@@ -17,7 +18,7 @@ export interface ActionLinkProps {
   external?: boolean
 }
 
-export default function ActionLink({
+function ActionLink({
   href,
   label,
   ariaLabel,
@@ -53,3 +54,5 @@ export default function ActionLink({
     </Link>
   )
 }
+
+export default memo(ActionLink)
