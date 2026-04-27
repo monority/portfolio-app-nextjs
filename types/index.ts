@@ -54,4 +54,4 @@ export interface Person {
 }
 
 export type Theme = 'light' | 'dark'
-export type Lang  = 'fr' | 'en'
+export type Lang = 'fr' | 'en'

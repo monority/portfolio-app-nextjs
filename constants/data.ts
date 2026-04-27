@@ -3,30 +3,30 @@ import type { IconName } from '@/components/ui/icon/types'
 
 // ─── Tech stack row classes (About section) ───────────────────────────
 export const TECH_ROW_CLASSES = {
-    wrapperClassName: 'about-tech-row',
-    titleClassName: 'about-tech-row__title',
-    listClassName: 'about-tech-row__list',
-    itemClassName: 'about-tech-row__item',
+  wrapperClassName: 'about-tech-row',
+  titleClassName: 'about-tech-row__title',
+  listClassName: 'about-tech-row__list',
+  itemClassName: 'about-tech-row__item',
 } as const
 
 // ─── Marquee items (About section) ───────────────────────────
 export const MARQUEE_ITEMS: { icon: IconName; label: string }[] = [
-    { icon: 'react', label: 'React' },
-    { icon: 'nextjs', label: 'Next.js' },
-    { icon: 'astro', label: 'Astro' },
-    { icon: 'tailwind', label: 'Tailwind CSS' },
-    { icon: 'sass', label: 'Sass' },
-    { icon: 'motion', label: 'Motion' },
-    { icon: 'node', label: 'Node.js' },
-    { icon: 'express', label: 'Express' },
-    { icon: 'mongo', label: 'MongoDB' },
-    { icon: 'typescript', label: 'TypeScript' },
-    { icon: 'javascript', label: 'JavaScript' },
-    { icon: 'docker', label: 'Docker' },
-    { icon: 'figma', label: 'Figma' },
-    { icon: 'github', label: 'GitHub' },
-    { icon: 'vercel', label: 'Vercel' },
-    { icon: 'railway', label: 'Railway' },
+  { icon: 'react', label: 'React' },
+  { icon: 'nextjs', label: 'Next.js' },
+  { icon: 'astro', label: 'Astro' },
+  { icon: 'tailwind', label: 'Tailwind CSS' },
+  { icon: 'sass', label: 'Sass' },
+  { icon: 'motion', label: 'Motion' },
+  { icon: 'node', label: 'Node.js' },
+  { icon: 'express', label: 'Express' },
+  { icon: 'mongo', label: 'MongoDB' },
+  { icon: 'typescript', label: 'TypeScript' },
+  { icon: 'javascript', label: 'JavaScript' },
+  { icon: 'docker', label: 'Docker' },
+  { icon: 'figma', label: 'Figma' },
+  { icon: 'github', label: 'GitHub' },
+  { icon: 'vercel', label: 'Vercel' },
+  { icon: 'railway', label: 'Railway' },
 ]
 
 // ─── Person ─────────────────────────────────────────────────────
@@ -211,9 +211,9 @@ export const PROJECTS: Project[] = [
     github: 'https://github.com/monority/skillswap',
     visual: '/images/projects/skillswap.webp',
     gallery: [
-      '/images/projects/skillswap.webp',
-      '/images/projects/skillswap.webp',
-      '/images/projects/skillswap.webp',
+      '/images/projects/default-skyllswap.png',
+      '/images/projects/skyllswap-2.png',
+      '/images/projects/skyllswap-3.png',
     ],
   },
   {

@@ -231,8 +231,9 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 2px;
-    background: var(--border);
+    background:
+        linear-gradient(180deg, rgb(255 255 255 / 0.03), transparent),
+        var(--background);
     min-height: 0;
 }
 
@@ -241,19 +242,12 @@
     flex: 1;
     min-height: 0;
     overflow: hidden;
+    isolation: isolate;
 }
 
-.project-bento__gallery-row {
-    display: flex;
-    gap: 2px;
-    height: 90px;
-    flex-shrink: 0;
-}
-
-.project-bento__gallery-thumb {
-    position: relative;
-    flex: 1;
-    overflow: hidden;
+.project-bento__gallery-slide {
+    position: absolute;
+    inset: 0;
 }
 
 .project-bento__gallery-img {
@@ -261,11 +255,152 @@
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.project-bento__gallery-img--thumb1 { object-position: left top; }
-.project-bento__gallery-img--thumb2 { object-position: right bottom; }
+.project-bento__gallery-img--main {
+    object-fit: contain;
+    object-position: center;
+}
 
-.project-bento__gallery-thumb:hover .project-bento__gallery-img {
+.project-bento__gallery-main:hover .project-bento__gallery-img--main {
     transform: scale(1.05);
+}
+
+.project-bento__gallery-controls {
+    position: absolute;
+    inset: 50% var(--space-md) auto;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.project-bento__gallery-nav {
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    color: rgb(255 255 255 / 0.92);
+    background: rgb(10 10 10 / 0.28);
+    border: 1px solid rgb(255 255 255 / 0.18);
+    border-radius: 999px;
+    backdrop-filter: blur(14px);
+    cursor: pointer;
+    transition:
+        transform var(--transition-fast),
+        background var(--transition-fast),
+        border-color var(--transition-fast);
+}
+
+.project-bento__gallery-nav:hover {
+    transform: scale(1.04);
+    background: rgb(10 10 10 / 0.42);
+    border-color: rgb(255 255 255 / 0.3);
+}
+
+.project-bento__gallery-footer {
+    position: absolute;
+    right: var(--space-md);
+    bottom: var(--space-md);
+    left: var(--space-md);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+}
+
+.project-bento__gallery-progress {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.55rem 0.8rem;
+    background: rgb(10 10 10 / 0.28);
+    border: 1px solid rgb(255 255 255 / 0.14);
+    border-radius: 999px;
+    backdrop-filter: blur(14px);
+}
+
+.project-bento__gallery-dot {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.32);
+    transition:
+        width var(--transition-fast),
+        background var(--transition-fast),
+        opacity var(--transition-fast);
+}
+
+.project-bento__gallery-dot--active {
+    width: 1.35rem;
+    background: rgb(255 255 255 / 0.95);
+}
+
+.project-bento__gallery-count {
+    font-family: var(--font-family-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgb(255 255 255 / 0.86);
+    padding: 0.55rem 0.8rem;
+    background: rgb(10 10 10 / 0.28);
+    border: 1px solid rgb(255 255 255 / 0.14);
+    border-radius: 999px;
+    backdrop-filter: blur(14px);
+}
+
+.project-bento__gallery-rail {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    z-index: 2;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.project-bento__gallery-rail-item {
+    position: relative;
+    appearance: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    border-radius: calc(var(--border-radius-md) + 2px);
+    transition: transform var(--transition-fast);
+}
+
+.project-bento__gallery-rail-item:hover {
+    transform: translateY(-2px);
+}
+
+.project-bento__gallery-rail-item--active {
+    transform: translateY(-2px);
+}
+
+.project-bento__gallery-rail-image {
+    position: relative;
+    display: block;
+    width: 3.5rem;
+    height: 3.5rem;
+    overflow: hidden;
+    border-radius: var(--border-radius-md);
+    border: 1px solid rgb(255 255 255 / 0.18);
+    box-shadow: 0 10px 24px rgb(0 0 0 / 0.18);
+}
+
+.project-bento__gallery-rail-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: calc(var(--border-radius-md) + 2px);
+    box-shadow: inset 0 0 0 1px transparent;
+    transition: box-shadow var(--transition-fast);
+}
+
+.project-bento__gallery-rail-item--active::after {
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.7);
 }
 
 /* Meta overlay on main gallery image */
@@ -310,6 +445,35 @@
     text-transform: uppercase;
     letter-spacing: 0.06em;
     backdrop-filter: blur(4px);
+}
+
+@media (max-width: 680px) {
+    .project-bento__gallery-controls {
+        inset-inline: 0.75rem;
+    }
+
+    .project-bento__gallery-rail {
+        top: auto;
+        right: auto;
+        bottom: 4.25rem;
+        left: var(--space-md);
+        max-width: calc(100% - (var(--space-md) * 2));
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .project-bento__gallery-rail::-webkit-scrollbar {
+        display: none;
+    }
+
+    .project-bento__gallery-rail-image {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .project-bento__gallery-footer {
+        flex-wrap: wrap;
+    }
 }
 
 /* ─── Cards — shared ─────────────────────────────────────────── */

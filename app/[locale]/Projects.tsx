@@ -13,7 +13,7 @@ export default function Projects() {
     const locale = useLocale() as "fr" | "en"
     const [activeId, setActiveId] = useState<string>(PROJECTS[0].id)
 
-    const activeProject = PROJECTS.find(p => p.id === activeId) ?? PROJECTS[0]
+    const activeProject = PROJECTS.find((p) => p.id === activeId) ?? PROJECTS[0]
 
     return (
         <section className="projects" id="projects">
@@ -120,10 +120,8 @@ function ProjectBento({
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         >
-            {/* Visual — col 1-2, row 1-2 */}
             <ProjectVisual project={project} locale={locale} />
 
-            {/* Colour Palette — col 3, row 1 */}
             <div className="project-bento__card project-bento__palette">
                 <span className="project-bento__card-label">
                     {locale === "fr" ? "Palette de couleurs" : "Colour Palette"}
@@ -151,7 +149,6 @@ function ProjectBento({
                 </div>
             </div>
 
-            {/* Project Scope — col 3, row 2 */}
             <div className="project-bento__card project-bento__scope">
                 <span className="project-bento__card-label">
                     {locale === "fr" ? "Périmètre" : "Project scope"}
@@ -200,7 +197,6 @@ function ProjectBento({
                 )}
             </div>
 
-            {/* Title + CTAs — col 1-2, row 3 */}
             <div className="project-bento__card project-bento__title-card">
                 <div className="project-bento__title-main">
                     <h3 className="project-bento__title">{project.titleDisplay}</h3>
@@ -239,7 +235,6 @@ function ProjectBento({
                 </div>
             </div>
 
-            {/* Tech stack — col 3, row 3 */}
             <div className="project-bento__card project-bento__tech">
                 <span className="project-bento__card-label">
                     {locale === "fr" ? "Stack technique" : "Tech stack"}
@@ -265,13 +260,21 @@ function ProjectVisual({
 }) {
     const gallery = project.gallery ?? [project.visual]
     const hasMultiple = gallery.length >= 2
+    const [activeSlide, setActiveSlide] = useState(0)
     const urlLabel = project.live
         ? project.live.replace(/^https?:\/\//, "").replace(/\/$/, "")
         : project.titleDisplay.toLowerCase().replace(/\s+/g, "") + ".vercel.app"
 
+    const goToPrevious = () => {
+        setActiveSlide((current) => (current === 0 ? gallery.length - 1 : current - 1))
+    }
+
+    const goToNext = () => {
+        setActiveSlide((current) => (current === gallery.length - 1 ? 0 : current + 1))
+    }
+
     return (
         <div className="project-bento__visual">
-            {/* Browser chrome */}
             <div className="project-bento__browser-chrome">
                 <div className="project-bento__dots" aria-hidden="true">
                     <span className="project-bento__dot project-bento__dot--red" />
@@ -286,19 +289,28 @@ function ProjectVisual({
                 </div>
             </div>
 
-            {/* Gallery */}
             <div className="project-bento__gallery">
-                {/* Main image */}
                 <div className="project-bento__gallery-main">
-                    <Image
-                        src={gallery[0]}
-                        alt={project.titleDisplay}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="project-bento__gallery-img project-bento__gallery-img--main"
-                        priority
-                    />
-                    {/* Meta overlay */}
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={`${project.id}-${activeSlide}`}
+                            className="project-bento__gallery-slide"
+                            initial={{ opacity: 0, scale: 1.02 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.985 }}
+                            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                        >
+                            <Image
+                                src={gallery[activeSlide]}
+                                alt={`${project.titleDisplay} — ${activeSlide + 1}`}
+                                fill
+                                sizes="(max-width: 900px) 100vw, 66vw"
+                                className="project-bento__gallery-img project-bento__gallery-img--main"
+                                priority
+                            />
+                        </motion.div>
+                    </AnimatePresence>
+
                     <div className="project-bento__hero-meta">
                         <span className="project-bento__hero-year">{project.year}</span>
                         {project.featured && (
@@ -307,33 +319,87 @@ function ProjectVisual({
                             </span>
                         )}
                     </div>
-                </div>
 
-                {/* Thumbnail row */}
-                {hasMultiple && (
-                    <div className="project-bento__gallery-row">
-                        <div className="project-bento__gallery-thumb">
-                            <Image
-                                src={gallery[1]}
-                                alt={`${project.titleDisplay} — 2`}
-                                fill
-                                sizes="(max-width: 768px) 50vw, 25vw"
-                                className="project-bento__gallery-img project-bento__gallery-img--thumb1"
-                            />
-                        </div>
-                        {gallery[2] && (
-                            <div className="project-bento__gallery-thumb">
-                                <Image
-                                    src={gallery[2]}
-                                    alt={`${project.titleDisplay} — 3`}
-                                    fill
-                                    sizes="(max-width: 768px) 50vw, 25vw"
-                                    className="project-bento__gallery-img project-bento__gallery-img--thumb2"
-                                />
+                    {hasMultiple && (
+                        <>
+                            <div className="project-bento__gallery-controls">
+                                <button
+                                    type="button"
+                                    className="project-bento__gallery-nav"
+                                    onClick={goToPrevious}
+                                    aria-label={locale === "fr" ? "Image précédente" : "Previous image"}
+                                >
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                        <path
+                                            d="M9.5 3.5L5 8L9.5 12.5"
+                                            stroke="currentColor"
+                                            strokeWidth="1.5"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                </button>
+                                <button
+                                    type="button"
+                                    className="project-bento__gallery-nav"
+                                    onClick={goToNext}
+                                    aria-label={locale === "fr" ? "Image suivante" : "Next image"}
+                                >
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                        <path
+                                            d="M6.5 3.5L11 8L6.5 12.5"
+                                            stroke="currentColor"
+                                            strokeWidth="1.5"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                </button>
                             </div>
-                        )}
-                    </div>
-                )}
+
+                            <div className="project-bento__gallery-footer">
+                                <div className="project-bento__gallery-progress" aria-hidden="true">
+                                    {gallery.map((_, index) => (
+                                        <span
+                                            key={`${project.id}-dot-${index}`}
+                                            className={`project-bento__gallery-dot${index === activeSlide ? " project-bento__gallery-dot--active" : ""}`}
+                                        />
+                                    ))}
+                                </div>
+                                <span className="project-bento__gallery-count">
+                                    {String(activeSlide + 1).padStart(2, "0")} / {String(gallery.length).padStart(2, "0")}
+                                </span>
+                            </div>
+
+                            <div className="project-bento__gallery-rail">
+                                {gallery.map((image, index) => (
+                                    <button
+                                        key={`${project.id}-thumb-${index}`}
+                                        type="button"
+                                        className={`project-bento__gallery-rail-item${index === activeSlide ? " project-bento__gallery-rail-item--active" : ""}`}
+                                        onClick={() => setActiveSlide(index)}
+                                        aria-label={
+                                            locale === "fr"
+                                                ? `Voir l'image ${index + 1}`
+                                                : `View image ${index + 1}`
+                                        }
+                                        aria-pressed={index === activeSlide}
+                                    >
+                                        <span className="project-bento__gallery-rail-image">
+                                            <Image
+                                                src={image}
+                                                alt=""
+                                                fill
+                                                sizes="64px"
+                                                className="project-bento__gallery-img"
+                                            />
+                                        </span>
+                                    </button>
+                                ))}
+                            </div>
+                        </>
+                    )}
+                </div>
             </div>
         </div>
     )
