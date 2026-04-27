@@ -206,9 +206,17 @@
     flex-shrink: 0;
 }
 
-.project-bento__dot--red    { background: #ff5f56; }
-.project-bento__dot--yellow { background: #ffbd2e; }
-.project-bento__dot--green  { background: #27c93f; }
+.project-bento__dot--red {
+    background: #ff5f56;
+}
+
+.project-bento__dot--yellow {
+    background: #ffbd2e;
+}
+
+.project-bento__dot--green {
+    background: #27c93f;
+}
 
 .project-bento__url {
     flex: 1;
@@ -418,11 +426,9 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        to top,
-        rgb(0 0 0 / 0.55) 0%,
-        transparent 50%
-    );
+    background: linear-gradient(to top,
+            rgb(0 0 0 / 0.55) 0%,
+            transparent 50%);
     pointer-events: none;
 }
 
