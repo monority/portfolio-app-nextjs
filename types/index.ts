@@ -14,8 +14,55 @@ export interface Project {
   tags: string[]
   featured?: boolean
   visual: string           // '/images/projects/xxx.webp'
-  accentColor?: string
+  palette?: ProjectPalettes
   gallery?: string[]
+  galleryDesktop?: string[]
+}
+
+export interface ProjectPalette {
+  accent: string
+  bg: string
+  surface: string
+  fg: string
+}
+
+export interface ProjectPalettes {
+  dark: ProjectPalette
+  light?: ProjectPalette
+}
+
+export interface Module {
+  id: string
+  title: string
+  titleDisplay: string
+  tagline: { fr: string; en: string }
+  description: { fr: string; en: string }
+  details: { fr: string; en: string }
+  highlights: { fr: string; en: string }[]
+  tech: string[]
+  live?: string
+  github?: string
+  npm?: string
+  year: string
+  category: string
+  featured?: boolean
+  palette?: ProjectPalettes
+}
+
+export interface CreationItem {
+  id: string
+  title: string
+  titleDisplay: string
+  category: { fr: string; en: string }
+  tagline: { fr: string; en: string }
+  description: { fr: string; en: string }
+  details: { fr: string; en: string }
+  highlights: { fr: string; en: string }[]
+  tools: string[]
+  outputs: string[]
+  year: string
+  status: { fr: string; en: string }
+  palette?: ProjectPalettes
 }
 
 export interface TimelineEntry {

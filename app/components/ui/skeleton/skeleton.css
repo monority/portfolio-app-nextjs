@@ -1,0 +1,82 @@
+/* ─────────────────────────────────────────────────────────────────
+   SKELETON
+   - Shimmer GPU-accelerated via transform: translateX (compositor thread)
+   - Pas de background-position — zéro layout, zéro paint recalc
+   - Couleurs oklch + light-dark() alignés sur les tokens du projet
+   ───────────────────────────────────────────────────────────────── */
+
+:root {
+    /* Base muted slightly lighter than --hover for better contrast */
+    --skeleton-base:     light-dark(oklch(93% 0 0), oklch(18% 0 0));
+    /* Shine: luminous streak, subtler in dark mode */
+    --skeleton-shine:    light-dark(oklch(100% 0 0 / 0.58), oklch(100% 0 0 / 0.055));
+    --skeleton-duration: 1.8s;
+    --skeleton-delay:    0s;
+    --skeleton-easing:   cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* ─── Base ─────────────────────────────────────────────────────── */
+.skeleton {
+    display: block;
+    background: var(--skeleton-base);
+    border-radius: var(--border-radius-sm);
+    position: relative;
+    overflow: hidden;
+    /* Isolate repaint — browser won't recalculate surrounding DOM layout */
+    contain: layout style paint;
+}
+
+/* ─── Shimmer streak — GPU compositor via transform ────────────── */
+.skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Narrow gradient (45–55%) — the tighter the band, the more premium */
+    background: linear-gradient(
+        90deg,
+        transparent   0%,
+        var(--skeleton-shine) 40%,
+        var(--skeleton-shine) 60%,
+        transparent 100%
+    );
+    /* Start fully off-screen left */
+    transform: translateX(-200%);
+    will-change: transform;
+    animation: skeleton-wave
+               var(--skeleton-duration)
+               var(--skeleton-easing)
+               var(--skeleton-delay)
+               infinite;
+    /* Prevent the pseudo-element from blocking pointer events */
+    pointer-events: none;
+}
+
+@keyframes skeleton-wave {
+    to { transform: translateX(200%); }
+}
+
+/* ─── Shape variants ───────────────────────────────────────────── */
+.skeleton--circle  { border-radius: 50%; }
+.skeleton--rounded { border-radius: var(--border-radius-md); }
+.skeleton--sharp   { border-radius: 0; }
+
+/* ─── Image — aspect-ratio passed via inline style ─────────────── */
+.skeleton--image { width: 100%; }
+
+/* ─── Text lines ───────────────────────────────────────────────── */
+.skeleton--text {
+    height: 1em;
+    margin-block: 0.3em;
+}
+
+/* Last text line is shorter — mimics natural paragraph endings */
+.skeleton--text:last-of-type { width: 65% !important; }
+
+/* ─── Accessibility: honour reduced-motion preference ──────────── */
+@media (prefers-reduced-motion: reduce) {
+    .skeleton::after {
+        animation: none;
+        /* Keep a static visual cue with a gentle opacity pulse instead */
+        opacity: 0.5;
+    }
+}

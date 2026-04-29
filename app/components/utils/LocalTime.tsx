@@ -2,7 +2,6 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
-import capitalizeFirstLetter from './capitalizeFirstLetter';
 
 interface LocalTimeProps {
     className?: string;
@@ -186,7 +185,7 @@ export default function LocalTime({
             <div className="local-time__body">
                 <div className="local-time__content">
                     <strong className="local-time__value">
-                        <span>{capitalizeFirstLetter(day)}</span>
+                        <span>{day}</span>
                         <span> {time}</span>
                     </strong>
                     <span className="local-time__meta">{cityLabel}</span>

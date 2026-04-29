@@ -51,6 +51,19 @@ import JSIcon from './icons/JSIcon'
 import CSharpIcon from './icons/CSharpIcon'
 import PhotoshopIcon from './icons/PhotoshopIcon'
 import CloudFareIcon from './icons/CloudFareIcon'
+import DashboardPrIcon from './icons/DashboardPrIcon'
+import D3JSIcon from './icons/D3JSIcon'
+import WebsocketIcon from './icons/WebsocketIcon'
+import StorybookIcon from './icons/StorybookIcon'
+import CSSIcon from './icons/CSSIcon'
+import GSAPIcon from './icons/GSAPIcon'
+import ThreeJSIcon from './icons/ThreeJSIcon'
+import PrismaIcon from './icons/PrismaIcon'
+import HorlogesIcon from './icons/HorlogesIcon'
+import SkyllswapIcon from './icons/SkyllswapIcon'
+import LibraryIcon from './icons/LibraryIcon'
+import HumanworkforceIcon from './icons/HumanworkforceIcon'
+import CesarLezardIcon from './icons/CesarLezardIcon'
 
 type IconComponent = React.FC<any>
 
@@ -110,4 +123,17 @@ export const iconRegistry: Record<IconName, IconComponent> = {
     csharp: CSharpIcon,
     photoshop: PhotoshopIcon,
     cloudfare: CloudFareIcon,
+    d3js: D3JSIcon,
+    websocket: WebsocketIcon,
+    storybook: StorybookIcon,
+    css: CSSIcon,
+    gsap: GSAPIcon,
+    threejs: ThreeJSIcon,
+    prisma: PrismaIcon,
+    horloges: HorlogesIcon,
+    skyllswap: SkyllswapIcon,
+    library: LibraryIcon,
+    humanworkforce: HumanworkforceIcon,
+    dashboard: DashboardPrIcon,
+    cesarlezard: CesarLezardIcon,
 }

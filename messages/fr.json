@@ -118,5 +118,26 @@
         "live": "Live",
         "github": "Source",
         "selection": "SELECTION"
+    },
+    "creation": {
+        "sectionLabel": "Creation",
+        "heading": "Des creations plus libres, entre interfaces et univers de jeu",
+        "intro": "Une partie plus experimentale de mon travail, ou je construis des maps Source, des GUIs in-game et un projet de jeu video avec la meme exigence de rythme, de lisibilite et d ambiance.",
+        "highlights": "Points cles",
+        "tools": "Outils et terrain de jeu",
+        "outputs": "Formats",
+        "projectsCta": "Voir les projets web",
+        "contactCta": "En parler"
+    },
+    "modules": {
+        "sectionLabel": "Modules",
+        "heading": "Des briques plus petites, pensees pour etre utiles",
+        "intro": "Des mini projets plus cibles, construits comme des modules autonomes : une intention claire, une execution propre et une base facile a faire evoluer.",
+        "highlights": "Points cles",
+        "stack": "Stack technique",
+        "live": "Voir le module",
+        "github": "GitHub",
+        "npm": "npm",
+        "miniLabel": "Format mini"
     }
 }

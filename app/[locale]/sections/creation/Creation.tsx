@@ -1,0 +1,266 @@
+'use client'
+
+import { useState } from "react"
+import { AnimatePresence, motion } from "framer-motion"
+import { useLocale, useTranslations } from "next-intl"
+import { CREATIONS, PERSON } from "@constants/data"
+import type { CreationItem } from "../../../../types"
+import type { IconName } from "@/components/ui/icon/types"
+import { SectionEyebrow, SectionHeader } from "@/components/ui/section"
+import { sectionFadeUp, sectionStagger, sectionViewport } from "@/components/ui/section/motion"
+import { useTheme } from "@/components/ThemeProvider"
+import Badge from "@/components/ui/badge"
+import Button from "@/components/ui/button"
+import Icon from "@/components/ui/icon/Icon"
+import ActionLink from "@/components/ui/action-link"
+
+import "./creation.css"
+
+const CREATION_ICON_BY_ID: Record<string, IconName> = {
+    "source-maps": "theme",
+    "source-guis": "css",
+    "video-game": "itch",
+}
+
+const CREATION_TOOL_ICON_BY_LABEL: Record<string, IconName> = {
+    "hammer editor": "theme",
+    "source engine": "theme",
+    "level design": "library",
+    vgui: "css",
+    photoshop: "photoshop",
+    "ui design": "figma",
+    "game design": "itch",
+    ui: "figma",
+    worldbuilding: "library",
+}
+
+function getCreationTheme(creation: CreationItem, resolvedTheme: "light" | "dark") {
+    const palette =
+        resolvedTheme === "light"
+            ? creation.palette?.light ?? creation.palette?.dark
+            : creation.palette?.dark ?? creation.palette?.light
+
+    return {
+        accent: palette?.accent ?? "var(--foreground)",
+        bg: palette?.bg ?? "var(--background)",
+        surface: palette?.surface ?? "var(--card)",
+        fg: palette?.fg ?? "var(--foreground)",
+    }
+}
+
+function getCreationThemeStyle(creation: CreationItem, resolvedTheme: "light" | "dark"): React.CSSProperties {
+    const theme = getCreationTheme(creation, resolvedTheme)
+    const isLight = resolvedTheme === "light"
+
+    return {
+        "--creation-accent": theme.accent,
+        "--creation-bg": theme.bg,
+        "--creation-surface": theme.surface,
+        "--creation-fg": theme.fg,
+        "--creation-accent-soft": `color-mix(in srgb, ${theme.accent} ${isLight ? "18%" : "10%"}, transparent)`,
+        "--creation-accent-strong": `color-mix(in srgb, ${theme.accent} ${isLight ? "76%" : "60%"}, white ${isLight ? "24%" : "40%"})`,
+        "--creation-accent-border": `color-mix(in srgb, ${theme.accent} ${isLight ? "20%" : "10%"}, var(--border))`,
+        "--creation-accent-glow": `color-mix(in srgb, ${theme.accent} ${isLight ? "14%" : "6%"}, transparent)`,
+        "--creation-surface-fill": isLight
+            ? `color-mix(in srgb, ${theme.surface} 92%, ${theme.accent} 8%)`
+            : `color-mix(in srgb, ${theme.surface} 96%, transparent)`,
+    } as React.CSSProperties
+}
+
+function getCreationIcon(id: string): IconName {
+    return CREATION_ICON_BY_ID[id] ?? "arrowRight"
+}
+
+function getToolIcon(tool: string): IconName | null {
+    return CREATION_TOOL_ICON_BY_LABEL[tool.trim().toLowerCase()] ?? null
+}
+
+export default function Creation() {
+    const t = useTranslations("creation")
+    const locale = useLocale() as "fr" | "en"
+    const { resolvedTheme } = useTheme()
+    const [activeId, setActiveId] = useState<string>(CREATIONS[0].id)
+
+    const activeCreation = CREATIONS.find((item) => item.id === activeId) ?? CREATIONS[0]
+
+    return (
+        <section className="creation" id="creation">
+            <div className="creation-shell">
+                <motion.div
+                    className="creation-header"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={sectionViewport}
+                    variants={sectionFadeUp}
+                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                >
+                    <SectionEyebrow number="03" label={t("sectionLabel")} />
+                    <SectionHeader
+                        title={t("heading")}
+                        intro={t("intro")}
+                        titleClassName="creation-title"
+                        introClassName="creation-intro"
+                    />
+                </motion.div>
+
+                <div className="creation-stage">
+                    <motion.aside
+                        className="creation-rail"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={sectionViewport}
+                        variants={sectionStagger}
+                    >
+                        <div className="creation-rail__intro">
+                            <span className="creation-rail__eyebrow">{locale === "fr" ? "Exploration" : "Exploration"}</span>
+                            <p className="creation-rail__copy">
+                                {locale === "fr"
+                                    ? "Une partie plus libre, plus monde, plus interface, plus ambiance."
+                                    : "A freer space for worldbuilding, interface direction, and atmosphere."}
+                            </p>
+                        </div>
+
+                        <div className="creation-picker">
+                            {CREATIONS.map((item, index) => {
+                                const iconName = getCreationIcon(item.id)
+
+                                return (
+                                    <motion.div
+                                        key={item.id}
+                                        variants={sectionFadeUp}
+                                        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1], delay: index * 0.05 }}
+                                    >
+                                        <Button
+                                            variant={activeId === item.id ? "primary" : "outline"}
+                                            className={`creation-picker__item${activeId === item.id ? " creation-picker__item--active" : ""}`}
+                                            onClick={() => setActiveId(item.id)}
+                                            aria-pressed={activeId === item.id}
+                                            style={activeId === item.id ? getCreationThemeStyle(item, resolvedTheme) : undefined}
+                                            leftIcon={<Icon name={iconName} sizeClass="icon-sm" aria-hidden="true" />}
+                                        >
+                                            <span className="creation-picker__index">{String(index + 1).padStart(2, "0")}</span>
+                                            <span className="creation-picker__content">
+                                                <span className="creation-picker__label">{item.titleDisplay}</span>
+                                                <span className="creation-picker__meta">{item.category[locale]}</span>
+                                            </span>
+                                        </Button>
+                                    </motion.div>
+                                )
+                            })}
+                        </div>
+                    </motion.aside>
+
+                    <AnimatePresence mode="wait">
+                        <CreationPanel key={activeCreation.id} creation={activeCreation} locale={locale} t={t} resolvedTheme={resolvedTheme} />
+                    </AnimatePresence>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+function CreationPanel({
+    creation,
+    locale,
+    t,
+    resolvedTheme,
+}: {
+    creation: CreationItem
+    locale: "fr" | "en"
+    t: (key: string) => string
+    resolvedTheme: "light" | "dark"
+}) {
+    return (
+        <motion.div
+            className="creation-panel"
+            style={getCreationThemeStyle(creation, resolvedTheme)}
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+        >
+            <div className="creation-panel__ambient" aria-hidden="true" />
+
+            <article className="creation-panel__card creation-panel__hero">
+                <div className="creation-panel__hero-frame" aria-hidden="true">
+                    <span className="creation-panel__hero-code">{creation.title}</span>
+                </div>
+                <div className="creation-panel__hero-top">
+                    <div className="creation-panel__hero-copy">
+                        <div className="creation-panel__badges">
+                            <Badge variant="premium" size="sm">{creation.category[locale]}</Badge>
+                            <Badge variant="outline" size="sm">{creation.status[locale]}</Badge>
+                        </div>
+                        <h3 className="creation-panel__title">{creation.titleDisplay}</h3>
+                        <p className="creation-panel__tagline">{creation.tagline[locale]}</p>
+                    </div>
+                    <div className="creation-panel__meta">
+                        <span>{creation.year}</span>
+                        <span className="creation-panel__meta-dot" aria-hidden="true" />
+                        <span>{creation.title}</span>
+                    </div>
+                </div>
+
+                <p className="creation-panel__description">{creation.description[locale]}</p>
+                <p className="creation-panel__details">{creation.details[locale]}</p>
+
+                <div className="creation-panel__outputs-list creation-panel__outputs-list--hero">
+                    {creation.outputs.map((output) => (
+                        <Badge key={output} variant="info" size="sm">
+                            {output}
+                        </Badge>
+                    ))}
+                </div>
+
+                <div className="creation-panel__actions">
+                    <ActionLink
+                        href={`/${locale}#projects`}
+                        label={t("projectsCta")}
+                        icon="arrowRight"
+                        variant="solid"
+                        className="creation-panel__action-link"
+                    />
+                    <ActionLink
+                        href={`mailto:${PERSON.email}`}
+                        label={t("contactCta")}
+                        icon="message"
+                        variant="ghost"
+                        className="creation-panel__action-link"
+                    />
+                </div>
+            </article>
+
+            <article className="creation-panel__card creation-panel__card--stacked">
+                <span className="creation-panel__label">{t("highlights")}</span>
+                <ul className="creation-panel__list">
+                    {creation.highlights.map((highlight) => (
+                        <li key={highlight[locale]} className="creation-panel__list-item">
+                            <span className="creation-panel__list-bullet" aria-hidden="true" />
+                            <span>{highlight[locale]}</span>
+                        </li>
+                    ))}
+                </ul>
+            </article>
+
+            <article className="creation-panel__card creation-panel__card--accent">
+                <span className="creation-panel__label">{t("tools")}</span>
+                <div className="creation-panel__tech">
+                    {creation.tools.map((tool) => {
+                        const iconName = getToolIcon(tool)
+
+                        return (
+                            <Badge
+                                key={tool}
+                                variant="outline"
+                                size="sm"
+                                icon={iconName ? <Icon name={iconName} sizeClass="icon-sm" aria-hidden="true" /> : undefined}
+                            >
+                                {tool}
+                            </Badge>
+                        )
+                    })}
+                </div>
+            </article>
+        </motion.div>
+    )
+}

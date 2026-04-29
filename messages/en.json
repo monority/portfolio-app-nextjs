@@ -118,5 +118,26 @@
     "live": "Live",
     "github": "Source",
     "selection": "SELECTION"
+  },
+  "creation": {
+    "sectionLabel": "Creation",
+    "heading": "More open creative work, between interfaces and game worlds",
+    "intro": "A more experimental part of my work, where I build Source maps, in-game GUIs, and a video game project with the same attention to pacing, readability, and atmosphere.",
+    "highlights": "Key points",
+    "tools": "Tools and playground",
+    "outputs": "Formats",
+    "projectsCta": "See web projects",
+    "contactCta": "Discuss it"
+  },
+  "modules": {
+    "sectionLabel": "Modules",
+    "heading": "Smaller building blocks, designed to stay useful",
+    "intro": "More focused mini projects, built like self-contained modules: clear intent, clean execution, and a structure that stays easy to evolve.",
+    "highlights": "Key highlights",
+    "stack": "Tech stack",
+    "live": "Open module",
+    "github": "GitHub",
+    "npm": "npm",
+    "miniLabel": "Mini format"
   }
 }
