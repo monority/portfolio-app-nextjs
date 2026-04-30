@@ -185,9 +185,6 @@ function CreationPanel({
             <div className="panel-ambient" aria-hidden="true" />
 
             <article className="creation-panel__card creation-panel__hero panel-card">
-                <div className="creation-panel__hero-frame" aria-hidden="true">
-                    <span className="creation-panel__hero-code">{creation.title}</span>
-                </div>
                 <div className="panel-hero-top">
                     <div className="panel-hero-copy">
                         <div className="panel-badges">
@@ -217,7 +214,7 @@ function CreationPanel({
 
                 <div className="panel-actions">
                     <ActionLink
-                        href={`/${locale}#projects`}
+                        href="https://example.com"
                         label={t("explore")}
                         icon="arrowRight"
                         variant="solid"
