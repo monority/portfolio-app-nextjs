@@ -1,3 +1,7 @@
+@import "../shared/panel.css";
+
+/* ─── Creation Specific Styles ───────────────────────────────────────── */
+
 .creation-shell {
     display: grid;
     gap: var(--space-xl);
@@ -102,58 +106,19 @@
     color: var(--text-secondary);
 }
 
+/* ─── Panel Layout ──────────────────────────────────────────────────── */
+
 .creation-panel {
-    --module-accent: var(--foreground);
-    --module-bg: var(--background);
-    --module-surface: var(--card);
-    --module-fg: var(--foreground);
-    position: relative;
-    display: grid;
-    gap: var(--space-sm);
     grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.9fr);
     grid-template-areas:
         "hero side-top"
         "hero side-bottom"
         "hero side-visual";
-    padding: var(--space-sm);
-    border: 1px solid var(--module-accent-border, color-mix(in srgb, var(--module-accent) 8%, var(--border)));
-    border-radius: calc(var(--border-radius-lg) + 4px);
-    background:
-        radial-gradient(circle at top right, var(--module-accent-wash, color-mix(in srgb, var(--module-accent) 8%, transparent)), transparent 30%),
-        linear-gradient(160deg, color-mix(in srgb, var(--module-bg) 97%, transparent), color-mix(in srgb, var(--module-surface) 99%, transparent));
-    overflow: hidden;
 }
 
-.creation-panel>* {
-    position: relative;
-    z-index: 1;
-}
-
-.creation-panel__ambient {
-    position: absolute;
-    inset: auto -8% -30% auto;
-    width: 18rem;
-    height: 18rem;
-    border-radius: 999px;
-    background: radial-gradient(circle, var(--module-accent-wash, color-mix(in srgb, var(--module-accent) 10%, transparent)), transparent 68%);
-    filter: blur(16px);
-    opacity: 0.6;
-    z-index: 0;
-}
-
-.creation-panel__card {
-    display: grid;
-    gap: var(--space-md);
-    padding: var(--space-lg);
-    border: 1px solid var(--module-accent-border, color-mix(in srgb, var(--module-accent) 7%, var(--border)));
-    border-radius: var(--border-radius-md);
-    background: var(--module-surface-fill, color-mix(in srgb, var(--module-surface) 96%, transparent));
-    backdrop-filter: blur(10px);
-}
-
+/* Hero overrides */
 .creation-panel__hero {
     grid-area: hero;
-    align-content: start;
     min-height: 100%;
     padding: clamp(1.25rem, 2vw, 2rem);
     background:
@@ -174,161 +139,39 @@
     color: color-mix(in srgb, var(--module-accent) 74%, var(--text-secondary));
 }
 
-.creation-panel__hero-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: var(--space-md);
-}
-
-.creation-panel__hero-copy {
-    display: grid;
-    gap: var(--space-sm);
-}
-
-.creation-panel__badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
-}
-
+/* Typography overrides */
 .creation-panel__title {
-    margin: 0;
     max-width: 10ch;
     font-size: clamp(2.3rem, 1.4rem + 2.4vw, 4.4rem);
-    line-height: 0.92;
-    letter-spacing: var(--letter-spacing-tight);
-    color: var(--foreground);
-    text-wrap: balance;
 }
 
-.creation-panel__tagline,
-.creation-panel__description,
-.creation-panel__details {
-    margin: 0;
+/* Card areas */
+.creation-panel__card--stacked {
+    grid-area: side-top;
 }
 
-.creation-panel__tagline {
-    max-width: 34ch;
-    font-size: clamp(1rem, 0.94rem + 0.45vw, 1.18rem);
-    color: color-mix(in srgb, var(--module-fg) 76%, var(--text-secondary));
+.creation-panel__card--accent {
+    grid-area: side-bottom;
 }
 
-.creation-panel__description,
-.creation-panel__details,
-.creation-panel__list-item {
-    color: color-mix(in srgb, var(--module-fg) 78%, var(--text-secondary));
-    line-height: var(--line-height-relaxed);
+.creation-panel__card--visual {
+    grid-area: side-visual;
 }
 
-.creation-panel__description,
-.creation-panel__details {
-    max-width: 60ch;
+/* Accent card override */
+.creation-panel__card--accent {
+    background:
+        linear-gradient(180deg, color-mix(in srgb, var(--module-accent) 9%, transparent), transparent 65%),
+        var(--module-surface-fill);
 }
 
-.creation-panel__meta,
-.creation-panel__label {
-    font-family: var(--font-family-mono);
-    font-size: var(--font-size-xs);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-}
-
-.creation-panel__meta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: color-mix(in srgb, var(--module-fg) 66%, var(--text-secondary));
-    white-space: nowrap;
-    padding-top: 0.35rem;
-}
-
-.creation-panel__meta-dot {
-    width: 0.25rem;
-    height: 0.25rem;
-    border-radius: 999px;
-    background: currentColor;
-}
-
-.creation-panel__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-sm);
-}
-
+/* Actions */
 .creation-panel__action-link {
     width: fit-content;
 }
 
 .creation-panel__outputs-list--hero {
     margin-top: auto;
-}
-
-.creation-panel__label {
-    color: color-mix(in srgb, var(--module-fg) 60%, var(--text-secondary));
-}
-
-.creation-panel__card--stacked {
-    grid-area: side-top;
-    align-content: start;
-}
-
-.creation-panel__card--accent {
-    grid-area: side-bottom;
-    align-content: start;
-    background:
-        linear-gradient(180deg, color-mix(in srgb, var(--module-accent) 9%, transparent), transparent 65%),
-        var(--module-surface-fill, color-mix(in srgb, var(--module-surface) 96%, transparent));
-}
-
-.creation-panel__card--visual {
-    grid-area: side-visual;
-    align-content: start;
-    padding: 0;
-    overflow: hidden;
-}
-
-.creation-panel__visual-frame {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    overflow: hidden;
-    border-radius: calc(var(--border-radius-md) - 2px);
-}
-
-.creation-panel__visual-img {
-    object-fit: cover;
-    object-position: center;
-}
-
-.creation-panel__list {
-    display: grid;
-    gap: var(--space-sm);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.creation-panel__list-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.creation-panel__list-bullet {
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 999px;
-    background: var(--module-accent);
-    box-shadow: 0 0 0 6px var(--module-accent-glow, color-mix(in srgb, var(--module-accent) 8%, transparent));
-    flex-shrink: 0;
-}
-
-.creation-panel__tech,
-.creation-panel__outputs-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
 }
 
 @media (max-width: 1024px) {
@@ -349,10 +192,6 @@
             "side-bottom";
     }
 
-    .creation-panel__visual-frame {
-        aspect-ratio: 16 / 9;
-    }
-
     .creation-panel__hero {
         min-height: auto;
     }
@@ -369,24 +208,6 @@
 
     .creation-picker__item {
         width: 100%;
-    }
-
-    .creation-panel {
-        padding: 0;
-        border: none;
-        background: transparent;
-    }
-
-    .creation-panel__card {
-        padding: var(--space-md);
-    }
-
-    .creation-panel__hero-top {
-        flex-direction: column;
-    }
-
-    .creation-panel__meta {
-        white-space: normal;
     }
 
     .creation-panel__title {

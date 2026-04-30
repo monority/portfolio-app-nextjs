@@ -175,39 +175,39 @@ function CreationPanel({
 }) {
     return (
         <motion.div
-            className="creation-panel"
+            className="creation-panel panel-container"
             style={getModuleThemeStyle(creation, resolvedTheme)}
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
         >
-            <div className="creation-panel__ambient" aria-hidden="true" />
+            <div className="panel-ambient" aria-hidden="true" />
 
-            <article className="creation-panel__card creation-panel__hero">
+            <article className="creation-panel__card creation-panel__hero panel-card">
                 <div className="creation-panel__hero-frame" aria-hidden="true">
                     <span className="creation-panel__hero-code">{creation.title}</span>
                 </div>
-                <div className="creation-panel__hero-top">
-                    <div className="creation-panel__hero-copy">
-                        <div className="creation-panel__badges">
+                <div className="panel-hero-top">
+                    <div className="panel-hero-copy">
+                        <div className="panel-badges">
                             <Badge variant="premium" size="sm">{t(`categories.${creation.id}`)}</Badge>
                             <Badge variant="outline" size="sm">{t(`status.${creation.id}`)}</Badge>
                         </div>
-                        <h3 className="creation-panel__title">{t(`titles.${creation.title}`)}</h3>
-                        <p className="creation-panel__tagline">{creation.tagline[locale]}</p>
+                        <h3 className="panel-title creation-panel__title">{t(`titles.${creation.title}`)}</h3>
+                        <p className="panel-tagline">{creation.tagline[locale]}</p>
                     </div>
-                    <div className="creation-panel__meta">
+                    <div className="panel-meta">
                         <span>{creation.year}</span>
-                        <span className="creation-panel__meta-dot" aria-hidden="true" />
+                        <span className="panel-meta-dot" aria-hidden="true" />
                         <span>{creation.title}</span>
                     </div>
                 </div>
 
-                <p className="creation-panel__description">{creation.description[locale]}</p>
-                <p className="creation-panel__details">{creation.details[locale]}</p>
+                <p className="panel-description">{creation.description[locale]}</p>
+                <p className="panel-details">{creation.details[locale]}</p>
 
-                <div className="creation-panel__outputs-list creation-panel__outputs-list--hero">
+                <div className="panel-outputs-list creation-panel__outputs-list--hero">
                     {(t.raw(`outputsData.${creation.id}`) as string[]).map((output, index) => (
                         <Badge key={index} variant="info" size="sm">
                             {output}
@@ -215,7 +215,7 @@ function CreationPanel({
                     ))}
                 </div>
 
-                <div className="creation-panel__actions">
+                <div className="panel-actions">
                     <ActionLink
                         href={`/${locale}#projects`}
                         label={t("explore")}
@@ -226,21 +226,21 @@ function CreationPanel({
                 </div>
             </article>
 
-            <article className="creation-panel__card creation-panel__card--stacked">
-                <span className="creation-panel__label">{t("highlights")}</span>
-                <ul className="creation-panel__list">
+            <article className="creation-panel__card creation-panel__card--stacked panel-card">
+                <span className="panel-label">{t("highlights")}</span>
+                <ul className="panel-list">
                     {(t.raw(`highlightsData.${creation.id}`) as string[]).map((highlight, index) => (
-                        <li key={index} className="creation-panel__list-item">
-                            <span className="creation-panel__list-bullet" aria-hidden="true" />
+                        <li key={index} className="panel-list-item">
+                            <span className="panel-list-bullet" aria-hidden="true" />
                             <span>{highlight}</span>
                         </li>
                     ))}
                 </ul>
             </article>
 
-            <article className="creation-panel__card creation-panel__card--accent">
-                <span className="creation-panel__label">{t("tools")}</span>
-                <div className="creation-panel__tech">
+            <article className="creation-panel__card creation-panel__card--accent panel-card">
+                <span className="panel-label">{t("tools")}</span>
+                <div className="panel-tech">
                     {creation.tools.map((tool) => {
                         const iconName = getToolIcon(tool)
                         const toolKey = tool.toLowerCase().replace(/\s+/g, '-')
@@ -260,13 +260,13 @@ function CreationPanel({
             </article>
 
             {creation.visual && (
-                <article className="creation-panel__card creation-panel__card--visual">
-                    <div className="creation-panel__visual-frame">
+                <article className="creation-panel__card creation-panel__card--visual panel-card panel-card--visual">
+                    <div className="panel-visual-frame">
                         <Image
                             src={creation.visual}
                             alt={t(`titles.${creation.title}`)}
                             fill
-                            className="creation-panel__visual-img"
+                            className="panel-visual-img"
                             sizes="(max-width: 768px) 100vw, 400px"
                         />
                     </div>

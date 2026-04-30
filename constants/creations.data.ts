@@ -1,4 +1,5 @@
 import type { CreationItem } from '../types/index'
+import { PALETTES } from './palettes.data'
 
 // ─── Creation ─────────────────────────────────────────────────────
 export const CREATIONS: CreationItem[] = [
@@ -34,20 +35,7 @@ export const CREATIONS: CreationItem[] = [
       fr: 'Travaux créatifs',
       en: 'Creative work',
     },
-    palette: {
-      dark: {
-        accent: '#739b8a',
-        bg: '#0a0c0b',
-        surface: '#151816',
-        fg: '#e8f0ec',
-      },
-      light: {
-        accent: '#7ea792',
-        bg: '#fcfdfc',
-        surface: '#f5f7f5',
-        fg: '#171b18',
-      },
-    },
+    palette: PALETTES.green,
     visual: '/images/creations/css-maps.webp',
   },
   {
@@ -82,20 +70,7 @@ export const CREATIONS: CreationItem[] = [
       fr: 'UI créative',
       en: 'Creative UI',
     },
-    palette: {
-      dark: {
-        accent: '#8bb9d1',
-        bg: '#0b0c0d',
-        surface: '#121417',
-        fg: '#e8edf1',
-      },
-      light: {
-        accent: '#94adc0',
-        bg: '#fdfdfd',
-        surface: '#f7f8f9',
-        fg: '#17191c',
-      },
-    },
+    palette: PALETTES.blue,
     visual: '/images/creations/css-guis.webp',
   },
   {
@@ -130,20 +105,7 @@ export const CREATIONS: CreationItem[] = [
       fr: 'Projet en cours',
       en: 'Work in progress',
     },
-    palette: {
-      dark: {
-        accent: '#c8a16b',
-        bg: '#0c0c0b',
-        surface: '#151412',
-        fg: '#f0ebe3',
-      },
-      light: {
-        accent: '#b69367',
-        bg: '#fefdfb',
-        surface: '#f8f6f2',
-        fg: '#1d1a16',
-      },
-    },
+    palette: PALETTES.gold,
     visual: '/images/creations/itch-game.webp',
   },
 ]

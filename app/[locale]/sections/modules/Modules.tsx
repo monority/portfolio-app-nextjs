@@ -140,34 +140,34 @@ function ModulePanel({
 }) {
     return (
         <motion.div
-            className="module-panel"
+            className="module-panel panel-container"
             style={getModuleThemeStyle(module, resolvedTheme)}
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
         >
-            <div className="module-panel__ambient" aria-hidden="true" />
+            <div className="panel-ambient" aria-hidden="true" />
 
-            <article className="module-panel__card module-panel__hero">
-                <div className="module-panel__hero-top">
-                    <div className="module-panel__hero-copy">
+            <article className="module-panel__card module-panel__hero panel-card">
+                <div className="panel-hero-top">
+                    <div className="panel-hero-copy">
                         <span className="module-panel__kicker">{module.category}</span>
-                        <h3 className="module-panel__title">{module.titleDisplay}</h3>
-                        <p className="module-panel__tagline">{module.tagline[locale]}</p>
+                        <h3 className="panel-title module-panel__title">{module.titleDisplay}</h3>
+                        <p className="panel-tagline module-panel__tagline">{module.tagline[locale]}</p>
                     </div>
-                    <div className="module-panel__meta">
+                    <div className="panel-meta">
                         <span>{module.year}</span>
-                        <span className="module-panel__meta-dot" aria-hidden="true" />
+                        <span className="panel-meta-dot" aria-hidden="true" />
                         <span>{t("miniLabel")}</span>
                     </div>
                 </div>
 
-                <p className="module-panel__description">{module.description[locale]}</p>
-                <p className="module-panel__details">{module.details[locale]}</p>
+                <p className="panel-description">{module.description[locale]}</p>
+                <p className="panel-details">{module.details[locale]}</p>
 
                 {(module.live || module.github || module.npm) && (
-                    <div className="module-panel__actions">
+                    <div className="panel-actions">
                         {module.live && (
                             <a href={module.live} target="_blank" rel="noopener noreferrer" className="module-panel__link module-panel__link--primary">
                                 {t("live")}
@@ -188,21 +188,21 @@ function ModulePanel({
                 )}
             </article>
 
-            <article className="module-panel__card">
-                <span className="module-panel__label">{t("highlights")}</span>
-                <ul className="module-panel__highlights">
+            <article className="module-panel__card panel-card">
+                <span className="panel-label">{t("highlights")}</span>
+                <ul className="panel-list">
                     {module.highlights.map((highlight) => (
-                        <li key={highlight[locale]} className="module-panel__highlight">
-                            <span className="module-panel__highlight-bullet" aria-hidden="true" />
+                        <li key={highlight[locale]} className="panel-list-item">
+                            <span className="panel-list-bullet module-panel__highlight-bullet" aria-hidden="true" />
                             <span>{highlight[locale]}</span>
                         </li>
                     ))}
                 </ul>
             </article>
 
-            <article className="module-panel__card">
-                <span className="module-panel__label">{t("stack")}</span>
-                <div className="module-panel__tech">
+            <article className="module-panel__card panel-card">
+                <span className="panel-label">{t("stack")}</span>
+                <div className="panel-tech">
                     {module.tech.map((tech) => {
                         const techIcon = getTechIcon(tech)
 

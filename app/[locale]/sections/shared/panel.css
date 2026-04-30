@@ -1,0 +1,214 @@
+/* ─── Shared Panel Styles ───────────────────────────────────────────── */
+
+.panel-container {
+    --module-accent: var(--foreground);
+    --module-bg: var(--background);
+    --module-surface: var(--card);
+    --module-fg: var(--foreground);
+
+    position: relative;
+    display: grid;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    border: 1px solid var(--module-accent-border);
+    border-radius: calc(var(--border-radius-lg) + 4px);
+    background:
+        radial-gradient(circle at top right, var(--module-accent-wash), transparent 30%),
+        linear-gradient(160deg, color-mix(in srgb, var(--module-bg) 97%, transparent), color-mix(in srgb, var(--module-surface) 99%, transparent));
+    overflow: hidden;
+}
+
+.panel-container>* {
+    position: relative;
+    z-index: 1;
+}
+
+.panel-ambient {
+    position: absolute;
+    inset: auto -8% -30% auto;
+    width: 18rem;
+    height: 18rem;
+    border-radius: 999px;
+    background: radial-gradient(circle, var(--module-accent-wash), transparent 68%);
+    filter: blur(16px);
+    opacity: 0.6;
+    z-index: 0;
+}
+
+.panel-card {
+    display: grid;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    border: 1px solid var(--module-accent-border);
+    border-radius: var(--border-radius-md);
+    background: var(--module-surface-fill);
+    backdrop-filter: blur(10px);
+}
+
+.panel-hero-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-md);
+}
+
+.panel-hero-copy {
+    display: grid;
+    gap: var(--space-sm);
+}
+
+.panel-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+}
+
+.panel-title {
+    margin: 0;
+    font-size: clamp(2rem, 1.4rem + 2.4vw, 4rem);
+    line-height: 0.92;
+    letter-spacing: var(--letter-spacing-tight);
+    color: var(--foreground);
+    text-wrap: balance;
+}
+
+.panel-tagline,
+.panel-description,
+.panel-details {
+    margin: 0;
+}
+
+.panel-tagline {
+    max-width: 34ch;
+    font-size: clamp(1rem, 0.94rem + 0.45vw, 1.18rem);
+    color: color-mix(in srgb, var(--module-fg) 76%, var(--text-secondary));
+}
+
+.panel-description,
+.panel-details,
+.panel-list-item {
+    color: color-mix(in srgb, var(--module-fg) 78%, var(--text-secondary));
+    line-height: var(--line-height-relaxed);
+}
+
+.panel-description,
+.panel-details {
+    max-width: 60ch;
+}
+
+.panel-meta,
+.panel-label {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.panel-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: color-mix(in srgb, var(--module-fg) 66%, var(--text-secondary));
+    white-space: nowrap;
+    padding-top: 0.35rem;
+}
+
+.panel-meta-dot {
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 999px;
+    background: currentColor;
+}
+
+.panel-label {
+    color: color-mix(in srgb, var(--module-fg) 60%, var(--text-secondary));
+}
+
+.panel-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.panel-list {
+    display: grid;
+    gap: var(--space-sm);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.panel-list-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.panel-list-bullet {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    background: var(--module-accent);
+    box-shadow: 0 0 0 6px var(--module-accent-glow);
+    flex-shrink: 0;
+}
+
+.panel-tech,
+.panel-outputs-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+}
+
+.panel-card--visual {
+    padding: 0;
+    overflow: hidden;
+}
+
+.panel-visual-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: calc(var(--border-radius-md) - 2px);
+}
+
+.panel-visual-img {
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (max-width: 1024px) {
+    .panel-container {
+        grid-template-columns: 1fr;
+    }
+
+    .panel-visual-frame {
+        aspect-ratio: 16 / 9;
+    }
+}
+
+@media (max-width: 640px) {
+    .panel-container {
+        padding: 0;
+        border: none;
+        background: transparent;
+    }
+
+    .panel-card {
+        padding: var(--space-md);
+    }
+
+    .panel-hero-top {
+        flex-direction: column;
+    }
+
+    .panel-meta {
+        white-space: normal;
+    }
+
+    .panel-title {
+        max-width: 100%;
+        font-size: clamp(2rem, 1.45rem + 6vw, 3rem);
+    }
+}

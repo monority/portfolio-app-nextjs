@@ -1,5 +1,6 @@
 import type { IconName } from "@/components/ui/icon/types"
 import type { Module } from "../types/index"
+import { PALETTES } from './palettes.data'
 
 export const MODULES: Module[] = [
     {
@@ -28,20 +29,7 @@ export const MODULES: Module[] = [
         category: 'Utility',
         github: 'https://github.com/monority/convert-img',
         npm: 'https://github.com/monority/convert-img',
-        palette: {
-            dark: {
-                accent: '#8bb9d1',
-                bg: '#0b0c0d',
-                surface: '#121417',
-                fg: '#e8edf1',
-            },
-            light: {
-                accent: '#94adc0',
-                bg: '#fdfdfd',
-                surface: '#f7f8f9',
-                fg: '#17191c',
-            },
-        },
+        palette: PALETTES.blue,
     },
     {
         id: 'screenshot-api',
@@ -69,20 +57,7 @@ export const MODULES: Module[] = [
         category: 'Automation',
         github: 'https://github.com/monority/screenshot-api',
         npm: 'https://github.com/monority/screenshot-api',
-        palette: {
-            dark: {
-                accent: '#c8a16b',
-                bg: '#0c0c0b',
-                surface: '#151412',
-                fg: '#f0ebe3',
-            },
-            light: {
-                accent: '#b69367',
-                bg: '#fefdfb',
-                surface: '#f8f6f2',
-                fg: '#1d1a16',
-            },
-        },
+        palette: PALETTES.gold,
     },
     {
         id: 'git-quality-commit',
@@ -110,20 +85,7 @@ export const MODULES: Module[] = [
         category: 'Developer tool',
         github: 'https://github.com/monority/git-quality-commit',
         npm: 'https://www.npmjs.com/package/commit-quality-check',
-        palette: {
-            dark: {
-                accent: '#739b8a',
-                bg: '#0a0c0b',
-                surface: '#151816',
-                fg: '#e8f0ec',
-            },
-            light: {
-                accent: '#7ea792',
-                bg: '#fcfdfc',
-                surface: '#f5f7f5',
-                fg: '#171b18',
-            },
-        },
+        palette: PALETTES.green,
     },
 ]
 
