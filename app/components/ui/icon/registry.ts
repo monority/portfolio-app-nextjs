@@ -64,6 +64,12 @@ import SkyllswapIcon from './icons/SkyllswapIcon'
 import LibraryIcon from './icons/LibraryIcon'
 import HumanworkforceIcon from './icons/HumanworkforceIcon'
 import CesarLezardIcon from './icons/CesarLezardIcon'
+import SourceIcon from './icons/SourceIcon'
+import GuiIcon from './icons/GuiIcon'
+import GameIcon from './icons/GameIcon'
+import HammerIcon from './icons/HammerIcon'
+import DesignIcon from './icons/DesignIcon'
+import UnityIcon from './icons/UnityIcon'
 
 type IconComponent = React.FC<any>
 
@@ -136,4 +142,10 @@ export const iconRegistry: Record<IconName, IconComponent> = {
     humanworkforce: HumanworkforceIcon,
     dashboard: DashboardPrIcon,
     cesarlezard: CesarLezardIcon,
+    source: SourceIcon,
+    gui: GuiIcon,
+    game: GameIcon,
+    hammer: HammerIcon,
+    design: DesignIcon,
+    unity: UnityIcon
 }

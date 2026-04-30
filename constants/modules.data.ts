@@ -1,5 +1,5 @@
 import type { IconName } from "@/components/ui/icon/types"
-import type { Module } from "../../../../types/index"
+import type { Module } from "../types/index"
 
 export const MODULES: Module[] = [
     {

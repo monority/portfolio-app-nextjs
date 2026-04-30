@@ -11,7 +11,7 @@ import {
     sectionViewport,
 } from "@/components/ui/section/motion";
 import type { TechStackGroup } from "@/components/ui/tech-stack";
-import { MARQUEE_ITEMS, TECH_ROW_CLASSES } from "@constants/data";
+import { MARQUEE_ITEMS, TECH_ROW_CLASSES } from "@constants/projects.data";
 
 import "./about.css";
 

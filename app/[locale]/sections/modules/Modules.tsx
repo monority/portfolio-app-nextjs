@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/section/motion"
 import Badge from "@/components/ui/badge"
 import Icon from "@/components/ui/icon/Icon"
-import { MODULE_ICON_BY_ID, MODULES, MODULE_TECH_ICON_BY_LABEL } from "./data"
+import { MODULE_ICON_BY_ID, MODULES, MODULE_TECH_ICON_BY_LABEL } from "@constants/modules.data"
 import { useTheme } from "@/components/ThemeProvider"
 
 import "./modules.css"

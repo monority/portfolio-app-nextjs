@@ -119,16 +119,21 @@
     "github": "Source",
     "selection": "SELECTION"
   },
-  "creation": {
-    "sectionLabel": "Creation",
-    "heading": "More open creative work, between interfaces and game worlds",
-    "intro": "A more experimental part of my work, where I build Source maps, in-game GUIs, and a video game project with the same attention to pacing, readability, and atmosphere.",
-    "highlights": "Key points",
-    "tools": "Tools and playground",
-    "outputs": "Formats",
-    "projectsCta": "See web projects",
-    "contactCta": "Discuss it"
-  },
+    "creation": {
+      "sectionLabel": "Creation",
+      "heading": "More open creative work, between interfaces and game worlds",
+      "intro": "A more experimental part of my work, where I build Source maps, in-game GUIs, and a video game project with the same attention to pacing, readability, and atmosphere.",
+      "highlights": "Key points",
+      "tools": "Tools and playground",
+      "outputs": "Formats",
+      "projectsCta": "See web projects",
+      "contactCta": "Discuss it",
+      "titles": {
+        "SOURCE_MAPS": "Source Maps",
+        "SOURCE_GUIS": "Source GUIs",
+        "VIDEO_GAME": "Video Game"
+      }
+    },
   "modules": {
     "sectionLabel": "Modules",
     "heading": "Smaller building blocks, designed to stay useful",

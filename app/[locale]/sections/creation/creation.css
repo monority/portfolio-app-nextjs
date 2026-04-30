@@ -57,8 +57,8 @@
     background: color-mix(in srgb, var(--card) 88%, transparent);
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 0.95rem 1rem;
     gap: 0.9rem;
+    max-height: none;
 }
 
 .creation-picker__item:hover {
@@ -66,13 +66,13 @@
 }
 
 .creation-picker__item--active {
-    border-color: var(--creation-accent-border, color-mix(in srgb, var(--creation-accent, var(--foreground)) 24%, var(--border)));
+    border-color: var(--module-accent-border-strong, color-mix(in srgb, var(--module-accent, var(--foreground)) 26%, var(--border)));
     background:
-        linear-gradient(135deg, var(--creation-accent-soft, color-mix(in srgb, var(--creation-accent, var(--foreground)) 10%, transparent)), transparent 62%),
+        linear-gradient(135deg, var(--module-accent-wash, color-mix(in srgb, var(--module-accent, var(--foreground)) 6%, transparent)), transparent 60%),
         color-mix(in srgb, var(--card) 94%, transparent);
     box-shadow:
-        inset 0 0 0 1px var(--creation-accent-border, color-mix(in srgb, var(--creation-accent, var(--foreground)) 14%, transparent)),
-        0 16px 28px var(--creation-accent-glow, color-mix(in srgb, var(--creation-accent, var(--foreground)) 6%, transparent));
+        inset 0 0 0 1px var(--module-accent-border, color-mix(in srgb, var(--module-accent, var(--foreground)) 10%, transparent)),
+        0 14px 28px var(--module-accent-glow, color-mix(in srgb, var(--module-accent, var(--foreground)) 6%, transparent));
 }
 
 .creation-picker__label {
@@ -84,7 +84,7 @@
 
 .creation-picker__index {
     font-family: var(--font-family-mono);
-    font-size: 0.72rem;
+    font-size: var(--font-size-xs);
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: color-mix(in srgb, var(--foreground) 54%, var(--text-secondary));
@@ -103,10 +103,10 @@
 }
 
 .creation-panel {
-    --creation-accent: var(--foreground);
-    --creation-bg: var(--background);
-    --creation-surface: var(--card);
-    --creation-fg: var(--foreground);
+    --module-accent: var(--foreground);
+    --module-bg: var(--background);
+    --module-surface: var(--card);
+    --module-fg: var(--foreground);
     position: relative;
     display: grid;
     gap: var(--space-sm);
@@ -115,12 +115,11 @@
         "hero side-top"
         "hero side-bottom";
     padding: var(--space-sm);
-    border: 1px solid var(--creation-accent-border, color-mix(in srgb, var(--creation-accent) 10%, var(--border)));
+    border: 1px solid var(--module-accent-border, color-mix(in srgb, var(--module-accent) 8%, var(--border)));
     border-radius: calc(var(--border-radius-lg) + 4px);
     background:
-        linear-gradient(120deg, color-mix(in srgb, var(--creation-accent) 7%, transparent), transparent 26%),
-        radial-gradient(circle at top right, var(--creation-accent-soft, color-mix(in srgb, var(--creation-accent) 10%, transparent)), transparent 30%),
-        linear-gradient(160deg, color-mix(in srgb, var(--creation-bg) 97%, transparent), color-mix(in srgb, var(--creation-surface) 99%, transparent));
+        radial-gradient(circle at top right, var(--module-accent-wash, color-mix(in srgb, var(--module-accent) 8%, transparent)), transparent 30%),
+        linear-gradient(160deg, color-mix(in srgb, var(--module-bg) 97%, transparent), color-mix(in srgb, var(--module-surface) 99%, transparent));
     overflow: hidden;
 }
 
@@ -135,9 +134,9 @@
     width: 18rem;
     height: 18rem;
     border-radius: 999px;
-    background: radial-gradient(circle, var(--creation-accent-soft, color-mix(in srgb, var(--creation-accent) 10%, transparent)), transparent 68%);
-    filter: blur(18px);
-    opacity: 0.7;
+    background: radial-gradient(circle, var(--module-accent-wash, color-mix(in srgb, var(--module-accent) 10%, transparent)), transparent 68%);
+    filter: blur(16px);
+    opacity: 0.6;
     z-index: 0;
 }
 
@@ -145,9 +144,9 @@
     display: grid;
     gap: var(--space-md);
     padding: var(--space-lg);
-    border: 1px solid var(--creation-accent-border, color-mix(in srgb, var(--creation-accent) 8%, var(--border)));
+    border: 1px solid var(--module-accent-border, color-mix(in srgb, var(--module-accent) 7%, var(--border)));
     border-radius: var(--border-radius-md);
-    background: var(--creation-surface-fill, color-mix(in srgb, var(--creation-surface) 96%, transparent));
+    background: var(--module-surface-fill, color-mix(in srgb, var(--module-surface) 96%, transparent));
     backdrop-filter: blur(10px);
 }
 
@@ -157,8 +156,8 @@
     min-height: 100%;
     padding: clamp(1.25rem, 2vw, 2rem);
     background:
-        linear-gradient(155deg, color-mix(in srgb, var(--creation-surface) 88%, transparent), color-mix(in srgb, var(--creation-bg) 88%, transparent)),
-        radial-gradient(circle at top left, color-mix(in srgb, var(--creation-accent) 14%, transparent), transparent 42%);
+        linear-gradient(155deg, color-mix(in srgb, var(--module-surface) 88%, transparent), color-mix(in srgb, var(--module-bg) 88%, transparent)),
+        radial-gradient(circle at top left, color-mix(in srgb, var(--module-accent) 14%, transparent), transparent 42%);
 }
 
 .creation-panel__hero-frame {
@@ -171,7 +170,7 @@
     font-size: clamp(0.7rem, 0.62rem + 0.2vw, 0.8rem);
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: color-mix(in srgb, var(--creation-accent) 74%, var(--text-secondary));
+    color: color-mix(in srgb, var(--module-accent) 74%, var(--text-secondary));
 }
 
 .creation-panel__hero-top {
@@ -211,13 +210,13 @@
 .creation-panel__tagline {
     max-width: 34ch;
     font-size: clamp(1rem, 0.94rem + 0.45vw, 1.18rem);
-    color: color-mix(in srgb, var(--creation-fg) 76%, var(--text-secondary));
+    color: color-mix(in srgb, var(--module-fg) 76%, var(--text-secondary));
 }
 
 .creation-panel__description,
 .creation-panel__details,
 .creation-panel__list-item {
-    color: color-mix(in srgb, var(--creation-fg) 78%, var(--text-secondary));
+    color: color-mix(in srgb, var(--module-fg) 78%, var(--text-secondary));
     line-height: var(--line-height-relaxed);
 }
 
@@ -238,7 +237,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: color-mix(in srgb, var(--creation-fg) 66%, var(--text-secondary));
+    color: color-mix(in srgb, var(--module-fg) 66%, var(--text-secondary));
     white-space: nowrap;
     padding-top: 0.35rem;
 }
@@ -265,7 +264,7 @@
 }
 
 .creation-panel__label {
-    color: color-mix(in srgb, var(--creation-fg) 60%, var(--text-secondary));
+    color: color-mix(in srgb, var(--module-fg) 60%, var(--text-secondary));
 }
 
 .creation-panel__card--stacked {
@@ -277,8 +276,8 @@
     grid-area: side-bottom;
     align-content: start;
     background:
-        linear-gradient(180deg, color-mix(in srgb, var(--creation-accent) 9%, transparent), transparent 65%),
-        var(--creation-surface-fill, color-mix(in srgb, var(--creation-surface) 96%, transparent));
+        linear-gradient(180deg, color-mix(in srgb, var(--module-accent) 9%, transparent), transparent 65%),
+        var(--module-surface-fill, color-mix(in srgb, var(--module-surface) 96%, transparent));
 }
 
 .creation-panel__list {
@@ -299,8 +298,8 @@
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 999px;
-    background: var(--creation-accent);
-    box-shadow: 0 0 0 6px var(--creation-accent-glow, color-mix(in srgb, var(--creation-accent) 8%, transparent));
+    background: var(--module-accent);
+    box-shadow: 0 0 0 6px var(--module-accent-glow, color-mix(in srgb, var(--module-accent) 8%, transparent));
     flex-shrink: 0;
 }
 

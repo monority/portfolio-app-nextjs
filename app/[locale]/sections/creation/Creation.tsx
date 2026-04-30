@@ -3,7 +3,8 @@
 import { useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { useLocale, useTranslations } from "next-intl"
-import { CREATIONS, PERSON } from "@constants/data"
+import { CREATIONS } from "@constants/creations.data"
+import { PERSON } from "@constants/projects.data"
 import type { CreationItem } from "../../../../types"
 import type { IconName } from "@/components/ui/icon/types"
 import { SectionEyebrow, SectionHeader } from "@/components/ui/section"
@@ -17,24 +18,24 @@ import ActionLink from "@/components/ui/action-link"
 import "./creation.css"
 
 const CREATION_ICON_BY_ID: Record<string, IconName> = {
-    "source-maps": "theme",
-    "source-guis": "css",
-    "video-game": "itch",
+    "source-maps": "source",
+    "source-guis": "gui",
+    "video-game": "game",
 }
 
 const CREATION_TOOL_ICON_BY_LABEL: Record<string, IconName> = {
-    "hammer editor": "theme",
-    "source engine": "theme",
-    "level design": "library",
-    vgui: "css",
+    "hammer editor": "hammer",
+    "source engine": "source",
+    "level design": "unity",
+    vgui: "gui",
     photoshop: "photoshop",
     "ui design": "figma",
-    "game design": "itch",
+    "game design": "design",
     ui: "figma",
-    worldbuilding: "library",
+    worldbuilding: "unity",
 }
 
-function getCreationTheme(creation: CreationItem, resolvedTheme: "light" | "dark") {
+function getModuleTheme(creation: CreationItem, resolvedTheme: "light" | "dark") {
     const palette =
         resolvedTheme === "light"
             ? creation.palette?.light ?? creation.palette?.dark
@@ -48,20 +49,22 @@ function getCreationTheme(creation: CreationItem, resolvedTheme: "light" | "dark
     }
 }
 
-function getCreationThemeStyle(creation: CreationItem, resolvedTheme: "light" | "dark"): React.CSSProperties {
-    const theme = getCreationTheme(creation, resolvedTheme)
+function getModuleThemeStyle(creation: CreationItem, resolvedTheme: "light" | "dark"): React.CSSProperties {
+    const theme = getModuleTheme(creation, resolvedTheme)
     const isLight = resolvedTheme === "light"
 
     return {
-        "--creation-accent": theme.accent,
-        "--creation-bg": theme.bg,
-        "--creation-surface": theme.surface,
-        "--creation-fg": theme.fg,
-        "--creation-accent-soft": `color-mix(in srgb, ${theme.accent} ${isLight ? "18%" : "10%"}, transparent)`,
-        "--creation-accent-strong": `color-mix(in srgb, ${theme.accent} ${isLight ? "76%" : "60%"}, white ${isLight ? "24%" : "40%"})`,
-        "--creation-accent-border": `color-mix(in srgb, ${theme.accent} ${isLight ? "20%" : "10%"}, var(--border))`,
-        "--creation-accent-glow": `color-mix(in srgb, ${theme.accent} ${isLight ? "14%" : "6%"}, transparent)`,
-        "--creation-surface-fill": isLight
+        "--module-accent": theme.accent,
+        "--module-bg": theme.bg,
+        "--module-surface": theme.surface,
+        "--module-fg": theme.fg,
+        "--module-accent-soft": `color-mix(in srgb, ${theme.accent} ${isLight ? "18%" : "10%"}, transparent)`,
+        "--module-accent-strong": `color-mix(in srgb, ${theme.accent} ${isLight ? "72%" : "58%"}, white ${isLight ? "28%" : "42%"})`,
+        "--module-accent-border": `color-mix(in srgb, ${theme.accent} ${isLight ? "18%" : "8%"}, var(--border))`,
+        "--module-accent-border-strong": `color-mix(in srgb, ${theme.accent} ${isLight ? "34%" : "14%"}, var(--border))`,
+        "--module-accent-wash": `color-mix(in srgb, ${theme.accent} ${isLight ? "16%" : "8%"}, transparent)`,
+        "--module-accent-glow": `color-mix(in srgb, ${theme.accent} ${isLight ? "12%" : "6%"}, transparent)`,
+        "--module-surface-fill": isLight
             ? `color-mix(in srgb, ${theme.surface} 92%, ${theme.accent} 8%)`
             : `color-mix(in srgb, ${theme.surface} 96%, transparent)`,
     } as React.CSSProperties
@@ -135,12 +138,12 @@ export default function Creation() {
                                             className={`creation-picker__item${activeId === item.id ? " creation-picker__item--active" : ""}`}
                                             onClick={() => setActiveId(item.id)}
                                             aria-pressed={activeId === item.id}
-                                            style={activeId === item.id ? getCreationThemeStyle(item, resolvedTheme) : undefined}
+                                            style={activeId === item.id ? getModuleThemeStyle(item, resolvedTheme) : undefined}
                                             leftIcon={<Icon name={iconName} sizeClass="icon-sm" aria-hidden="true" />}
                                         >
                                             <span className="creation-picker__index">{String(index + 1).padStart(2, "0")}</span>
                                             <span className="creation-picker__content">
-                                                <span className="creation-picker__label">{item.titleDisplay}</span>
+                                                <span className="creation-picker__label">{t(`titles.${item.title}`)}</span>
                                                 <span className="creation-picker__meta">{item.category[locale]}</span>
                                             </span>
                                         </Button>
@@ -173,7 +176,7 @@ function CreationPanel({
     return (
         <motion.div
             className="creation-panel"
-            style={getCreationThemeStyle(creation, resolvedTheme)}
+            style={getModuleThemeStyle(creation, resolvedTheme)}
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
@@ -191,7 +194,7 @@ function CreationPanel({
                             <Badge variant="premium" size="sm">{creation.category[locale]}</Badge>
                             <Badge variant="outline" size="sm">{creation.status[locale]}</Badge>
                         </div>
-                        <h3 className="creation-panel__title">{creation.titleDisplay}</h3>
+                        <h3 className="creation-panel__title">{t(`titles.${creation.title}`)}</h3>
                         <p className="creation-panel__tagline">{creation.tagline[locale]}</p>
                     </div>
                     <div className="creation-panel__meta">

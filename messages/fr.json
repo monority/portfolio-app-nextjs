@@ -120,14 +120,19 @@
         "selection": "SELECTION"
     },
     "creation": {
-        "sectionLabel": "Creation",
-        "heading": "Des creations plus libres, entre interfaces et univers de jeu",
-        "intro": "Une partie plus experimentale de mon travail, ou je construis des maps Source, des GUIs in-game et un projet de jeu video avec la meme exigence de rythme, de lisibilite et d ambiance.",
-        "highlights": "Points cles",
-        "tools": "Outils et terrain de jeu",
-        "outputs": "Formats",
-        "projectsCta": "Voir les projets web",
-        "contactCta": "En parler"
+      "sectionLabel": "Création",
+      "heading": "Des créations plus libres, entre interfaces et univers de jeu",
+      "intro": "Une partie plus expérimentale de mon travail, où je construis des maps Source, des GUIs in-game et un projet de jeu vidéo avec la même exigence de rythme, de lisibilité et d'ambiance.",
+      "highlights": "Points clés",
+      "tools": "Outils et terrain de jeu",
+      "outputs": "Formats",
+      "projectsCta": "Voir les projets web",
+      "contactCta": "En parler",
+      "titles": {
+        "SOURCE_MAPS": "Maps Source",
+        "SOURCE_GUIS": "GUIs Source",
+        "VIDEO_GAME": "Jeu vidéo"
+      }
     },
     "modules": {
         "sectionLabel": "Modules",

@@ -27,7 +27,7 @@ export default function Hero() {
                         <div className="hero-header__legend">
                             <div className="hero-header__avatar">
                                 <Image
-                                    src="/avatar.webp"
+                                    src="/images/avatar.webp"
                                     alt={t("imageAlt")}
                                     width={720}
                                     height={960}

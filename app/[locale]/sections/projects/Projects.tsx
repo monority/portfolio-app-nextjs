@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import { AnimatePresence, motion } from "framer-motion"
-import { PROJECTS } from "@constants/data"
+import { PROJECTS } from "@constants/projects.data"
 import Icon from "@/components/ui/icon/Icon"
 import type { IconName } from "@/components/ui/icon/types"
 import Badge from "@/components/ui/badge"

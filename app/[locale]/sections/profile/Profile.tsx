@@ -8,7 +8,7 @@ import {
     sectionStagger,
     sectionViewport,
 } from "@/components/ui/section/motion";
-import { QUALITIES } from "@constants/data";
+import { QUALITIES } from "@constants/projects.data";
 import { useTranslations } from "next-intl";
 
 import "./profile.css";
