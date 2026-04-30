@@ -113,7 +113,8 @@
     grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.9fr);
     grid-template-areas:
         "hero side-top"
-        "hero side-bottom";
+        "hero side-bottom"
+        "hero side-visual";
     padding: var(--space-sm);
     border: 1px solid var(--module-accent-border, color-mix(in srgb, var(--module-accent) 8%, var(--border)));
     border-radius: calc(var(--border-radius-lg) + 4px);
@@ -280,6 +281,26 @@
         var(--module-surface-fill, color-mix(in srgb, var(--module-surface) 96%, transparent));
 }
 
+.creation-panel__card--visual {
+    grid-area: side-visual;
+    align-content: start;
+    padding: 0;
+    overflow: hidden;
+}
+
+.creation-panel__visual-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: calc(var(--border-radius-md) - 2px);
+}
+
+.creation-panel__visual-img {
+    object-fit: cover;
+    object-position: center;
+}
+
 .creation-panel__list {
     display: grid;
     gap: var(--space-sm);
@@ -323,8 +344,13 @@
         grid-template-columns: 1fr;
         grid-template-areas:
             "hero"
+            "side-visual"
             "side-top"
             "side-bottom";
+    }
+
+    .creation-panel__visual-frame {
+        aspect-ratio: 16 / 9;
     }
 
     .creation-panel__hero {

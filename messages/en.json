@@ -119,21 +119,76 @@
     "github": "Source",
     "selection": "SELECTION"
   },
-    "creation": {
-      "sectionLabel": "Creation",
-      "heading": "More open creative work, between interfaces and game worlds",
-      "intro": "A more experimental part of my work, where I build Source maps, in-game GUIs, and a video game project with the same attention to pacing, readability, and atmosphere.",
-      "highlights": "Key points",
-      "tools": "Tools and playground",
-      "outputs": "Formats",
-      "projectsCta": "See web projects",
-      "contactCta": "Discuss it",
-      "titles": {
-        "SOURCE_MAPS": "Source Maps",
-        "SOURCE_GUIS": "Source GUIs",
-        "VIDEO_GAME": "Video Game"
-      }
+  "creation": {
+    "sectionLabel": "Creation",
+    "heading": "More open creative work, between interfaces and game worlds",
+    "intro": "A more experimental part of my work, where I build Source maps, in-game GUIs, and a video game project with the same attention to pacing, readability, and atmosphere.",
+    "highlights": "Key points",
+    "tools": "Tools and playground",
+    "outputs": "Formats",
+    "explore": "Explore",
+    "contactCta": "Discuss it",
+    "titles": {
+      "SOURCE_MAPS": "Source Maps",
+      "SOURCE_GUIS": "Source GUIs",
+      "VIDEO_GAME": "Video Game"
     },
+    "categories": {
+      "source-maps": "Level design",
+      "source-guis": "In-game interface",
+      "video-game": "Game project"
+    },
+    "status": {
+      "source-maps": "Creative work",
+      "source-guis": "Creative UI",
+      "video-game": "Work in progress"
+    },
+    "outputsData": {
+      "source-maps": [
+        "Playable maps",
+        "Environment prototypes",
+        "Atmospheric scenes"
+      ],
+      "source-guis": [
+        "HUDs",
+        "Menus",
+        "Interface elements"
+      ],
+      "video-game": [
+        "Playable prototype",
+        "Visual direction",
+        "Experience system"
+      ]
+    },
+    "toolsData": {
+      "hammer-editor": "Hammer Editor",
+      "source-engine": "Source Engine",
+      "level-design": "Level Design",
+      "vgui": "VGUI",
+      "photoshop": "Photoshop",
+      "ui-design": "UI Design",
+      "game-design": "Game Design",
+      "ui": "UI",
+      "worldbuilding": "Worldbuilding"
+    },
+    "highlightsData": {
+      "source-maps": [
+        "Blockout, composition, and circulation",
+        "Visual atmosphere and landmarks",
+        "Clear readability of volumes and areas"
+      ],
+      "source-guis": [
+        "Clearer HUDs and menus",
+        "Visual integration into the game",
+        "UI direction tailored to the context"
+      ],
+      "video-game": [
+        "Overall creative direction",
+        "Attention to pacing and feel",
+        "Strong link between interface and world"
+      ]
+    }
+  },
   "modules": {
     "sectionLabel": "Modules",
     "heading": "Smaller building blocks, designed to stay useful",

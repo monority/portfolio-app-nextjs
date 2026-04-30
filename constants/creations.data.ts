@@ -48,6 +48,7 @@ export const CREATIONS: CreationItem[] = [
         fg: '#171b18',
       },
     },
+    visual: '/images/creations/css-maps.webp',
   },
   {
     id: 'source-guis',
@@ -95,6 +96,7 @@ export const CREATIONS: CreationItem[] = [
         fg: '#17191c',
       },
     },
+    visual: '/images/creations/css-guis.webp',
   },
   {
     id: 'video-game',
@@ -142,5 +144,6 @@ export const CREATIONS: CreationItem[] = [
         fg: '#1d1a16',
       },
     },
+    visual: '/images/creations/itch-game.webp',
   },
 ]

@@ -26,8 +26,8 @@ export const MODULES: Module[] = [
         tech: ['Next.js', 'TypeScript', 'CSS'],
         year: '2025',
         category: 'Utility',
-        github: 'https://github.com/your-name/convert-img',
-        npm: 'https://www.npmjs.com/package/convert-img',
+        github: 'https://github.com/monority/convert-img',
+        npm: 'https://github.com/monority/convert-img',
         palette: {
             dark: {
                 accent: '#8bb9d1',
@@ -67,8 +67,8 @@ export const MODULES: Module[] = [
         tech: ['Node.js', 'API', 'TypeScript'],
         year: '2025',
         category: 'Automation',
-        github: 'https://github.com/your-name/screenshot-api',
-        npm: 'https://www.npmjs.com/package/screenshot-api',
+        github: 'https://github.com/monority/screenshot-api',
+        npm: 'https://github.com/monority/screenshot-api',
         palette: {
             dark: {
                 accent: '#c8a16b',
@@ -108,8 +108,8 @@ export const MODULES: Module[] = [
         tech: ['Git', 'Node.js', 'CLI'],
         year: '2025',
         category: 'Developer tool',
-        github: 'https://github.com/your-name/git-quality-commit',
-        npm: 'https://www.npmjs.com/package/git-quality-commit',
+        github: 'https://github.com/monority/git-quality-commit',
+        npm: 'https://www.npmjs.com/package/commit-quality-check',
         palette: {
             dark: {
                 accent: '#739b8a',

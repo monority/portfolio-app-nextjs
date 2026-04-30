@@ -63,6 +63,7 @@ export interface CreationItem {
   year: string
   status: { fr: string; en: string }
   palette?: ProjectPalettes
+  visual?: string
 }
 
 export interface TimelineEntry {

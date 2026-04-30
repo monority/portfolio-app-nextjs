@@ -3,8 +3,8 @@
 import { useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { useLocale, useTranslations } from "next-intl"
+import Image from "next/image"
 import { CREATIONS } from "@constants/creations.data"
-import { PERSON } from "@constants/projects.data"
 import type { CreationItem } from "../../../../types"
 import type { IconName } from "@/components/ui/icon/types"
 import { SectionEyebrow, SectionHeader } from "@/components/ui/section"
@@ -30,7 +30,7 @@ const CREATION_TOOL_ICON_BY_LABEL: Record<string, IconName> = {
     vgui: "gui",
     photoshop: "photoshop",
     "ui design": "figma",
-    "game design": "design",
+    "game design": "unity",
     ui: "figma",
     worldbuilding: "unity",
 }
@@ -144,7 +144,7 @@ export default function Creation() {
                                             <span className="creation-picker__index">{String(index + 1).padStart(2, "0")}</span>
                                             <span className="creation-picker__content">
                                                 <span className="creation-picker__label">{t(`titles.${item.title}`)}</span>
-                                                <span className="creation-picker__meta">{item.category[locale]}</span>
+                                                <span className="creation-picker__meta">{t(`categories.${item.id}`)}</span>
                                             </span>
                                         </Button>
                                     </motion.div>
@@ -170,7 +170,7 @@ function CreationPanel({
 }: {
     creation: CreationItem
     locale: "fr" | "en"
-    t: (key: string) => string
+    t: ((key: string) => string) & { raw: (key: string) => unknown }
     resolvedTheme: "light" | "dark"
 }) {
     return (
@@ -191,8 +191,8 @@ function CreationPanel({
                 <div className="creation-panel__hero-top">
                     <div className="creation-panel__hero-copy">
                         <div className="creation-panel__badges">
-                            <Badge variant="premium" size="sm">{creation.category[locale]}</Badge>
-                            <Badge variant="outline" size="sm">{creation.status[locale]}</Badge>
+                            <Badge variant="premium" size="sm">{t(`categories.${creation.id}`)}</Badge>
+                            <Badge variant="outline" size="sm">{t(`status.${creation.id}`)}</Badge>
                         </div>
                         <h3 className="creation-panel__title">{t(`titles.${creation.title}`)}</h3>
                         <p className="creation-panel__tagline">{creation.tagline[locale]}</p>
@@ -208,8 +208,8 @@ function CreationPanel({
                 <p className="creation-panel__details">{creation.details[locale]}</p>
 
                 <div className="creation-panel__outputs-list creation-panel__outputs-list--hero">
-                    {creation.outputs.map((output) => (
-                        <Badge key={output} variant="info" size="sm">
+                    {(t.raw(`outputsData.${creation.id}`) as string[]).map((output, index) => (
+                        <Badge key={index} variant="info" size="sm">
                             {output}
                         </Badge>
                     ))}
@@ -218,16 +218,9 @@ function CreationPanel({
                 <div className="creation-panel__actions">
                     <ActionLink
                         href={`/${locale}#projects`}
-                        label={t("projectsCta")}
+                        label={t("explore")}
                         icon="arrowRight"
                         variant="solid"
-                        className="creation-panel__action-link"
-                    />
-                    <ActionLink
-                        href={`mailto:${PERSON.email}`}
-                        label={t("contactCta")}
-                        icon="message"
-                        variant="ghost"
                         className="creation-panel__action-link"
                     />
                 </div>
@@ -236,10 +229,10 @@ function CreationPanel({
             <article className="creation-panel__card creation-panel__card--stacked">
                 <span className="creation-panel__label">{t("highlights")}</span>
                 <ul className="creation-panel__list">
-                    {creation.highlights.map((highlight) => (
-                        <li key={highlight[locale]} className="creation-panel__list-item">
+                    {(t.raw(`highlightsData.${creation.id}`) as string[]).map((highlight, index) => (
+                        <li key={index} className="creation-panel__list-item">
                             <span className="creation-panel__list-bullet" aria-hidden="true" />
-                            <span>{highlight[locale]}</span>
+                            <span>{highlight}</span>
                         </li>
                     ))}
                 </ul>
@@ -250,6 +243,7 @@ function CreationPanel({
                 <div className="creation-panel__tech">
                     {creation.tools.map((tool) => {
                         const iconName = getToolIcon(tool)
+                        const toolKey = tool.toLowerCase().replace(/\s+/g, '-')
 
                         return (
                             <Badge
@@ -258,12 +252,26 @@ function CreationPanel({
                                 size="sm"
                                 icon={iconName ? <Icon name={iconName} sizeClass="icon-sm" aria-hidden="true" /> : undefined}
                             >
-                                {tool}
+                                {t(`toolsData.${toolKey}`)}
                             </Badge>
                         )
                     })}
                 </div>
             </article>
+
+            {creation.visual && (
+                <article className="creation-panel__card creation-panel__card--visual">
+                    <div className="creation-panel__visual-frame">
+                        <Image
+                            src={creation.visual}
+                            alt={t(`titles.${creation.title}`)}
+                            fill
+                            className="creation-panel__visual-img"
+                            sizes="(max-width: 768px) 100vw, 400px"
+                        />
+                    </div>
+                </article>
+            )}
         </motion.div>
     )
 }
