@@ -81,7 +81,7 @@ export const PROJECT_ICON_BY_ID: Record<string, IconName> = {
   skillswap: 'skyllswap',
   horloges: 'horloges',
   'cesar-lezard': 'cesarlezard',
-  'monority-base': 'library',
+  'monority-base': 'monority',
 }
 
 export const PROJECT_TECH_ICON_BY_LABEL: Record<string, IconName> = {

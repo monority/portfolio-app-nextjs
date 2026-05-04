@@ -70,6 +70,7 @@ import GameIcon from './icons/GameIcon'
 import HammerIcon from './icons/HammerIcon'
 import DesignIcon from './icons/DesignIcon'
 import UnityIcon from './icons/UnityIcon'
+import MonorityIcon from './icons/MonorityIcon'
 
 type IconComponent = React.FC<any>
 
@@ -147,5 +148,6 @@ export const iconRegistry: Record<IconName, IconComponent> = {
     game: GameIcon,
     hammer: HammerIcon,
     design: DesignIcon,
-    unity: UnityIcon
+    unity: UnityIcon,
+    monority: MonorityIcon,
 }
