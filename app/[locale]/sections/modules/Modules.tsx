@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from "react"
-import { AnimatePresence, motion } from "framer-motion"
-import { useLocale, useTranslations } from "next-intl"
+import { motion } from "framer-motion"
+import { useLocale } from "next-intl"
 import type { Module } from "../../../../types/index"
 import type { IconName } from "@/components/ui/icon/types"
 import { SectionEyebrow, SectionHeader } from "@/components/ui/section"
@@ -13,45 +12,12 @@ import {
 } from "@/components/ui/section/motion"
 import Badge from "@/components/ui/badge"
 import Icon from "@/components/ui/icon/Icon"
-import { MODULE_ICON_BY_ID, MODULES, MODULE_TECH_ICON_BY_LABEL } from "@constants/modules.data"
+import { MODULE_ICON_BY_ID, MODULES, MODULES_COPY, MODULE_TECH_ICON_BY_LABEL } from "@constants/modules.data"
 import { useTheme } from "@/components/ThemeProvider"
+import { getPanelThemeStyle } from "../shared/panelTheme"
+import { getShowcasePickerTransition, ShowcasePanel, useActiveShowcaseItem } from "../shared/showcase"
 
 import "./modules.css"
-
-function getModuleTheme(module: Module, resolvedTheme: "light" | "dark") {
-    const palette =
-        resolvedTheme === "light"
-            ? module.palette?.light ?? module.palette?.dark
-            : module.palette?.dark ?? module.palette?.light
-
-    return {
-        accent: palette?.accent ?? "var(--foreground)",
-        bg: palette?.bg ?? "var(--background)",
-        surface: palette?.surface ?? "var(--card)",
-        fg: palette?.fg ?? "var(--foreground)",
-    }
-}
-
-function getModuleThemeStyle(module: Module, resolvedTheme: "light" | "dark"): React.CSSProperties {
-    const theme = getModuleTheme(module, resolvedTheme)
-    const isLight = resolvedTheme === "light"
-
-    return {
-        "--module-accent": theme.accent,
-        "--module-bg": theme.bg,
-        "--module-surface": theme.surface,
-        "--module-fg": theme.fg,
-        "--module-accent-soft": `color-mix(in srgb, ${theme.accent} ${isLight ? "18%" : "10%"}, transparent)`,
-        "--module-accent-strong": `color-mix(in srgb, ${theme.accent} ${isLight ? "72%" : "58%"}, white ${isLight ? "28%" : "42%"})`,
-        "--module-accent-border": `color-mix(in srgb, ${theme.accent} ${isLight ? "18%" : "8%"}, var(--border))`,
-        "--module-accent-border-strong": `color-mix(in srgb, ${theme.accent} ${isLight ? "34%" : "14%"}, var(--border))`,
-        "--module-accent-wash": `color-mix(in srgb, ${theme.accent} ${isLight ? "16%" : "8%"}, transparent)`,
-        "--module-accent-glow": `color-mix(in srgb, ${theme.accent} ${isLight ? "12%" : "6%"}, transparent)`,
-        "--module-surface-fill": isLight
-            ? `color-mix(in srgb, ${theme.surface} 92%, ${theme.accent} 8%)`
-            : `color-mix(in srgb, ${theme.surface} 96%, transparent)`,
-    } as React.CSSProperties
-}
 
 function getModuleIcon(module: Module): IconName {
     return MODULE_ICON_BY_ID[module.id] ?? "arrowRight"
@@ -62,12 +28,10 @@ function getTechIcon(tech: string): IconName | null {
 }
 
 export default function Modules() {
-    const t = useTranslations("modules")
     const locale = useLocale() as "fr" | "en"
     const { resolvedTheme } = useTheme()
-    const [activeId, setActiveId] = useState<string>(MODULES[0].id)
-
-    const activeModule = MODULES.find((module) => module.id === activeId) ?? MODULES[0]
+    const { activeId, setActiveId, activeItem: activeModule } = useActiveShowcaseItem(MODULES)
+    const copy = MODULES_COPY[locale]
 
     return (
         <section className="modules" id="modules">
@@ -80,10 +44,10 @@ export default function Modules() {
                     variants={sectionFadeUp}
                     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 >
-                    <SectionEyebrow number="04" label={t("sectionLabel")} />
+                    <SectionEyebrow number="04" label={copy.sectionLabel} />
                     <SectionHeader
-                        title={t("heading")}
-                        intro={t("intro")}
+                        title={copy.heading}
+                        intro={copy.intro}
                         titleClassName="modules-title"
                         introClassName="modules-intro"
                     />
@@ -104,24 +68,22 @@ export default function Modules() {
                             onClick={() => setActiveId(module.id)}
                             aria-pressed={activeId === module.id}
                             aria-label={module.titleDisplay}
-                            style={activeId === module.id ? getModuleThemeStyle(module, resolvedTheme) : undefined}
+                            style={activeId === module.id ? getPanelThemeStyle(module, resolvedTheme) : undefined}
                             variants={sectionFadeUp}
-                            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1], delay: index * 0.05 }}
+                            transition={getShowcasePickerTransition(index)}
                         >
                             <span className="modules-picker__icon">
                                 <Icon name={getModuleIcon(module)} sizeClass="icon-sm" aria-hidden="true" />
                             </span>
                             <span className="modules-picker__copy">
                                 <span className="modules-picker__name">{module.titleDisplay}</span>
-                                <span className="modules-picker__meta">{module.category}</span>
+                                <span className="modules-picker__meta">{module.category[locale]}</span>
                             </span>
                         </motion.button>
                     ))}
                 </motion.div>
 
-                <AnimatePresence mode="wait">
-                    <ModulePanel key={activeModule.id} module={activeModule} locale={locale} t={t} resolvedTheme={resolvedTheme} />
-                </AnimatePresence>
+                <ModulePanel module={activeModule} locale={locale} copy={copy} resolvedTheme={resolvedTheme} />
             </div>
         </section>
     )
@@ -130,36 +92,33 @@ export default function Modules() {
 function ModulePanel({
     module,
     locale,
-    t,
+    copy,
     resolvedTheme,
 }: {
     module: Module
     locale: "fr" | "en"
-    t: (key: string) => string
+    copy: (typeof MODULES_COPY)["fr"]
     resolvedTheme: "light" | "dark"
 }) {
     return (
-        <motion.div
+        <ShowcasePanel
+            panelKey={module.id}
             className="module-panel panel-container"
-            style={getModuleThemeStyle(module, resolvedTheme)}
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            style={getPanelThemeStyle(module, resolvedTheme)}
         >
             <div className="panel-ambient" aria-hidden="true" />
 
             <article className="module-panel__card module-panel__hero panel-card">
                 <div className="panel-hero-top">
                     <div className="panel-hero-copy">
-                        <span className="module-panel__kicker">{module.category}</span>
+                        <span className="module-panel__kicker">{module.category[locale]}</span>
                         <h3 className="panel-title module-panel__title">{module.titleDisplay}</h3>
                         <p className="panel-tagline module-panel__tagline">{module.tagline[locale]}</p>
                     </div>
                     <div className="panel-meta">
                         <span>{module.year}</span>
                         <span className="panel-meta-dot" aria-hidden="true" />
-                        <span>{t("miniLabel")}</span>
+                        <span>{copy.miniLabel}</span>
                     </div>
                 </div>
 
@@ -170,18 +129,18 @@ function ModulePanel({
                     <div className="panel-actions">
                         {module.live && (
                             <a href={module.live} target="_blank" rel="noopener noreferrer" className="module-panel__link module-panel__link--primary">
-                                {t("live")}
+                                {copy.live}
                                 <Icon name="arrowRight" sizeClass="icon-sm" aria-hidden="true" />
                             </a>
                         )}
                         {module.github && (
                             <a href={module.github} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                                {t("github")}
+                                {copy.github}
                             </a>
                         )}
                         {module.npm && (
                             <a href={module.npm} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
-                                {t("npm")}
+                                {copy.npm}
                             </a>
                         )}
                     </div>
@@ -189,7 +148,7 @@ function ModulePanel({
             </article>
 
             <article className="module-panel__card panel-card">
-                <span className="panel-label">{t("highlights")}</span>
+                <span className="panel-label">{copy.highlights}</span>
                 <ul className="panel-list">
                     {module.highlights.map((highlight) => (
                         <li key={highlight[locale]} className="panel-list-item">
@@ -201,7 +160,7 @@ function ModulePanel({
             </article>
 
             <article className="module-panel__card panel-card">
-                <span className="panel-label">{t("stack")}</span>
+                <span className="panel-label">{copy.stack}</span>
                 <div className="panel-tech">
                     {module.tech.map((tech) => {
                         const techIcon = getTechIcon(tech)
@@ -219,6 +178,6 @@ function ModulePanel({
                     })}
                 </div>
             </article>
-        </motion.div >
+        </ShowcasePanel>
     )
 }

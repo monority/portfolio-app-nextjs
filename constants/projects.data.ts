@@ -1,5 +1,107 @@
-import type { Person, Project, TimelineEntry, Quality } from '../types/index'
+import type { Lang, Person, Project, TimelineEntry, Quality } from '../types/index'
 import type { IconName } from '@/components/ui/icon/types'
+
+export const PROJECTS_COPY: Record<Lang, {
+  sectionLabel: string
+  heading: string
+  intro: string
+  pickerLabel: string
+  paletteLabel: string
+  lightMode: string
+  darkMode: string
+  scopeLabel: string
+  openSite: string
+  liveSite: string
+  techStack: string
+  github: string
+  fullscreen: string
+  openFullscreenGallery: string
+  resetZoom: string
+  closeModal: string
+  previousImage: string
+  nextImage: string
+  zoomOut: string
+  zoomIn: string
+  viewImage: (index: number) => string
+  showImage: (index: number) => string
+}> = {
+  fr: {
+    sectionLabel: 'Projets',
+    heading: 'Une selection de projets recents',
+    intro: 'Des contextes differents, une meme intention : rendre un produit plus simple a comprendre, plus agreable a utiliser et plus solide cote front.',
+    pickerLabel: 'Choisir un projet :',
+    paletteLabel: 'Palette',
+    lightMode: 'Mode clair',
+    darkMode: 'Mode sombre',
+    scopeLabel: 'Perimetre',
+    openSite: 'Voir le site',
+    liveSite: 'Voir le site live',
+    techStack: 'Stack technique',
+    github: 'GitHub',
+    fullscreen: 'Fullscreen',
+    openFullscreenGallery: 'Ouvrir la galerie en plein ecran',
+    resetZoom: 'Reinitialiser le zoom',
+    closeModal: 'Fermer la modal',
+    previousImage: 'Image precedente',
+    nextImage: 'Image suivante',
+    zoomOut: 'Reduire le zoom',
+    zoomIn: 'Augmenter le zoom',
+    viewImage: (index) => `Voir l'image ${index}`,
+    showImage: (index) => `Afficher l'image ${index}`,
+  },
+  en: {
+    sectionLabel: 'Projects',
+    heading: 'A selection of recent work',
+    intro: 'Different contexts, one intention: make a product easier to understand, more enjoyable to use and more solid on the front.',
+    pickerLabel: 'Pick a project:',
+    paletteLabel: 'Colour palette',
+    lightMode: 'Light mode',
+    darkMode: 'Dark mode',
+    scopeLabel: 'Project scope',
+    openSite: 'Open site',
+    liveSite: 'Check live site',
+    techStack: 'Tech stack',
+    github: 'GitHub',
+    fullscreen: 'Fullscreen',
+    openFullscreenGallery: 'Open fullscreen gallery',
+    resetZoom: 'Reset zoom',
+    closeModal: 'Close modal',
+    previousImage: 'Previous image',
+    nextImage: 'Next image',
+    zoomOut: 'Zoom out',
+    zoomIn: 'Zoom in',
+    viewImage: (index) => `View image ${index}`,
+    showImage: (index) => `Show image ${index}`,
+  },
+}
+
+export const PROJECT_ICON_BY_ID: Record<string, IconName> = {
+  'human-work-force': 'humanworkforce',
+  'dashboard-rch': 'dashboard',
+  skillswap: 'skyllswap',
+  horloges: 'horloges',
+  'cesar-lezard': 'cesarlezard',
+  'monority-base': 'library',
+}
+
+export const PROJECT_TECH_ICON_BY_LABEL: Record<string, IconName> = {
+  react: 'react',
+  'react 19': 'react',
+  'next.js': 'nextjs',
+  typescript: 'typescript',
+  'node.js': 'node',
+  websocket: 'websocket',
+  'd3.js': 'd3js',
+  postgresql: 'sql',
+  prisma: 'prisma',
+  stripe: 'arrowRight',
+  gsap: 'gsap',
+  'three.js': 'threejs',
+  css: 'css',
+  storybook: 'storybook',
+  i18n: 'i18n',
+  'framer motion': 'motion',
+}
 
 // ─── Tech stack row classes (About section) ───────────────────────────
 export const TECH_ROW_CLASSES = {
@@ -123,13 +225,13 @@ export const TIMELINE: TimelineEntry[] = [
     type: 'education',
   },
   {
-    id: 'sneakara',
+    id: 'horloges',
     year: '2023',
-    title: 'Sneakara',
+    title: 'Horloges',
     subtitle: 'Projet personnel',
     description: {
-      fr: 'Marketplace sneakers avec filtres avancés et système de wishlist. Next.js, Prisma, PostgreSQL.',
-      en: 'Sneakers marketplace with advanced filters and wishlist. Next.js, Prisma, PostgreSQL.',
+      fr: 'Marketplace de montres avec filtres avancés et système de wishlist. Next.js, Prisma, PostgreSQL.',
+      en: 'Watches marketplace with advanced filters and wishlist. Next.js, Prisma, PostgreSQL.',
     },
     type: 'project',
   },
@@ -141,7 +243,10 @@ export const PROJECTS: Project[] = [
     id: 'human-work-force',
     title: 'HUMAN WORK FORCE',
     titleDisplay: 'Human Work Force',
-    tagline: 'Les IA embauchent des humains.',
+    tagline: {
+      fr: 'Les IA embauchent des humains.',
+      en: 'AIs hire humans.',
+    },
     description: {
       fr: 'Concept SaaS satirique où les intelligences artificielles recrutent des humains pour leurs tâches créatives, avec un ton volontairement décalé mais une exécution très produit.',
       en: 'Satirical SaaS concept where AIs recruit humans for creative tasks, with a deliberately playful tone but a product-grade execution.',
@@ -152,10 +257,14 @@ export const PROJECTS: Project[] = [
     },
     tech: ['React 19', 'TypeScript', 'i18n', 'Framer Motion'],
     year: '2024',
-    tags: ['SaaS', 'concept', 'direction artistique'],
+    tags: [
+      { fr: 'SaaS', en: 'SaaS' },
+      { fr: 'concept', en: 'concept' },
+      { fr: 'direction artistique', en: 'art direction' },
+    ],
     featured: true,
     live: 'https://humanworkforce.vercel.app',
-    github: 'https://github.com/monority/hwf',
+    github: 'https://github.com/monority/hwf-app-react',
     visual: '/images/projects/hwf/hwf-1.webp',
     gallery: [
       '/images/projects/hwf/hwf-1.webp',
@@ -182,7 +291,10 @@ export const PROJECTS: Project[] = [
     id: 'dashboard-rch',
     title: 'DASHBOARD',
     titleDisplay: 'Dashboard',
-    tagline: 'Données de marché en temps réel.',
+    tagline: {
+      fr: 'Donnees de marche en temps reel.',
+      en: 'Real-time market data.',
+    },
     description: {
       fr: 'Dashboard de visualisation de données financières avec mise à jour WebSocket, pensé pour lire l\'info rapidement et garder un rythme visuel vivant.',
       en: 'Financial data visualization dashboard with WebSocket updates, designed for fast readability and a lively visual rhythm.',
@@ -193,10 +305,14 @@ export const PROJECTS: Project[] = [
     },
     tech: ['React', 'D3.js', 'WebSocket', 'TypeScript'],
     year: '2024',
-    tags: ['dashboard', 'data', 'temps réel'],
+    tags: [
+      { fr: 'dashboard', en: 'dashboard' },
+      { fr: 'data', en: 'data' },
+      { fr: 'temps reel', en: 'real-time' },
+    ],
     featured: false,
     live: 'https://dashboard-rch.vercel.app',
-    github: 'https://github.com/monority/dashboard-rch',
+    github: 'https://github.com/monority/dashboard-app-react',
     visual: '/images/projects/dashboard/dashboard-1.webp',
     gallery: [
       '/images/projects/dashboard/dashboard-1.webp',
@@ -217,7 +333,10 @@ export const PROJECTS: Project[] = [
     id: 'skillswap',
     title: 'SKILLSWAP',
     titleDisplay: 'SkillSwap',
-    tagline: 'Échangez vos compétences.',
+    tagline: {
+      fr: 'Echangez vos competences.',
+      en: 'Exchange your skills.',
+    },
     description: {
       fr: 'Plateforme peer-to-peer d\'échange de compétences, orientée communauté, confiance et échanges simples entre profils complémentaires.',
       en: 'Peer-to-peer skill exchange platform, focused on community, trust, and simple exchanges between complementary profiles.',
@@ -228,10 +347,15 @@ export const PROJECTS: Project[] = [
     },
     tech: ['React 19', 'Node.js', 'WebSocket', 'PostgreSQL'],
     year: '2024',
-    tags: ['plateforme', 'social', 'fullstack', 'matching'],
+    tags: [
+      { fr: 'plateforme', en: 'platform' },
+      { fr: 'social', en: 'social' },
+      { fr: 'fullstack', en: 'fullstack' },
+      { fr: 'matching', en: 'matching' },
+    ],
     featured: false,
     live: 'https://skyllswap.vercel.app',
-    github: 'https://github.com/monority/skyllswap',
+    github: 'https://github.com/monority/skyllswap-app-react',
     visual: '/images/projects/skyllswap/skyllswap-1.webp',
     gallery: [
       '/images/projects/skyllswap/skyllswap-1.webp',
@@ -252,7 +376,10 @@ export const PROJECTS: Project[] = [
     id: 'horloges',
     title: 'HORLOGES',
     titleDisplay: 'Horloges',
-    tagline: 'La marketplace des montres rares.',
+    tagline: {
+      fr: 'La marketplace des montres rares.',
+      en: 'Marketplace for rare watches.',
+    },
     description: {
       fr: 'Marketplace dédiée aux montres avec filtres avancés, conçue pour une lecture rapide des collections et une navigation plus premium.',
       en: 'Watches marketplace with advanced filters, designed for fast collection scanning and a more premium browsing experience.',
@@ -263,10 +390,14 @@ export const PROJECTS: Project[] = [
     },
     tech: ['Next.js', 'Prisma', 'PostgreSQL', 'Stripe'],
     year: '2023',
-    tags: ['e-commerce', 'marketplace', 'luxe'],
+    tags: [
+      { fr: 'e-commerce', en: 'e-commerce' },
+      { fr: 'marketplace', en: 'marketplace' },
+      { fr: 'luxe', en: 'luxury' },
+    ],
     featured: false,
     live: 'https://horloges.vercel.app',
-    github: 'https://github.com/monority/horloge-app-react',
+    github: 'https://github.com/monority/horloges-app-react',
     visual: '/images/projects/horloges/horloges-1.webp',
     gallery: [
       '/images/projects/horloges/horloges-1.webp',
@@ -287,7 +418,10 @@ export const PROJECTS: Project[] = [
     id: 'cesar-lezard',
     title: 'CESAR_LEZARD',
     titleDisplay: 'César Lézard',
-    tagline: 'Expérience musicale immersive.',
+    tagline: {
+      fr: 'Experience musicale immersive.',
+      en: 'Immersive music experience.',
+    },
     description: {
       fr: 'Site vitrine interactif pour un artiste musical, pensé comme une immersion visuelle et sonore plutôt qu\'une simple landing page.',
       en: 'Interactive showcase for a music artist, built as a visual and sonic immersion rather than a simple landing page.',
@@ -298,10 +432,14 @@ export const PROJECTS: Project[] = [
     },
     tech: ['Next.js', 'GSAP', 'Three.js', 'CSS'],
     year: '2023',
-    tags: ['vitrine', 'musique', 'immersif'],
+    tags: [
+      { fr: 'vitrine', en: 'showcase' },
+      { fr: 'musique', en: 'music' },
+      { fr: 'immersif', en: 'immersive' },
+    ],
     featured: false,
-    live: 'https://cesarl.vercel.app',
-    github: 'https://github.com/monority/cesar-lezard',
+    live: 'https://cesarlezard.com',
+    github: 'https://github.com/monority/cesarlezard-app-react',
     visual: '/images/projects/cesarlezard/cesarlezard-1.webp',
     gallery: [
       '/images/projects/cesarlezard/cesarlezard-1.webp',
@@ -322,7 +460,10 @@ export const PROJECTS: Project[] = [
     id: 'monority-base',
     title: 'MONORITY_BASE',
     titleDisplay: 'Monority Base',
-    tagline: 'Design system open source.',
+    tagline: {
+      fr: 'Design system open source.',
+      en: 'Open-source design system.',
+    },
     description: {
       fr: 'Bibliothèque de composants React avec design system complet, pensée pour servir de base solide et réutilisable sur plusieurs projets.',
       en: 'React component library with a complete design system, built as a solid and reusable base for multiple projects.',
@@ -333,7 +474,11 @@ export const PROJECTS: Project[] = [
     },
     tech: ['React', 'Storybook', 'TypeScript', 'CSS'],
     year: '2023',
-    tags: ['open source', 'design system', 'composants'],
+    tags: [
+      { fr: 'open source', en: 'open source' },
+      { fr: 'design system', en: 'design system' },
+      { fr: 'composants', en: 'components' },
+    ],
     featured: false,
     live: 'https://monority.vercel.app',
     github: 'https://github.com/monority/library-monority-react',

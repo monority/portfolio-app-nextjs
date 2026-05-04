@@ -4,14 +4,14 @@ export interface Project {
   id: string
   title: string            // SCREAMING_SNAKE_CASE — affiché
   titleDisplay: string     // "Human Work Force" — usage courant
-  tagline: string
-  description: { fr: string; en: string }
-  longDescription?: { fr: string; en: string }
+  tagline: LocalizedText
+  description: LocalizedText
+  longDescription?: LocalizedText
   tech: string[]
   live?: string
   github?: string
   year: string
-  tags: string[]
+  tags: LocalizedText[]
   featured?: boolean
   visual: string           // '/images/projects/xxx.webp'
   palette?: ProjectPalettes
@@ -31,20 +31,25 @@ export interface ProjectPalettes {
   light?: ProjectPalette
 }
 
+export interface LocalizedText {
+  fr: string
+  en: string
+}
+
 export interface Module {
   id: string
   title: string
   titleDisplay: string
-  tagline: { fr: string; en: string }
-  description: { fr: string; en: string }
-  details: { fr: string; en: string }
-  highlights: { fr: string; en: string }[]
+  tagline: LocalizedText
+  description: LocalizedText
+  details: LocalizedText
+  highlights: LocalizedText[]
   tech: string[]
   live?: string
   github?: string
   npm?: string
   year: string
-  category: string
+  category: LocalizedText
   featured?: boolean
   palette?: ProjectPalettes
 }
@@ -52,16 +57,16 @@ export interface Module {
 export interface CreationItem {
   id: string
   title: string
-  titleDisplay: string
-  category: { fr: string; en: string }
-  tagline: { fr: string; en: string }
-  description: { fr: string; en: string }
-  details: { fr: string; en: string }
-  highlights: { fr: string; en: string }[]
+  titleDisplay: LocalizedText
+  category: LocalizedText
+  tagline: LocalizedText
+  description: LocalizedText
+  details: LocalizedText
+  highlights: LocalizedText[]
   tools: string[]
-  outputs: string[]
+  outputs: LocalizedText[]
   year: string
-  status: { fr: string; en: string }
+  status: LocalizedText
   palette?: ProjectPalettes
   visual?: string
 }

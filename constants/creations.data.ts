@@ -1,12 +1,48 @@
-import type { CreationItem } from '../types/index'
+import type { IconName } from "@/components/ui/icon/types"
+import type { CreationItem, Lang } from '../types/index'
 import { PALETTES } from './palettes.data'
+
+export const CREATIONS_COPY: Record<Lang, {
+  sectionLabel: string
+  heading: string
+  intro: string
+  railLabel: string
+  railIntro: string
+  highlights: string
+  tools: string
+  explore: string
+}> = {
+  fr: {
+    sectionLabel: 'Création',
+    heading: 'Des créations plus libres, entre interfaces et univers de jeu',
+    intro: 'Une partie plus expérimentale de mon travail, où je construis des maps Source, des GUIs in-game et un projet de jeu vidéo avec la même exigence de rythme, de lisibilité et d\'ambiance.',
+    railLabel: 'Exploration',
+    railIntro: 'Une partie plus libre, plus monde, plus interface, plus ambiance.',
+    highlights: 'Points clés',
+    tools: 'Outils et terrain de jeu',
+    explore: 'Explorer',
+  },
+  en: {
+    sectionLabel: 'Creation',
+    heading: 'More open creative work, between interfaces and game worlds',
+    intro: 'A more experimental part of my work, where I build Source maps, in-game GUIs, and a video game project with the same attention to pacing, readability, and atmosphere.',
+    railLabel: 'Exploration',
+    railIntro: 'A freer space for worldbuilding, interface direction, and atmosphere.',
+    highlights: 'Key points',
+    tools: 'Tools and playground',
+    explore: 'Explore',
+  },
+}
 
 // ─── Creation ─────────────────────────────────────────────────────
 export const CREATIONS: CreationItem[] = [
   {
     id: 'source-maps',
     title: 'SOURCE_MAPS',
-    titleDisplay: 'Maps Source',
+    titleDisplay: {
+      fr: 'Maps Source',
+      en: 'Source Maps',
+    },
     category: {
       fr: 'Level design',
       en: 'Level design',
@@ -29,7 +65,11 @@ export const CREATIONS: CreationItem[] = [
       { fr: 'Lecture claire des volumes et des zones', en: 'Clear readability of volumes and areas' },
     ],
     tools: ['Hammer Editor', 'Source Engine', 'Level Design'],
-    outputs: ['Maps jouables', 'Prototypes d environnements', 'Scènes atmosphériques'],
+    outputs: [
+      { fr: 'Maps jouables', en: 'Playable maps' },
+      { fr: 'Prototypes d environnements', en: 'Environment prototypes' },
+      { fr: 'Scènes atmosphériques', en: 'Atmospheric scenes' },
+    ],
     year: '2024',
     status: {
       fr: 'Travaux créatifs',
@@ -41,7 +81,10 @@ export const CREATIONS: CreationItem[] = [
   {
     id: 'source-guis',
     title: 'SOURCE_GUIS',
-    titleDisplay: 'GUIs Source',
+    titleDisplay: {
+      fr: 'GUIs Source',
+      en: 'Source GUIs',
+    },
     category: {
       fr: 'Interface in-game',
       en: 'In-game interface',
@@ -64,7 +107,11 @@ export const CREATIONS: CreationItem[] = [
       { fr: 'Direction UI adaptée au contexte', en: 'UI direction tailored to the context' },
     ],
     tools: ['VGUI', 'Photoshop', 'UI Design'],
-    outputs: ['HUDs', 'Menus', 'Éléments d interface'],
+    outputs: [
+      { fr: 'HUDs', en: 'HUDs' },
+      { fr: 'Menus', en: 'Menus' },
+      { fr: 'Éléments d interface', en: 'Interface elements' },
+    ],
     year: '2024',
     status: {
       fr: 'UI créative',
@@ -76,7 +123,10 @@ export const CREATIONS: CreationItem[] = [
   {
     id: 'video-game',
     title: 'VIDEO_GAME',
-    titleDisplay: 'Jeu vidéo',
+    titleDisplay: {
+      fr: 'Jeu vidéo',
+      en: 'Video Game',
+    },
     category: {
       fr: 'Game project',
       en: 'Game project',
@@ -99,7 +149,11 @@ export const CREATIONS: CreationItem[] = [
       { fr: 'Lien fort entre interface et monde', en: 'Strong link between interface and world' },
     ],
     tools: ['Game Design', 'UI', 'Worldbuilding'],
-    outputs: ['Prototype jouable', 'Direction visuelle', 'Système d expérience'],
+    outputs: [
+      { fr: 'Prototype jouable', en: 'Playable prototype' },
+      { fr: 'Direction visuelle', en: 'Visual direction' },
+      { fr: 'Système d expérience', en: 'Experience system' },
+    ],
     year: '2025',
     status: {
       fr: 'Projet en cours',
@@ -109,3 +163,21 @@ export const CREATIONS: CreationItem[] = [
     visual: '/images/creations/itch-game.webp',
   },
 ]
+
+export const CREATION_ICON_BY_ID: Record<string, IconName> = {
+  "source-maps": "source",
+  "source-guis": "gui",
+  "video-game": "game",
+}
+
+export const CREATION_TOOL_ICON_BY_LABEL: Record<string, IconName> = {
+  "hammer editor": "hammer",
+  "source engine": "source",
+  "level design": "unity",
+  vgui: "gui",
+  photoshop: "photoshop",
+  "ui design": "figma",
+  "game design": "unity",
+  ui: "figma",
+  worldbuilding: "unity",
+}

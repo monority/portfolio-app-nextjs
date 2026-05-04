@@ -109,11 +109,12 @@
 /* ─── Panel Layout ──────────────────────────────────────────────────── */
 
 .creation-panel {
-    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.9fr);
+    grid-template-columns: minmax(0, 1.4fr) minmax(300px, 0.9fr);
     grid-template-areas:
-        "hero side-top"
-        "hero side-bottom"
-        "hero side-visual";
+        "hero visual"
+        "hero highlights"
+        "hero tools";
+    align-items: stretch;
 }
 
 /* Hero overrides */
@@ -121,6 +122,8 @@
     grid-area: hero;
     min-height: 100%;
     padding: clamp(1.25rem, 2vw, 2rem);
+    display: grid;
+    gap: var(--space-md);
     background:
         linear-gradient(155deg, color-mix(in srgb, var(--module-surface) 88%, transparent), color-mix(in srgb, var(--module-bg) 88%, transparent)),
         radial-gradient(circle at top left, color-mix(in srgb, var(--module-accent) 14%, transparent), transparent 42%);
@@ -147,15 +150,15 @@
 
 /* Card areas */
 .creation-panel__card--stacked {
-    grid-area: side-top;
+    grid-area: highlights;
 }
 
 .creation-panel__card--accent {
-    grid-area: side-bottom;
+    grid-area: tools;
 }
 
 .creation-panel__card--visual {
-    grid-area: side-visual;
+    grid-area: visual;
 }
 
 /* Accent card override */
@@ -174,6 +177,24 @@
     margin-top: auto;
 }
 
+.creation-panel__hero-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    margin-top: auto;
+}
+
+.creation-panel__outputs-list--hero {
+    flex: 1 1 18rem;
+}
+
+.creation-panel__actions {
+    margin-top: 0;
+    align-self: flex-end;
+}
+
 @media (max-width: 1024px) {
     .creation-stage {
         grid-template-columns: 1fr;
@@ -187,9 +208,9 @@
         grid-template-columns: 1fr;
         grid-template-areas:
             "hero"
-            "side-visual"
-            "side-top"
-            "side-bottom";
+            "visual"
+            "highlights"
+            "tools";
     }
 
     .creation-panel__hero {
@@ -213,5 +234,18 @@
     .creation-panel__title {
         max-width: 100%;
         font-size: clamp(2rem, 1.45rem + 6vw, 3rem);
+    }
+
+    .creation-panel__hero-footer {
+        align-items: stretch;
+    }
+
+    .creation-panel__actions {
+        width: 100%;
+    }
+
+    .creation-panel__action-link {
+        width: 100%;
+        justify-content: center;
     }
 }

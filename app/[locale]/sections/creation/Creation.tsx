@@ -1,10 +1,9 @@
 'use client'
 
-import { useState } from "react"
-import { AnimatePresence, motion } from "framer-motion"
-import { useLocale, useTranslations } from "next-intl"
+import { motion } from "framer-motion"
+import { useLocale } from "next-intl"
 import Image from "next/image"
-import { CREATIONS } from "@constants/creations.data"
+import { CREATION_ICON_BY_ID, CREATION_TOOL_ICON_BY_LABEL, CREATIONS, CREATIONS_COPY } from "@constants/creations.data"
 import type { CreationItem } from "../../../../types"
 import type { IconName } from "@/components/ui/icon/types"
 import { SectionEyebrow, SectionHeader } from "@/components/ui/section"
@@ -14,61 +13,10 @@ import Badge from "@/components/ui/badge"
 import Button from "@/components/ui/button"
 import Icon from "@/components/ui/icon/Icon"
 import ActionLink from "@/components/ui/action-link"
+import { getPanelThemeStyle } from "../shared/panelTheme"
+import { getShowcasePickerTransition, ShowcasePanel, useActiveShowcaseItem } from "../shared/showcase"
 
 import "./creation.css"
-
-const CREATION_ICON_BY_ID: Record<string, IconName> = {
-    "source-maps": "source",
-    "source-guis": "gui",
-    "video-game": "game",
-}
-
-const CREATION_TOOL_ICON_BY_LABEL: Record<string, IconName> = {
-    "hammer editor": "hammer",
-    "source engine": "source",
-    "level design": "unity",
-    vgui: "gui",
-    photoshop: "photoshop",
-    "ui design": "figma",
-    "game design": "unity",
-    ui: "figma",
-    worldbuilding: "unity",
-}
-
-function getModuleTheme(creation: CreationItem, resolvedTheme: "light" | "dark") {
-    const palette =
-        resolvedTheme === "light"
-            ? creation.palette?.light ?? creation.palette?.dark
-            : creation.palette?.dark ?? creation.palette?.light
-
-    return {
-        accent: palette?.accent ?? "var(--foreground)",
-        bg: palette?.bg ?? "var(--background)",
-        surface: palette?.surface ?? "var(--card)",
-        fg: palette?.fg ?? "var(--foreground)",
-    }
-}
-
-function getModuleThemeStyle(creation: CreationItem, resolvedTheme: "light" | "dark"): React.CSSProperties {
-    const theme = getModuleTheme(creation, resolvedTheme)
-    const isLight = resolvedTheme === "light"
-
-    return {
-        "--module-accent": theme.accent,
-        "--module-bg": theme.bg,
-        "--module-surface": theme.surface,
-        "--module-fg": theme.fg,
-        "--module-accent-soft": `color-mix(in srgb, ${theme.accent} ${isLight ? "18%" : "10%"}, transparent)`,
-        "--module-accent-strong": `color-mix(in srgb, ${theme.accent} ${isLight ? "72%" : "58%"}, white ${isLight ? "28%" : "42%"})`,
-        "--module-accent-border": `color-mix(in srgb, ${theme.accent} ${isLight ? "18%" : "8%"}, var(--border))`,
-        "--module-accent-border-strong": `color-mix(in srgb, ${theme.accent} ${isLight ? "34%" : "14%"}, var(--border))`,
-        "--module-accent-wash": `color-mix(in srgb, ${theme.accent} ${isLight ? "16%" : "8%"}, transparent)`,
-        "--module-accent-glow": `color-mix(in srgb, ${theme.accent} ${isLight ? "12%" : "6%"}, transparent)`,
-        "--module-surface-fill": isLight
-            ? `color-mix(in srgb, ${theme.surface} 92%, ${theme.accent} 8%)`
-            : `color-mix(in srgb, ${theme.surface} 96%, transparent)`,
-    } as React.CSSProperties
-}
 
 function getCreationIcon(id: string): IconName {
     return CREATION_ICON_BY_ID[id] ?? "arrowRight"
@@ -79,12 +27,10 @@ function getToolIcon(tool: string): IconName | null {
 }
 
 export default function Creation() {
-    const t = useTranslations("creation")
     const locale = useLocale() as "fr" | "en"
     const { resolvedTheme } = useTheme()
-    const [activeId, setActiveId] = useState<string>(CREATIONS[0].id)
-
-    const activeCreation = CREATIONS.find((item) => item.id === activeId) ?? CREATIONS[0]
+    const { activeId, setActiveId, activeItem: activeCreation } = useActiveShowcaseItem(CREATIONS)
+    const copy = CREATIONS_COPY[locale]
 
     return (
         <section className="creation" id="creation">
@@ -97,10 +43,10 @@ export default function Creation() {
                     variants={sectionFadeUp}
                     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 >
-                    <SectionEyebrow number="03" label={t("sectionLabel")} />
+                    <SectionEyebrow number="03" label={copy.sectionLabel} />
                     <SectionHeader
-                        title={t("heading")}
-                        intro={t("intro")}
+                        title={copy.heading}
+                        intro={copy.intro}
                         titleClassName="creation-title"
                         introClassName="creation-intro"
                     />
@@ -115,12 +61,8 @@ export default function Creation() {
                         variants={sectionStagger}
                     >
                         <div className="creation-rail__intro">
-                            <span className="creation-rail__eyebrow">{locale === "fr" ? "Exploration" : "Exploration"}</span>
-                            <p className="creation-rail__copy">
-                                {locale === "fr"
-                                    ? "Une partie plus libre, plus monde, plus interface, plus ambiance."
-                                    : "A freer space for worldbuilding, interface direction, and atmosphere."}
-                            </p>
+                            <span className="creation-rail__eyebrow">{copy.railLabel}</span>
+                            <p className="creation-rail__copy">{copy.railIntro}</p>
                         </div>
 
                         <div className="creation-picker">
@@ -131,20 +73,20 @@ export default function Creation() {
                                     <motion.div
                                         key={item.id}
                                         variants={sectionFadeUp}
-                                        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1], delay: index * 0.05 }}
+                                        transition={getShowcasePickerTransition(index)}
                                     >
                                         <Button
                                             variant={activeId === item.id ? "primary" : "outline"}
                                             className={`creation-picker__item${activeId === item.id ? " creation-picker__item--active" : ""}`}
                                             onClick={() => setActiveId(item.id)}
                                             aria-pressed={activeId === item.id}
-                                            style={activeId === item.id ? getModuleThemeStyle(item, resolvedTheme) : undefined}
+                                            style={activeId === item.id ? getPanelThemeStyle(item, resolvedTheme) : undefined}
                                             leftIcon={<Icon name={iconName} sizeClass="icon-sm" aria-hidden="true" />}
                                         >
                                             <span className="creation-picker__index">{String(index + 1).padStart(2, "0")}</span>
                                             <span className="creation-picker__content">
-                                                <span className="creation-picker__label">{t(`titles.${item.title}`)}</span>
-                                                <span className="creation-picker__meta">{t(`categories.${item.id}`)}</span>
+                                                <span className="creation-picker__label">{item.titleDisplay[locale]}</span>
+                                                <span className="creation-picker__meta">{item.category[locale]}</span>
                                             </span>
                                         </Button>
                                     </motion.div>
@@ -153,9 +95,7 @@ export default function Creation() {
                         </div>
                     </motion.aside>
 
-                    <AnimatePresence mode="wait">
-                        <CreationPanel key={activeCreation.id} creation={activeCreation} locale={locale} t={t} resolvedTheme={resolvedTheme} />
-                    </AnimatePresence>
+                    <CreationPanel creation={activeCreation} locale={locale} copy={copy} resolvedTheme={resolvedTheme} />
                 </div>
             </div>
         </section>
@@ -165,22 +105,19 @@ export default function Creation() {
 function CreationPanel({
     creation,
     locale,
-    t,
+    copy,
     resolvedTheme,
 }: {
     creation: CreationItem
     locale: "fr" | "en"
-    t: ((key: string) => string) & { raw: (key: string) => unknown }
+    copy: (typeof CREATIONS_COPY)["fr"]
     resolvedTheme: "light" | "dark"
 }) {
     return (
-        <motion.div
+        <ShowcasePanel
+            panelKey={creation.id}
             className="creation-panel panel-container"
-            style={getModuleThemeStyle(creation, resolvedTheme)}
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            style={getPanelThemeStyle(creation, resolvedTheme)}
         >
             <div className="panel-ambient" aria-hidden="true" />
 
@@ -188,10 +125,10 @@ function CreationPanel({
                 <div className="panel-hero-top">
                     <div className="panel-hero-copy">
                         <div className="panel-badges">
-                            <Badge variant="premium" size="sm">{t(`categories.${creation.id}`)}</Badge>
-                            <Badge variant="outline" size="sm">{t(`status.${creation.id}`)}</Badge>
+                            <Badge variant="premium" size="sm">{creation.category[locale]}</Badge>
+                            <Badge variant="outline" size="sm">{creation.status[locale]}</Badge>
                         </div>
-                        <h3 className="panel-title creation-panel__title">{t(`titles.${creation.title}`)}</h3>
+                        <h3 className="panel-title creation-panel__title">{creation.titleDisplay[locale]}</h3>
                         <p className="panel-tagline">{creation.tagline[locale]}</p>
                     </div>
                     <div className="panel-meta">
@@ -204,43 +141,45 @@ function CreationPanel({
                 <p className="panel-description">{creation.description[locale]}</p>
                 <p className="panel-details">{creation.details[locale]}</p>
 
-                <div className="panel-outputs-list creation-panel__outputs-list--hero">
-                    {(t.raw(`outputsData.${creation.id}`) as string[]).map((output, index) => (
-                        <Badge key={index} variant="info" size="sm">
-                            {output}
-                        </Badge>
-                    ))}
-                </div>
+                <div className="creation-panel__hero-footer">
+                    <div className="panel-outputs-list creation-panel__outputs-list--hero">
+                        {creation.outputs.map((output) => (
+                            <Badge key={output[locale]} variant="info" size="sm">
+                                {output[locale]}
+                            </Badge>
+                        ))}
+                    </div>
 
-                <div className="panel-actions">
-                    <ActionLink
-                        href="https://example.com"
-                        label={t("explore")}
-                        icon="arrowRight"
-                        variant="solid"
-                        className="creation-panel__action-link"
-                    />
+                    <div className="panel-actions creation-panel__actions">
+                        <ActionLink
+                            href="https://example.com"
+                            label={copy.explore}
+                            icon="arrowRight"
+                            variant="solid"
+                            className="creation-panel__action-link"
+                            external
+                        />
+                    </div>
                 </div>
             </article>
 
             <article className="creation-panel__card creation-panel__card--stacked panel-card">
-                <span className="panel-label">{t("highlights")}</span>
+                <span className="panel-label">{copy.highlights}</span>
                 <ul className="panel-list">
-                    {(t.raw(`highlightsData.${creation.id}`) as string[]).map((highlight, index) => (
-                        <li key={index} className="panel-list-item">
+                    {creation.highlights.map((highlight) => (
+                        <li key={highlight[locale]} className="panel-list-item">
                             <span className="panel-list-bullet" aria-hidden="true" />
-                            <span>{highlight}</span>
+                            <span>{highlight[locale]}</span>
                         </li>
                     ))}
                 </ul>
             </article>
 
             <article className="creation-panel__card creation-panel__card--accent panel-card">
-                <span className="panel-label">{t("tools")}</span>
+                <span className="panel-label">{copy.tools}</span>
                 <div className="panel-tech">
                     {creation.tools.map((tool) => {
                         const iconName = getToolIcon(tool)
-                        const toolKey = tool.toLowerCase().replace(/\s+/g, '-')
 
                         return (
                             <Badge
@@ -249,7 +188,7 @@ function CreationPanel({
                                 size="sm"
                                 icon={iconName ? <Icon name={iconName} sizeClass="icon-sm" aria-hidden="true" /> : undefined}
                             >
-                                {t(`toolsData.${toolKey}`)}
+                                {tool}
                             </Badge>
                         )
                     })}
@@ -261,7 +200,7 @@ function CreationPanel({
                     <div className="panel-visual-frame">
                         <Image
                             src={creation.visual}
-                            alt={t(`titles.${creation.title}`)}
+                            alt={creation.titleDisplay[locale]}
                             fill
                             className="panel-visual-img"
                             sizes="(max-width: 768px) 100vw, 400px"
@@ -269,6 +208,6 @@ function CreationPanel({
                     </div>
                 </article>
             )}
-        </motion.div>
+        </ShowcasePanel>
     )
 }

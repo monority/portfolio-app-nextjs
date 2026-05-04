@@ -6,6 +6,7 @@
   border: var(--border-width) solid var(--card-border);
   background: var(--card);
   padding: var(--padding-md);
+  gap: var(--space-xs);
   transition: all var(--transition-base);
   font-size: var(--font-size-base);
   position: relative;

@@ -1,6 +1,41 @@
 import type { IconName } from "@/components/ui/icon/types"
-import type { Module } from "../types/index"
+import type { Lang, Module } from "../types/index"
 import { PALETTES } from './palettes.data'
+
+export const MODULES_COPY: Record<Lang, {
+    sectionLabel: string
+    heading: string
+    intro: string
+    highlights: string
+    stack: string
+    live: string
+    github: string
+    npm: string
+    miniLabel: string
+}> = {
+    fr: {
+        sectionLabel: 'Modules',
+        heading: 'Des briques plus petites, pensees pour etre utiles',
+        intro: 'Des mini projets plus cibles, construits comme des modules autonomes : une intention claire, une execution propre et une base facile a faire evoluer.',
+        highlights: 'Points cles',
+        stack: 'Stack technique',
+        live: 'Voir le module',
+        github: 'GitHub',
+        npm: 'npm',
+        miniLabel: 'Format mini',
+    },
+    en: {
+        sectionLabel: 'Modules',
+        heading: 'Smaller building blocks, designed to stay useful',
+        intro: 'More focused mini projects, built like self-contained modules: clear intent, clean execution, and a structure that stays easy to evolve.',
+        highlights: 'Key highlights',
+        stack: 'Tech stack',
+        live: 'Open module',
+        github: 'GitHub',
+        npm: 'npm',
+        miniLabel: 'Mini format',
+    },
+}
 
 export const MODULES: Module[] = [
     {
@@ -26,7 +61,10 @@ export const MODULES: Module[] = [
         ],
         tech: ['Next.js', 'TypeScript', 'CSS'],
         year: '2025',
-        category: 'Utility',
+        category: {
+            fr: 'Utilitaire',
+            en: 'Utility',
+        },
         github: 'https://github.com/monority/convert-img',
         npm: 'https://github.com/monority/convert-img',
         palette: PALETTES.blue,
@@ -54,7 +92,10 @@ export const MODULES: Module[] = [
         ],
         tech: ['Node.js', 'API', 'TypeScript'],
         year: '2025',
-        category: 'Automation',
+        category: {
+            fr: 'Automatisation',
+            en: 'Automation',
+        },
         github: 'https://github.com/monority/screenshot-api',
         npm: 'https://github.com/monority/screenshot-api',
         palette: PALETTES.gold,
@@ -82,7 +123,10 @@ export const MODULES: Module[] = [
         ],
         tech: ['Git', 'Node.js', 'CLI'],
         year: '2025',
-        category: 'Developer tool',
+        category: {
+            fr: 'Outil dev',
+            en: 'Developer tool',
+        },
         github: 'https://github.com/monority/git-quality-commit',
         npm: 'https://www.npmjs.com/package/commit-quality-check',
         palette: PALETTES.green,

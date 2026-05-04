@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import { AnimatePresence, motion } from "framer-motion"
+import { PROJECTS_COPY } from "@constants/projects.data"
 import type { Project } from "../../../../types/index"
 
 const MIN_ZOOM = 1
@@ -39,18 +40,16 @@ function useMediaQuery(query: string) {
 }
 
 export default function ProjectVisual({ project, locale }: { project: Project; locale: "fr" | "en" }) {
+    const copy = PROJECTS_COPY[locale]
     const isDesktop = useMediaQuery("(min-width: 1024px)")
     const gallery = (isDesktop ? project.galleryDesktop : undefined) ?? project.gallery ?? [project.visual]
     const hasMultiple = gallery.length >= 2
     const [activeSlide, setActiveSlide] = useState(0)
     const [isFullscreenOpen, setIsFullscreenOpen] = useState(false)
     const [zoom, setZoom] = useState(MIN_ZOOM)
-    const activeImage = gallery[activeSlide]
+    const boundedActiveSlide = gallery.length === 0 ? 0 : Math.min(activeSlide, gallery.length - 1)
+    const activeImage = gallery[boundedActiveSlide]
     const isCompactSlide = isCompactGalleryImage(project.id, activeImage)
-
-    useEffect(() => {
-        setActiveSlide(0)
-    }, [gallery.length, project.id])
 
     useEffect(() => {
         if (!isFullscreenOpen) return undefined
@@ -94,15 +93,21 @@ export default function ProjectVisual({ project, locale }: { project: Project; l
         return () => window.removeEventListener("keydown", handleKeyDown)
     }, [gallery.length, hasMultiple, isFullscreenOpen])
 
-    const goToPrevious = () => setActiveSlide((current) => (current === 0 ? gallery.length - 1 : current - 1))
-    const goToNext = () => setActiveSlide((current) => (current === gallery.length - 1 ? 0 : current + 1))
+    const goToPrevious = () => setActiveSlide((current) => {
+        const safeCurrent = Math.min(current, gallery.length - 1)
+        return safeCurrent === 0 ? gallery.length - 1 : safeCurrent - 1
+    })
+    const goToNext = () => setActiveSlide((current) => {
+        const safeCurrent = Math.min(current, gallery.length - 1)
+        return safeCurrent === gallery.length - 1 ? 0 : safeCurrent + 1
+    })
     const openFullscreen = () => { setIsFullscreenOpen(true); setZoom(MIN_ZOOM) }
     const closeFullscreen = () => setIsFullscreenOpen(false)
 
-    const zoomLabel = locale === "fr" ? "Zoom" : "Zoom"
-    const fullscreenLabel = locale === "fr" ? "Ouvrir la galerie en plein écran" : "Open fullscreen gallery"
-    const resetZoomLabel = locale === "fr" ? "Réinitialiser le zoom" : "Reset zoom"
-    const closeLabel = locale === "fr" ? "Fermer la modal" : "Close modal"
+    const zoomLabel = "Zoom"
+    const fullscreenLabel = copy.openFullscreenGallery
+    const resetZoomLabel = copy.resetZoom
+    const closeLabel = copy.closeModal
 
     return (
         <div className="project-bento__visual">
@@ -110,8 +115,8 @@ export default function ProjectVisual({ project, locale }: { project: Project; l
                 <div className="project-bento__gallery-main">
                     <button type="button" className="project-bento__gallery-stage" onClick={openFullscreen} aria-label={fullscreenLabel}>
                         <AnimatePresence mode="wait">
-                            <motion.div key={`${project.id}-${activeSlide}`} className={`project-bento__gallery-slide${isCompactSlide ? " project-bento__gallery-slide--compact" : ""}`} initial={{ opacity: 0, scale: 1.02 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.985 }} transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}>
-                                <Image src={activeImage} alt={`${project.titleDisplay} — ${activeSlide + 1}`} fill sizes="(max-width: 900px) 100vw, 66vw" className="project-bento__gallery-img project-bento__gallery-img--main" priority />
+                            <motion.div key={`${project.id}-${boundedActiveSlide}`} className={`project-bento__gallery-slide${isCompactSlide ? " project-bento__gallery-slide--compact" : ""}`} initial={{ opacity: 0, scale: 1.02 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.985 }} transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}>
+                                <Image src={activeImage} alt={`${project.titleDisplay} — ${boundedActiveSlide + 1}`} fill sizes="(max-width: 900px) 100vw, 66vw" className="project-bento__gallery-img project-bento__gallery-img--main" priority />
                             </motion.div>
                         </AnimatePresence>
                     </button>
@@ -119,25 +124,25 @@ export default function ProjectVisual({ project, locale }: { project: Project; l
                     <div className="project-bento__gallery-topbar">
                         <button type="button" className="project-bento__fullscreen-btn" onClick={openFullscreen} aria-label={fullscreenLabel}>
                             <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M5.25 1.75H1.75V5.25M9.75 1.75H13.25V5.25M13.25 9.75V13.25H9.75M1.75 9.75V13.25H5.25" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                            <span>{locale === "fr" ? "Fullscreen" : "Fullscreen"}</span>
+                            <span>{copy.fullscreen}</span>
                         </button>
                     </div>
 
                     {hasMultiple && <>
                         <div className="project-bento__gallery-controls">
-                            <button type="button" className="project-bento__gallery-nav" onClick={goToPrevious} aria-label={locale === "fr" ? "Image précédente" : "Previous image"}><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M9.5 3.5L5 8L9.5 12.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
-                            <button type="button" className="project-bento__gallery-nav" onClick={goToNext} aria-label={locale === "fr" ? "Image suivante" : "Next image"}><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
+                            <button type="button" className="project-bento__gallery-nav" onClick={goToPrevious} aria-label={copy.previousImage}><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M9.5 3.5L5 8L9.5 12.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
+                            <button type="button" className="project-bento__gallery-nav" onClick={goToNext} aria-label={copy.nextImage}><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6.5 3.5L11 8L6.5 12.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
                         </div>
 
                         <div className="project-bento__gallery-footer">
                             <div className="project-bento__gallery-progress" aria-hidden="true">
-                                {gallery.map((_, index) => <span key={`${project.id}-dot-${index}`} className={`project-bento__gallery-dot${index === activeSlide ? " project-bento__gallery-dot--active" : ""}`} />)}
+                                {gallery.map((_, index) => <span key={`${project.id}-dot-${index}`} className={`project-bento__gallery-dot${index === boundedActiveSlide ? " project-bento__gallery-dot--active" : ""}`} />)}
                             </div>
-                            <span className="project-bento__gallery-count">{String(activeSlide + 1).padStart(2, "0")} / {String(gallery.length).padStart(2, "0")}</span>
+                            <span className="project-bento__gallery-count">{String(boundedActiveSlide + 1).padStart(2, "0")} / {String(gallery.length).padStart(2, "0")}</span>
                         </div>
 
                         <div className="project-bento__gallery-rail">
-                            {gallery.map((image, index) => <button key={`${project.id}-thumb-${index}`} type="button" className={`project-bento__gallery-rail-item${index === activeSlide ? " project-bento__gallery-rail-item--active" : ""}`} onClick={() => setActiveSlide(index)} aria-label={locale === "fr" ? `Voir l'image ${index + 1}` : `View image ${index + 1}`} aria-pressed={index === activeSlide}><span className="project-bento__gallery-rail-image"><Image src={image} alt="" fill sizes="64px" className="project-bento__gallery-img" /></span></button>)}
+                            {gallery.map((image, index) => <button key={`${project.id}-thumb-${index}`} type="button" className={`project-bento__gallery-rail-item${index === boundedActiveSlide ? " project-bento__gallery-rail-item--active" : ""}`} onClick={() => setActiveSlide(index)} aria-label={copy.viewImage(index + 1)} aria-pressed={index === boundedActiveSlide}><span className="project-bento__gallery-rail-image"><Image src={image} alt="" fill sizes="64px" className="project-bento__gallery-img" /></span></button>)}
                         </div>
                     </>}
                 </div>
@@ -149,17 +154,17 @@ export default function ProjectVisual({ project, locale }: { project: Project; l
                         <div className="project-modal__toolbar">
                             <div className="project-modal__heading">
                                 <span className="project-modal__eyebrow">{project.titleDisplay}</span>
-                                <span className="project-modal__count">{String(activeSlide + 1).padStart(2, "0")} / {String(gallery.length).padStart(2, "0")}</span>
+                                <span className="project-modal__count">{String(boundedActiveSlide + 1).padStart(2, "0")} / {String(gallery.length).padStart(2, "0")}</span>
                             </div>
 
                             <div className="project-modal__zoom-group">
-                                <button type="button" className="project-modal__tool-btn" onClick={() => setZoom((current) => clampZoom(current - ZOOM_STEP))} aria-label={locale === "fr" ? "Réduire le zoom" : "Zoom out"}>-</button>
+                                <button type="button" className="project-modal__tool-btn" onClick={() => setZoom((current) => clampZoom(current - ZOOM_STEP))} aria-label={copy.zoomOut}>-</button>
                                 <label className="project-modal__zoom-slider-wrap">
                                     <span className="project-modal__zoom-label">{zoomLabel}</span>
                                     <input type="range" min={MIN_ZOOM} max={MAX_ZOOM} step={ZOOM_STEP} value={zoom} onChange={(event) => setZoom(clampZoom(Number(event.target.value)))} className="project-modal__zoom-slider" aria-label={zoomLabel} />
                                     <span className="project-modal__zoom-value">{zoom.toFixed(1)}x</span>
                                 </label>
-                                <button type="button" className="project-modal__tool-btn" onClick={() => setZoom((current) => clampZoom(current + ZOOM_STEP))} aria-label={locale === "fr" ? "Augmenter le zoom" : "Zoom in"}>+</button>
+                                <button type="button" className="project-modal__tool-btn" onClick={() => setZoom((current) => clampZoom(current + ZOOM_STEP))} aria-label={copy.zoomIn}>+</button>
                                 <button type="button" className="project-modal__tool-btn project-modal__tool-btn--text" onClick={() => setZoom(MIN_ZOOM)} aria-label={resetZoomLabel}>1x</button>
                             </div>
 
@@ -169,20 +174,20 @@ export default function ProjectVisual({ project, locale }: { project: Project; l
                         </div>
 
                         <div className="project-modal__body">
-                            {hasMultiple && <button type="button" className="project-modal__nav" onClick={goToPrevious} aria-label={locale === "fr" ? "Image précédente" : "Previous image"}><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M10.75 4.5L6.25 9L10.75 13.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></button>}
+                            {hasMultiple && <button type="button" className="project-modal__nav" onClick={goToPrevious} aria-label={copy.previousImage}><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M10.75 4.5L6.25 9L10.75 13.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></button>}
 
                             <div className="project-modal__viewport">
                                 <div className="project-modal__image-shell">
-                                    <motion.div key={`${project.id}-modal-${activeSlide}`} className={`project-modal__image-zoom${isCompactSlide ? " project-modal__image-zoom--compact" : ""}`} animate={{ scale: zoom }} transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}>
-                                        <Image src={activeImage} alt={`${project.titleDisplay} — ${activeSlide + 1}`} fill sizes="100vw" className={`project-modal__image${isCompactSlide ? " project-modal__image--compact" : ""}`} priority />
+                                    <motion.div key={`${project.id}-modal-${boundedActiveSlide}`} className={`project-modal__image-zoom${isCompactSlide ? " project-modal__image-zoom--compact" : ""}`} animate={{ scale: zoom }} transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}>
+                                        <Image src={activeImage} alt={`${project.titleDisplay} — ${boundedActiveSlide + 1}`} fill sizes="100vw" className={`project-modal__image${isCompactSlide ? " project-modal__image--compact" : ""}`} priority />
                                     </motion.div>
                                 </div>
                             </div>
 
-                            {hasMultiple && <button type="button" className="project-modal__nav" onClick={goToNext} aria-label={locale === "fr" ? "Image suivante" : "Next image"}><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M7.25 4.5L11.75 9L7.25 13.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></button>}
+                            {hasMultiple && <button type="button" className="project-modal__nav" onClick={goToNext} aria-label={copy.nextImage}><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M7.25 4.5L11.75 9L7.25 13.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></button>}
                         </div>
 
-                        {hasMultiple && <div className="project-modal__filmstrip">{gallery.map((image, index) => <button key={`${project.id}-modal-thumb-${index}`} type="button" className={`project-modal__thumb${index === activeSlide ? " project-modal__thumb--active" : ""}`} onClick={() => setActiveSlide(index)} aria-label={locale === "fr" ? `Afficher l'image ${index + 1}` : `Show image ${index + 1}`} aria-pressed={index === activeSlide}><span className="project-modal__thumb-image"><Image src={image} alt="" fill sizes="72px" className="project-bento__gallery-img" /></span></button>)}</div>}
+                        {hasMultiple && <div className="project-modal__filmstrip">{gallery.map((image, index) => <button key={`${project.id}-modal-thumb-${index}`} type="button" className={`project-modal__thumb${index === boundedActiveSlide ? " project-modal__thumb--active" : ""}`} onClick={() => setActiveSlide(index)} aria-label={copy.showImage(index + 1)} aria-pressed={index === boundedActiveSlide}><span className="project-modal__thumb-image"><Image src={image} alt="" fill sizes="72px" className="project-bento__gallery-img" /></span></button>)}</div>}
                     </motion.div>
                 </motion.div>}
             </AnimatePresence>
