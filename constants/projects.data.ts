@@ -458,8 +458,8 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 'monority-base',
-    title: 'MONORITY_BASE',
-    titleDisplay: 'Monority Base',
+    title: 'Monority Library',
+    titleDisplay: 'Monority Library',
     tagline: {
       fr: 'Design system open source.',
       en: 'Open-source design system.',
@@ -482,9 +482,12 @@ export const PROJECTS: Project[] = [
     featured: false,
     live: 'https://monority.vercel.app',
     github: 'https://github.com/monority/library-monority-react',
-    visual: '/images/monority.svg',
+    visual: '/images/projects/library/library-1.webp',
     gallery: [
-      '/images/monority.svg',
+      '/images/projects/library/library-1.webp',
+      '/images/projects/library/library-2.webp',
+      '/images/projects/library/library-3.webp',
+      '/images/projects/library/library-4.webp',
     ],
     palette: {
       dark: {

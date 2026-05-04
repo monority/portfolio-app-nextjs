@@ -150,14 +150,13 @@ function CreationPanel({
                         ))}
                     </div>
 
-                    <div className="panel-actions creation-panel__actions">
+                    <div className="creation-panel__links">
                         <ActionLink
-                            href="https://example.com"
+                            href={creation.link}
                             label={copy.explore}
                             icon="arrowRight"
                             variant="solid"
                             className="creation-panel__action-link"
-                            external
                         />
                     </div>
                 </div>

@@ -195,9 +195,7 @@ function ProjectBento({ project, locale, copy }: { project: Project; locale: "fr
                 <ul className="project-bento__scope-list">
                     {project.tags.map((tag) => (
                         <li key={tag[locale]} className="project-bento__scope-item">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="project-bento__check" aria-hidden="true">
-                                <path d="M2 6.5L4.5 9L10 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
+                            <Icon name="arrowRight" sizeClass="icon-sm" aria-hidden="true" focusable="false" />
                             {tag[locale]}
                         </li>
                     ))}
@@ -216,7 +214,7 @@ function ProjectBento({ project, locale, copy }: { project: Project; locale: "fr
                         <Button
                             className="btn btn-primary"
                             onClick={openLiveProject}
-                            rightIcon={<Icon name="arrowRight" sizeClass="icon-sm" aria-hidden="true" focusable="false" />}
+                            leftIcon={<Icon name="arrowRight" sizeClass="icon-sm" aria-hidden="true" focusable="false" />}
                         >
                             {copy.liveSite}
                         </Button>

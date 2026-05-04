@@ -65,6 +65,7 @@ export interface CreationItem {
   highlights: LocalizedText[]
   tools: string[]
   outputs: LocalizedText[]
+  link: string
   year: string
   status: LocalizedText
   palette?: ProjectPalettes

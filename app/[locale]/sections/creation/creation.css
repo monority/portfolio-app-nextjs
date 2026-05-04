@@ -190,9 +190,17 @@
     flex: 1 1 18rem;
 }
 
-.creation-panel__actions {
+.creation-panel__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    justify-content: flex-end;
     margin-top: 0;
     align-self: flex-end;
+}
+
+.creation-panel__action-link {
+    white-space: nowrap;
 }
 
 @media (max-width: 1024px) {
@@ -240,8 +248,9 @@
         align-items: stretch;
     }
 
-    .creation-panel__actions {
+    .creation-panel__links {
         width: 100%;
+        justify-content: stretch;
     }
 
     .creation-panel__action-link {

@@ -62,7 +62,7 @@
       "screens": {
         "title": "Interfaces & flows",
         "desc": "Designing clear, well-structured screens that make journeys easier to understand and smoother to use across desktop and mobile.",
-        "context": "HWF · SkillSwap · Sneakara"
+        "context": "HWF · SkillSwap · Horloges"
       },
       "components": {
         "title": "UI systems & components",
@@ -72,7 +72,7 @@
       "backend": {
         "title": "Front-end / API integration",
         "desc": "Connecting interfaces to APIs and real use cases, with a clear and pragmatic Node.js layer when the project needs it.",
-        "context": "SkillSwap · Dashboard RCH"
+        "context": "SkillSwap · Dashboard"
       },
       "finish": {
         "title": "Execution quality",

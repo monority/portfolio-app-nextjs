@@ -62,7 +62,7 @@
             "screens": {
                 "title": "Interfaces & parcours",
                 "desc": "Concevoir des ecrans lisibles, hierarchises et coherents, penses pour rendre les parcours plus fluides sur desktop comme sur mobile.",
-                "context": "HWF · SkillSwap · Sneakara"
+                "context": "HWF · SkillSwap · Horloges"
             },
             "components": {
                 "title": "Systemes UI & composants",
@@ -72,7 +72,7 @@
             "backend": {
                 "title": "Integration front-end / API",
                 "desc": "Connecter l'interface a des APIs et a des usages concrets, avec une couche Node.js claire et pragmatique lorsque le projet le necessite.",
-                "context": "SkillSwap · Dashboard RCH"
+                "context": "SkillSwap · Dashboard"
             },
             "finish": {
                 "title": "Qualite d'execution",
