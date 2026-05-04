@@ -107,5 +107,57 @@ export interface Person {
   available: boolean
 }
 
+export type MessagingSenderRole = 'visitor' | 'admin'
+export type MessagingConversationStatus = 'active' | 'archived' | 'blocked'
+
+export interface MessagingAdminSession {
+  userId: string
+  email: string | null
+}
+
+export interface MessagingConversationSummary {
+  id: string
+  visitorUsername: string
+  status: MessagingConversationStatus
+  createdAt: string
+  updatedAt: string
+  lastMessageAt: string | null
+  lastMessagePreview: string | null
+  unreadCount: number
+}
+
+export interface MessagingMessage {
+  id: string
+  conversationId: string
+  senderRole: MessagingSenderRole
+  body: string
+  createdAt: string
+}
+
+export interface MessagingThread {
+  conversation: MessagingConversationSummary
+  messages: MessagingMessage[]
+}
+
+export interface MessagingVisitorSession {
+  conversationId: string
+  username: string
+  resumeToken: string
+}
+
+export interface MessagingStartConversationInput {
+  username: string
+  message: string
+}
+
+export interface MessagingSendMessageInput {
+  message: string
+}
+
+export interface MessagingAdminCredentials {
+  email: string
+  password: string
+}
+
 export type Theme = 'light' | 'dark'
 export type Lang = 'fr' | 'en'

@@ -22,6 +22,21 @@
   gap: var(--space-xs);
 }
 
+.header-network__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.header-network__trigger:hover {
+  color: var(--text-secondary);
+}
+
 .header-network__user-active {
   font-size: var(--font-size-base);
 }

@@ -8,6 +8,7 @@
 @import "utilities.css" layer(utilities);
 
 @import "../[locale]/features/header.css" layer(layout);
+@import "../[locale]/features/footer.css" layer(layout);
 @import "../[locale]/features/sidenav.css" layer(layout);
 @import "../[locale]/sections/hero/hero.css" layer(page);
 @import "../[locale]/sections/about/about.css" layer(page);

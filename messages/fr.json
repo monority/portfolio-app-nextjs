@@ -100,5 +100,84 @@
                 "desc": "Verifier les points qui font la difference en production : responsive, clavier, performance, coherence visuelle et robustesse de l'integration."
             }
         }
+    },
+    "footer": {
+        "tagline": "Interfaces web propres, performantes et pensees pour l'utilisateur.",
+        "availability": "Disponible pour de nouvelles missions",
+        "navLabel": "Navigation dans la page",
+        "navHeading": "Navigation",
+        "socialHeading": "Contact",
+        "builtWith": "Construit avec Next.js · TypeScript · CSS",
+        "nav": {
+            "about": "A propos",
+            "projects": "Projets",
+            "profile": "Profil"
+        }
+    },
+    "messaging": {
+        "eyebrow": "Messagerie",
+        "title": "Ouvrir un fil direct",
+        "description": "Utilise un pseudo temporaire pour commencer ou reprendre une conversation depuis ce navigateur.",
+        "close": "Fermer la fenetre de messagerie",
+        "visitor": {
+            "introTitle": "Commence avec un pseudo temporaire",
+            "introBody": "Ton fil reste disponible sur ce navigateur grace a un jeton de reprise securise.",
+            "introResume": "Conversation restauree. Tu peux continuer a repondre depuis ce navigateur.",
+            "loading": "Chargement de la conversation...",
+            "empty": "Aucun message pour le moment. Envoie le premier.",
+            "usernameLabel": "Pseudo temporaire",
+            "usernamePlaceholder": "ex : pixelronan",
+            "messageLabel": "Message",
+            "messagePlaceholder": "Explique ton besoin, ton contexte ou ta question.",
+            "startAction": "Demarrer la conversation",
+            "replyAction": "Envoyer le message",
+            "threadLabel": "Conversation avec {username}",
+            "roles": {
+                "admin": "Ronan"
+            },
+            "status": {
+                "new": "Nouveau fil",
+                "ready": "Fil actif"
+            },
+            "errors": {
+                "load": "Impossible de charger la conversation.",
+                "submit": "Impossible d'envoyer le message."
+            }
+        },
+        "admin": {
+            "eyebrow": "Boite privee",
+            "heading": "Centre de controle messagerie",
+            "description": "Consulte les fils visiteurs, reponds depuis l'application et garde l'auth Supabase reservee a l'admin.",
+            "backHome": "Retour accueil",
+            "loadingSession": "Verification de la session admin...",
+            "loadingConversations": "Chargement des conversations...",
+            "loginHeading": "Connexion admin",
+            "loginDescription": "Utilise ton email et ton mot de passe Supabase Auth.",
+            "emailLabel": "Email",
+            "passwordLabel": "Mot de passe",
+            "loginAction": "Se connecter",
+            "logoutAction": "Se deconnecter",
+            "listHeading": "Conversations",
+            "threadHeading": "Choisis une conversation",
+            "threadDescription": "Selectionne un fil visiteur pour voir l'historique complet et repondre.",
+            "threadEmpty": "Aucun message dans cette conversation.",
+            "emptyConversations": "Aucune conversation visiteur pour le moment.",
+            "emptyPreview": "Pas encore de resume",
+            "sessionActive": "Connecte en tant que {email}",
+            "replyLabel": "Reponse",
+            "replyPlaceholder": "Ecris ta reponse ici.",
+            "replyAction": "Envoyer la reponse",
+            "roles": {
+                "admin": "Admin"
+            },
+            "errors": {
+                "session": "Impossible de charger la session admin.",
+                "login": "Impossible de se connecter.",
+                "logout": "Impossible de se deconnecter.",
+                "list": "Impossible de charger les conversations.",
+                "thread": "Impossible de charger le fil.",
+                "reply": "Impossible d'envoyer la reponse."
+            }
+        }
     }
 }

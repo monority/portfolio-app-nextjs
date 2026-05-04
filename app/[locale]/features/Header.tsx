@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import MessagingModal from "@/features/messaging/components/MessagingModal";
 import DarkModeToggle from "@/components/DarkModeToggle";
 import { Icon } from "@/components/ui/icon";
 import Button from "@/components/ui/button";
@@ -12,9 +13,13 @@ import Button from "@/components/ui/button";
 function MobileMenu({
     isOpen,
     onClose,
+    isMessagingEnabled,
+    onOpenMessaging,
 }: {
     isOpen: boolean;
     onClose: () => void;
+    isMessagingEnabled: boolean;
+    onOpenMessaging: () => void;
 }) {
     const t = useTranslations("header");
     const locale = useLocale();
@@ -22,8 +27,8 @@ function MobileMenu({
     const nextLocale = locale === "fr" ? "en" : "fr";
     const localizedPath = pathname?.replace(/^\/(fr|en)(?=\/|$)/, `/${nextLocale}`) || `/${nextLocale}`;
 
-    const items: Array<{ key: string; icon: "message" | "github" | "language" | "theme"; label: string; isButton?: boolean; link?: string; isToggle?: boolean }> = [
-        { key: "message", icon: "message", label: t("message") },
+    const items: Array<{ key: string; icon: "message" | "github" | "language" | "theme"; label: string; isButton?: boolean; link?: string; isToggle?: boolean; isAction?: boolean }> = [
+        { key: "message", icon: "message", label: t("message"), isAction: isMessagingEnabled },
         { key: "github", icon: "github", label: t("github"), isButton: true },
         { key: "language", icon: "language", label: t("languageSwitchTo"), link: localizedPath },
         { key: "theme", icon: "theme", label: t("themeToggle"), isToggle: true },
@@ -61,6 +66,18 @@ function MobileMenu({
                                             <DarkModeToggle ariaLabel={item.label} />
                                             <span>{item.label}</span>
                                         </div>
+                                    ) : item.isAction ? (
+                                        <button
+                                            type="button"
+                                            className="mobile-menu__item"
+                                            onClick={() => {
+                                                onClose();
+                                                onOpenMessaging();
+                                            }}
+                                        >
+                                            <Icon name={item.icon} title={item.label} sizeClass="icon-sm" />
+                                            <span>{item.label}</span>
+                                        </button>
                                     ) : item.isButton ? (
                                         <Button variant="primary" aria-label={item.label} onClick={onClose}>
                                             <Icon name={item.icon} title={item.label} sizeClass="icon-sm" />
@@ -90,9 +107,11 @@ export default function Header() {
     const locale = useLocale();
     const pathname = usePathname();
     const t = useTranslations("header");
+    const messagingEnabled = process.env.NEXT_PUBLIC_ENABLE_MESSAGING === "true";
     const nextLocale = locale === "fr" ? "en" : "fr";
     const localizedPath = pathname?.replace(/^\/(fr|en)(?=\/|$)/, `/${nextLocale}`) || `/${nextLocale}`;
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isMessagingOpen, setIsMessagingOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
@@ -134,8 +153,22 @@ export default function Header() {
                             <div className="header-network">
                                 <ul className="header-network__list">
                                     <li className="header-network__item">
-                                        <Icon name="message" title="Message" sizeClass="icon-sm" className="header-network__icon" />
-                                        <span className="header-network__user-active">{t("message")}</span>
+                                        {messagingEnabled ? (
+                                            <button
+                                                type="button"
+                                                className="header-network__trigger"
+                                                onClick={() => setIsMessagingOpen(true)}
+                                                aria-label={t("message")}
+                                            >
+                                                <Icon name="message" title="Message" sizeClass="icon-sm" className="header-network__icon" />
+                                                <span className="header-network__user-active">{t("message")}</span>
+                                            </button>
+                                        ) : (
+                                            <>
+                                                <Icon name="message" title="Message" sizeClass="icon-sm" className="header-network__icon" />
+                                                <span className="header-network__user-active">{t("message")}</span>
+                                            </>
+                                        )}
                                     </li>
                                     <li className="header-network__item">
                                         <DarkModeToggle ariaLabel={t("themeToggle")} />
@@ -163,7 +196,13 @@ export default function Header() {
                 </motion.header>
             </AnimatePresence>
 
-            <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
+            <MobileMenu
+                isOpen={isMobileMenuOpen}
+                onClose={() => setIsMobileMenuOpen(false)}
+                isMessagingEnabled={messagingEnabled}
+                onOpenMessaging={() => setIsMessagingOpen(true)}
+            />
+            <MessagingModal isOpen={isMessagingOpen} onClose={() => setIsMessagingOpen(false)} />
         </>
     );
 }
