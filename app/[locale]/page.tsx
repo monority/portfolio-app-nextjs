@@ -1,5 +1,6 @@
 import Header from "@/[locale]/features/Header";
 import SideNav from "@/[locale]/features/SideNav";
+import Footer from "@/[locale]/features/Footer";
 import Hero from "@/[locale]/sections/hero/Hero";
 import About from "@/[locale]/sections/about/About";
 import Profile from "@/[locale]/sections/profile/Profile";
@@ -20,6 +21,7 @@ export default function HomePage() {
                 <Modules />
                 <Profile />
             </main>
+            <Footer />
         </>
     );
 }

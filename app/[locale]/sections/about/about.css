@@ -127,8 +127,13 @@
 }
 
 @keyframes about-scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
 }
 
 .about-tech {
@@ -139,6 +144,7 @@
 
 .about-tech-row {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: var(--space-md);
     padding: var(--space-sm) var(--space-xs);
@@ -185,5 +191,9 @@
     .about-left {
         border-right: 1px solid var(--border);
         padding-right: var(--space-xl);
+    }
+
+    .about-tech-row {
+        flex-direction: row;
     }
 }

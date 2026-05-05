@@ -100,5 +100,84 @@
         "desc": "Validate the details that matter in production: responsive behavior, keyboard support, performance, visual consistency and robust integration."
       }
     }
+  },
+  "footer": {
+    "tagline": "Building clean, performant and user-cented web interfaces.",
+    "availability": "Available for new projects",
+    "navLabel": "Page navigation",
+    "navHeading": "Navigate",
+    "socialHeading": "Connect",
+    "builtWith": "Built with Next.js · TypeScript · CSS",
+    "nav": {
+      "about": "About",
+      "projects": "Projects",
+      "profile": "Profile"
+    }
+  },
+  "messaging": {
+    "eyebrow": "Messaging",
+    "title": "Open a direct thread",
+    "description": "Use a temporary username to start or resume a conversation from this device.",
+    "close": "Close messaging modal",
+    "visitor": {
+      "introTitle": "Start with a temporary username",
+      "introBody": "Your thread stays available on this browser with a secure resume token.",
+      "introResume": "Conversation restored. You can keep replying from the same browser.",
+      "loading": "Loading your conversation...",
+      "empty": "No messages yet. Send the first one.",
+      "usernameLabel": "Temporary username",
+      "usernamePlaceholder": "ex: pixelronan",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Tell me about your need, context, or question.",
+      "startAction": "Start conversation",
+      "replyAction": "Send message",
+      "threadLabel": "Conversation with {username}",
+      "roles": {
+        "admin": "Ronan"
+      },
+      "status": {
+        "new": "New thread",
+        "ready": "Thread active"
+      },
+      "errors": {
+        "load": "Unable to load the conversation.",
+        "submit": "Unable to send the message."
+      }
+    },
+    "admin": {
+      "eyebrow": "Private inbox",
+      "heading": "Messaging control room",
+      "description": "Review visitor threads, reply from the app, and keep Supabase auth scoped to admin only.",
+      "backHome": "Back home",
+      "loadingSession": "Checking admin session...",
+      "loadingConversations": "Loading conversations...",
+      "loginHeading": "Admin sign in",
+      "loginDescription": "Use your Supabase Auth email and password.",
+      "emailLabel": "Email",
+      "passwordLabel": "Password",
+      "loginAction": "Sign in",
+      "logoutAction": "Sign out",
+      "listHeading": "Conversations",
+      "threadHeading": "Select a conversation",
+      "threadDescription": "Choose a visitor thread to inspect full history and reply.",
+      "threadEmpty": "No message in this conversation yet.",
+      "emptyConversations": "No visitor conversation yet.",
+      "emptyPreview": "No preview yet",
+      "sessionActive": "Signed in as {email}",
+      "replyLabel": "Reply",
+      "replyPlaceholder": "Write your answer here.",
+      "replyAction": "Send reply",
+      "roles": {
+        "admin": "Admin"
+      },
+      "errors": {
+        "session": "Unable to load admin session.",
+        "login": "Unable to sign in.",
+        "logout": "Unable to sign out.",
+        "list": "Unable to load conversations.",
+        "thread": "Unable to load thread.",
+        "reply": "Unable to send reply."
+      }
+    }
   }
 }

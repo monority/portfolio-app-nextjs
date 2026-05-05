@@ -22,6 +22,21 @@
   gap: var(--space-xs);
 }
 
+.header-network__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.header-network__trigger:hover {
+  color: var(--text-secondary);
+}
+
 .header-network__user-active {
   font-size: var(--font-size-base);
 }
@@ -29,9 +44,10 @@
 .header-shell {
   position: sticky;
   top: 0;
-  z-index: 20;
   border-bottom: var(--border-width) solid var(--border);
   background: var(--background);
+  z-index: 5;
+
 }
 
 .header-shell.scrolled {
@@ -116,7 +132,7 @@
   height: 100vh;
   background: color-mix(in oklab, var(--background) 80%, transparent);
   backdrop-filter: blur(8px);
-  z-index: 19;
+  z-index: 5;
 }
 
 .mobile-menu {
@@ -126,7 +142,7 @@
   width: 100%;
   height: calc(100vh - var(--header-height, 65px));
   background: var(--background);
-  z-index: 20;
+  z-index: 5;
   padding: var(--space-lg);
 }
 

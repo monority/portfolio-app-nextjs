@@ -1,0 +1,330 @@
+/* ─── Admin: Shell ───────────────────────────────────────────────── */
+
+.messaging-admin {
+    min-height: 100dvh;
+    background: var(--background);
+}
+
+.messaging-admin__shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+/* ─── Admin: Topbar ──────────────────────────────────────────────── */
+
+.messaging-admin__topbar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    background: var(--card);
+    border-bottom: var(--border-width) solid var(--card-border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.messaging-admin__eyebrow {
+    display: block;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-secondary);
+    letter-spacing: var(--letter-spacing-loose);
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+}
+
+.messaging-admin__title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--foreground);
+    line-height: var(--line-height-tight);
+}
+
+.messaging-admin__description {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+    line-height: var(--line-height-base);
+}
+
+/* ─── Admin: Login ───────────────────────────────────────────────── */
+
+.messaging-admin__login {
+    width: 100%;
+    max-width: 28rem;
+    margin: var(--space-xl) auto;
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--border-radius-lg);
+}
+
+/* ─── Admin: Layout ──────────────────────────────────────────────── */
+
+.messaging-admin__layout {
+    display: grid;
+    grid-template-columns: 28rem 1fr;
+    flex: 1;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .messaging-admin__layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+}
+
+/* ─── Admin: Sidebar ─────────────────────────────────────────────── */
+
+.messaging-admin__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-right: var(--border-width) solid var(--card-border);
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.messaging-admin__thread-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    border-bottom: var(--border-width) solid var(--card-border);
+    flex-shrink: 0;
+}
+
+.messaging-admin__thread-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.messaging-admin__actions {
+    flex-shrink: 0;
+}
+
+.messaging-admin__session-band {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding: var(--padding-sm) var(--space-md);
+    background: var(--hover);
+    border-bottom: var(--border-width) solid var(--card-border);
+    font-size: var(--font-size-xs);
+    flex-shrink: 0;
+}
+
+.messaging-admin__meta {
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+}
+
+/* ─── Admin: Conversation List ───────────────────────────────────── */
+
+.messaging-admin__conversation-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.messaging-admin__conversation {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: var(--space-sm) var(--space-md);
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    border-bottom: var(--border-width) solid var(--card-border);
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    transition:
+        background var(--transition-fast),
+        border-left-color var(--transition-fast);
+}
+
+.messaging-admin__conversation:hover {
+    background: var(--hover);
+}
+
+.messaging-admin__conversation--active {
+    background: var(--hover);
+    border-left-color: var(--accent);
+}
+
+.messaging-admin__conversation-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xs);
+}
+
+.messaging-admin__conversation-name {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--foreground);
+}
+
+.messaging-admin__conversation-time {
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.messaging-admin__conversation-preview {
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+}
+
+.messaging-admin__conversation-badge {
+    font-size: calc(var(--font-size-xs) * 0.85);
+    font-weight: var(--font-weight-semibold);
+    padding: 0.1rem 0.4rem;
+    border-radius: var(--border-radius-sm);
+    flex-shrink: 0;
+    text-transform: capitalize;
+}
+
+.messaging-admin__conversation-badge--active {
+    background: color-mix(in oklch, var(--color-success) 15%, transparent);
+    color: var(--color-success);
+}
+
+.messaging-admin__conversation-badge--archived {
+    background: color-mix(in oklch, var(--color-warning) 15%, transparent);
+    color: var(--color-warning);
+}
+
+.messaging-admin__conversation-badge--blocked {
+    background: color-mix(in oklch, var(--color-error) 15%, transparent);
+    color: var(--color-error);
+}
+
+/* ─── Admin: Panel ───────────────────────────────────────────────── */
+
+.messaging-admin__panel {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.messaging-admin__panel-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+}
+
+.messaging-admin__thread-summary {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+/* ─── Admin: Thread ──────────────────────────────────────────────── */
+
+.messaging-thread {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    overflow-y: auto;
+    flex: 1;
+    overscroll-behavior: contain;
+}
+
+.messaging-thread__empty {
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+    text-align: center;
+    padding: var(--space-lg);
+}
+
+/* ─── Admin: Composer ────────────────────────────────────────────── */
+
+.messaging-admin__composer {
+    border-top: var(--border-width) solid var(--card-border);
+    padding: var(--space-md);
+    flex-shrink: 0;
+}
+
+.messaging-admin__composer-actions {
+    justify-content: flex-end;
+}
+
+/* ─── Admin: Status ──────────────────────────────────────────────── */
+
+.messaging-admin__muted,
+.messaging-admin__empty {
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+    padding: var(--space-md);
+    text-align: center;
+}
+
+.messaging-status {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    padding: var(--padding-xs) var(--padding-sm);
+    border-radius: var(--border-radius-sm);
+}
+
+.messaging-status--ok {
+    color: var(--color-success);
+    background: color-mix(in oklch, var(--color-success) 12%, transparent);
+}
+
+.messaging-status--error {
+    color: var(--color-error);
+    background: color-mix(in oklch, var(--color-error) 12%, transparent);
+}
+
+/* ─── Admin: Card Typography ─────────────────────────────────────── */
+
+.messaging-card__title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--foreground);
+    line-height: var(--line-height-tight);
+}
+
+.messaging-card__text {
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+    line-height: var(--line-height-base);
+}
+
+/* ─── Admin: Form ────────────────────────────────────────────────── */
+
+.messaging-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.messaging-form__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}

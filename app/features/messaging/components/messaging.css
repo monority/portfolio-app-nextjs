@@ -1,0 +1,5 @@
+/* Styles have been split into:
+   - components/modal/modal.css   — visitor messaging modal
+   - components/admin/admin.css   — admin dashboard
+   - components/shared/shared.css — shared primitives (bubbles, form fields)
+*/

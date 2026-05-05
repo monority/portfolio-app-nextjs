@@ -264,7 +264,7 @@ export const PROJECTS: Project[] = [
     ],
     featured: true,
     live: 'https://humanworkforce.vercel.app',
-    github: 'https://github.com/monority/hwf-app-react',
+    github: 'https://github.com/monority/frontend-hwf-react',
     visual: '/images/projects/hwf/hwf-1.webp',
     gallery: [
       '/images/projects/hwf/hwf-1.webp',
@@ -312,7 +312,7 @@ export const PROJECTS: Project[] = [
     ],
     featured: false,
     live: 'https://dashboard-rch.vercel.app',
-    github: 'https://github.com/monority/dashboard-app-react',
+    github: 'https://github.com/monority/frontend-dashboard-react',
     visual: '/images/projects/dashboard/dashboard-1.webp',
     gallery: [
       '/images/projects/dashboard/dashboard-1.webp',
@@ -355,7 +355,7 @@ export const PROJECTS: Project[] = [
     ],
     featured: false,
     live: 'https://skyllswap.vercel.app',
-    github: 'https://github.com/monority/skyllswap-app-react',
+    github: 'https://github.com/monority/fullstack-skyllswap-react',
     visual: '/images/projects/skyllswap/skyllswap-1.webp',
     gallery: [
       '/images/projects/skyllswap/skyllswap-1.webp',
@@ -397,7 +397,7 @@ export const PROJECTS: Project[] = [
     ],
     featured: false,
     live: 'https://horloges.vercel.app',
-    github: 'https://github.com/monority/horloges-app-react',
+    github: 'https://github.com/monority/frontend-horloges-react',
     visual: '/images/projects/horloges/horloges-1.webp',
     gallery: [
       '/images/projects/horloges/horloges-1.webp',
@@ -439,7 +439,7 @@ export const PROJECTS: Project[] = [
     ],
     featured: false,
     live: 'https://cesarlezard.com',
-    github: 'https://github.com/monority/cesarlezard-app-react',
+    github: 'https://github.com/monority/frontend-cslz-react',
     visual: '/images/projects/cesarlezard/cesarlezard-1.webp',
     gallery: [
       '/images/projects/cesarlezard/cesarlezard-1.webp',
@@ -481,7 +481,7 @@ export const PROJECTS: Project[] = [
     ],
     featured: false,
     live: 'https://monority.vercel.app',
-    github: 'https://github.com/monority/library-monority-react',
+    github: 'https://github.com/monority/lib-monority-react',
     visual: '/images/projects/library/library-1.webp',
     gallery: [
       '/images/projects/library/library-1.webp',

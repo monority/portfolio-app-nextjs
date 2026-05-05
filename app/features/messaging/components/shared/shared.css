@@ -1,0 +1,110 @@
+/* ─── Shared: Message Bubble ─────────────────────────────────────── */
+
+.msg-bubble {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    max-width: 80%;
+}
+
+.msg-bubble--visitor {
+    align-self: flex-end;
+}
+
+.msg-bubble--admin {
+    align-self: flex-start;
+}
+
+.msg-bubble__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+}
+
+.msg-bubble--visitor .msg-bubble__meta {
+    justify-content: flex-end;
+}
+
+.msg-bubble__author {
+    font-weight: var(--font-weight-medium);
+}
+
+.msg-bubble__sep {
+    opacity: 0.4;
+}
+
+.msg-bubble__body {
+    padding: var(--padding-sm) var(--padding-md);
+    border-radius: var(--border-radius-xl);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-base);
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.msg-bubble--visitor .msg-bubble__body {
+    background: var(--accent-gradient);
+    color: #fff;
+    border-bottom-right-radius: var(--border-radius-sm);
+}
+
+.msg-bubble--admin .msg-bubble__body {
+    background: var(--hover);
+    color: var(--foreground);
+    border-bottom-left-radius: var(--border-radius-sm);
+}
+
+.msg-bubble__time {
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+/* ─── Shared: Form Field ─────────────────────────────────────────── */
+
+.msg-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-xs);
+}
+
+.msg-label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-secondary);
+}
+
+.msg-input,
+.msg-textarea {
+    width: 100%;
+    background: var(--background);
+    border: var(--border-width) solid var(--card-border);
+    border-radius: var(--border-radius-md);
+    padding: var(--padding-sm) var(--padding-md);
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-sm);
+    color: var(--foreground);
+    outline: none;
+    transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast);
+    resize: vertical;
+}
+
+.msg-input:focus,
+.msg-textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--accent) 15%, transparent);
+}
+
+.msg-input::placeholder,
+.msg-textarea::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.6;
+}
+
+.msg-textarea {
+    min-height: 5rem;
+}

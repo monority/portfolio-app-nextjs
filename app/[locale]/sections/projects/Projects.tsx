@@ -211,7 +211,6 @@ function ProjectBento({ project, locale, copy }: { project: Project; locale: "fr
                 <div className="project-bento__ctas">
                     {project.live && (
                         <Button
-                            className="btn btn-primary"
                             onClick={openLiveProject}
                             leftIcon={<Icon name="arrowRight" sizeClass="icon-sm" aria-hidden="true" focusable="false" />}
                         >
@@ -220,7 +219,7 @@ function ProjectBento({ project, locale, copy }: { project: Project; locale: "fr
                     )}
                     {project.github && (
                         <Button
-                            className="btn btn-ghost"
+                            variant="ghost"
                             onClick={openGithubProject}
                             leftIcon={<Icon name="github" sizeClass="icon-sm" aria-hidden="true" focusable="false" />}
                         >
