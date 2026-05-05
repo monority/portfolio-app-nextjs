@@ -12,7 +12,6 @@ import { useTheme } from "@/components/ThemeProvider"
 import Badge from "@/components/ui/badge"
 import Button from "@/components/ui/button"
 import Icon from "@/components/ui/icon/Icon"
-import ActionLink from "@/components/ui/action-link"
 import { getPanelThemeStyle } from "../shared/panelTheme"
 import { getShowcasePickerTransition, ShowcasePanel, useActiveShowcaseItem } from "../shared/showcase"
 
@@ -151,13 +150,13 @@ function CreationPanel({
                     </div>
 
                     <div className="creation-panel__links">
-                        <ActionLink
-                            href={creation.link}
-                            label={copy.explore}
-                            icon="arrowRight"
-                            variant="solid"
-                            className="creation-panel__action-link"
-                        />
+                        <Button
+                            variant="primary"
+                            onClick={() => window.open(creation.link, "_blank", "noopener,noreferrer")}
+                            rightIcon={<Icon name="arrowRight" sizeClass="icon-sm" aria-hidden="true" />}
+                        >
+                            {copy.explore}
+                        </Button>
                     </div>
                 </div>
             </article>

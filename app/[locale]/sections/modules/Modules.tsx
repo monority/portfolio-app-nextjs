@@ -11,6 +11,7 @@ import {
     sectionViewport,
 } from "@/components/ui/section/motion"
 import Badge from "@/components/ui/badge"
+import Button from "@/components/ui/button"
 import Icon from "@/components/ui/icon/Icon"
 import { MODULE_ICON_BY_ID, MODULES, MODULES_COPY, MODULE_TECH_ICON_BY_LABEL } from "@constants/modules.data"
 import { useTheme } from "@/components/ThemeProvider"
@@ -21,6 +22,11 @@ import "./modules.css"
 
 function getModuleIcon(module: Module): IconName {
     return MODULE_ICON_BY_ID[module.id] ?? "arrowRight"
+}
+
+function openExternalUrl(url?: string) {
+    if (!url) return
+    window.open(url, "_blank", "noopener,noreferrer")
 }
 
 function getTechIcon(tech: string): IconName | null {
@@ -128,20 +134,31 @@ function ModulePanel({
                 {(module.live || module.github || module.npm) && (
                     <div className="panel-actions">
                         {module.live && (
-                            <a href={module.live} target="_blank" rel="noopener noreferrer" className="module-panel__link module-panel__link--primary">
+                            <Button
+                                variant="primary"
+                                onClick={() => openExternalUrl(module.live)}
+                                rightIcon={<Icon name="arrowRight" sizeClass="icon-sm" aria-hidden="true" />}
+                            >
                                 {copy.live}
-                                <Icon name="arrowRight" sizeClass="icon-sm" aria-hidden="true" />
-                            </a>
+                            </Button>
                         )}
                         {module.github && (
-                            <a href={module.github} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                            <Button
+                                variant="primary"
+                                onClick={() => openExternalUrl(module.github)}
+                                leftIcon={<Icon name="github" sizeClass="icon-sm" aria-hidden="true" />}
+                            >
                                 {copy.github}
-                            </a>
+                            </Button>
                         )}
                         {module.npm && (
-                            <a href={module.npm} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
+                            <Button
+                                variant="secondary"
+                                onClick={() => openExternalUrl(module.npm)}
+                                leftIcon={<Icon name="npm" sizeClass="icon-sm" aria-hidden="true" />}
+                            >
                                 {copy.npm}
-                            </a>
+                            </Button>
                         )}
                     </div>
                 )}

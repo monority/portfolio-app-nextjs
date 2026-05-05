@@ -94,3 +94,4 @@ export type IconName =
     | 'hammer'
     | 'unity'
     | 'monority'
+    | 'npm'

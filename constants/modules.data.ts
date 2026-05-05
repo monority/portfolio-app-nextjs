@@ -127,7 +127,7 @@ export const MODULES: Module[] = [
             fr: 'Outil dev',
             en: 'Developer tool',
         },
-        github: 'https://github.com/monority/git-quality-commit',
+        github: 'https://github.com/monority/commit-quality-check',
         npm: 'https://www.npmjs.com/package/commit-quality-check',
         palette: PALETTES.green,
     },
