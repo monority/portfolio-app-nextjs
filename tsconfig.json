@@ -22,10 +22,10 @@
     "paths": {
       "@/*": ["./app/*"],
       "@/components/*": ["./app/components/*"],
-      "@components/*": ["./components/*"],
       "@lib/*": ["./lib/*"],
       "@constants/*": ["./constants/*"],
-      "@types/*": ["./types/*"]
+      "@shared-types": ["./types/index.ts"],
+      "@shared-types/*": ["./types/*"]
     }
   },
   "include": [

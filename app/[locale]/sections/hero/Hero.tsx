@@ -4,13 +4,12 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import Badge from "@/components/ui/badge";
 import { Icon } from "@/components/ui/icon";
-import LocalTime from "@/components/utils/LocalTime";
 
 export default function Hero() {
     const t = useTranslations("hero");
 
     return (
-        <section id="hero">
+        <section className="hero" id="hero">
             <div className="hero-shell">
                 <div className="hero-layout">
                     <div className="hero-header">

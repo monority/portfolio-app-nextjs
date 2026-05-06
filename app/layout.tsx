@@ -4,7 +4,7 @@ import { JetBrains_Mono } from "next/font/google";
 import { getLocale } from "next-intl/server";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { GradientBackground } from "@/components/GradientBackground";
-import { AnimationProvider } from "@components/animations/AnimationProvider";
+import { AnimationProvider } from "@/components/animations/AnimationProvider";
 import "./styles/index.css";
 const geist = Geist({
   subsets: ["latin"],
