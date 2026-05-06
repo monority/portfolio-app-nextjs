@@ -43,4 +43,18 @@ export const PALETTES: Record<string, ProjectPalettes> = {
             fg: '#1d1a16',
         },
     },
+    orange: {
+        dark: {
+            accent: '#d99262',
+            bg: '#0d0b0a',
+            surface: '#181411',
+            fg: '#f3ece5',
+        },
+        light: {
+            accent: '#cc8b61',
+            bg: '#fffdfa',
+            surface: '#faf5f0',
+            fg: '#211914',
+        },
+    },
 }

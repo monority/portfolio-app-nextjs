@@ -65,8 +65,36 @@ export const MODULES: Module[] = [
             en: 'Utility',
         },
         github: 'https://github.com/monority/tools-convert-img',
-        npm: 'https://github.com/monority/convert-img',
         palette: PALETTES.blue,
+    },
+    {
+        id: 'compress-multi',
+        titleDisplay: 'Compress Multi',
+        tagline: {
+            fr: 'Compresser PDF, images et autres fichiers dans un meme flux.',
+            en: 'Compress PDFs, images, and other files in one flow.',
+        },
+        description: {
+            fr: 'Outil polyvalent pense pour reduire le poids de plusieurs types de fichiers avec une interface claire, un parcours direct et peu de friction.',
+            en: 'A versatile tool built to reduce the size of multiple file types with a clear interface, a direct flow, and low friction.',
+        },
+        details: {
+            fr: 'Le module regroupe des usages souvent disperses dans plusieurs outils: compresser des PDF, des images ou d autres documents depuis une meme base, avec une logique simple a etendre.',
+            en: 'This module brings together workflows that are often split across multiple tools: compressing PDFs, images, or other documents from one base, with logic that stays simple to extend.',
+        },
+        highlights: [
+            { fr: 'Compression multi-format', en: 'Multi-format compression' },
+            { fr: 'Par lots', en: 'Batch-ready flow' },
+            { fr: 'Base evolutive', en: 'Evolvable base' },
+        ],
+        tech: ['Node.js', 'TypeScript', 'CLI'],
+        year: '2026',
+        category: {
+            fr: 'Utilitaire',
+            en: 'Utility',
+        },
+        github: 'https://github.com/monority/tools-compressor-multi',
+        palette: PALETTES.orange,
     },
     {
         id: 'screenshot-api',
@@ -95,7 +123,6 @@ export const MODULES: Module[] = [
             en: 'Automation',
         },
         github: 'https://github.com/monority/tools-screenshot-api',
-        npm: 'https://github.com/monority/screenshot-api',
         palette: PALETTES.gold,
     },
     {

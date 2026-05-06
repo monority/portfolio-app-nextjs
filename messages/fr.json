@@ -5,29 +5,20 @@
             "avatarAlt": "Portrait de Ronan",
             "homeLabel": "Retour a l'accueil"
         },
-        "available": "Disponible pour de nouvelles missions",
         "message": "message",
         "themeToggle": "Changer de theme",
         "github": "Voir le profil GitHub",
         "language": "Changer de langue",
-        "languageLabel": "FR",
-        "languageTarget": "EN",
-        "languageSwitchTo": "Passer le site en anglais",
-        "nav": {
-            "about": "accueil",
-            "tech": "tech",
-            "projects": "projets",
-            "contact": "contact"
-        }
+        "languageSwitchTo": "Passer le site en anglais"
     },
     "hero": {
         "name": "Ronan Chenu",
-        "role": "Developpeur Creatif",
-        "meta": "Lille | 3 ans | Full-Stack",
-        "imageAlt": "Portrait editorialise de Ronan",
-        "description": "Application performante, propre et responsive",
-        "city": "Reside a Lille centre",
-        "availability": "Disponible CDI, CDD, Remote et Freelance"
+        "role": "Développeur Front-end",
+        "imageAlt": "Portrait éditorialisé de Ronan",
+        "description": "Interfaces web rapides, propres et maintenables",
+        "city": "Basé à Lille, France",
+        "availability": "Disponible en CDI, CDD, remote et freelance",
+        "cta": "Voir mes projets"
     },
     "localTime": {
         "loadingCity": "Recherche de la ville...",
@@ -46,16 +37,15 @@
             "locationLabel": "CDI / Freelance"
         },
         "tech": {
-            "title": "Tech",
-            "frontend": "Frontend",
-            "backend": "Backend",
-            "hosting": "Hosting",
-            "languages": "Languages",
+            "frontend": "Front-end",
+            "backend": "Back-end",
+            "hosting": "Hebergement",
+            "languages": "Langages",
             "tools": "Outils"
         }
     },
     "profile": {
-        "sectionLabel": "Profil & Experience",
+        "sectionLabel": "Profil & experience",
         "heading": "Une contribution rapide, structuree et orientee produit",
         "intro": "J'interviens sur des environnements ou il faut concevoir, structurer et faire avancer une interface avec exigence, tout en gardant une lecture claire des besoins metier et des priorites produit.",
         "qualities": {
@@ -127,7 +117,7 @@
             "empty": "Aucun message pour le moment. Envoie le premier.",
             "usernameLabel": "Pseudo temporaire",
             "usernamePlaceholder": "ex : pixelronan",
-            "messageLabel": "Message",
+            "messageLabel": "message",
             "messagePlaceholder": "Explique ton besoin, ton contexte ou ta question.",
             "startAction": "Demarrer la conversation",
             "replyAction": "Envoyer le message",
@@ -162,7 +152,7 @@
             "threadDescription": "Selectionne un fil visiteur pour voir l'historique complet et repondre.",
             "threadEmpty": "Aucun message dans cette conversation.",
             "emptyConversations": "Aucune conversation visiteur pour le moment.",
-            "emptyPreview": "Pas encore de resume",
+            "emptyPreview": "Pas encore d'apercu",
             "sessionActive": "Connecte en tant que {email}",
             "replyLabel": "Reponse",
             "replyPlaceholder": "Ecris ta reponse ici.",

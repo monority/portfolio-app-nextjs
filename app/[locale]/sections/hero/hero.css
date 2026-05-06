@@ -1,5 +1,5 @@
 .hero {
-    min-height: calc(100vh - var(--space) * 32);
+    min-height: 100svh;
 }
 
 .hero-layout {
@@ -84,17 +84,15 @@
     color: var(--text-secondary);
 }
 
-.hero-header__tech {
-    display: flex;
-    gap: var(--space-sm);
-    flex-wrap: wrap;
-}
-
 .hero-header__legend {
     display: flex;
     gap: var(--space-md);
     flex-direction: column;
     flex-wrap: wrap;
+}
+
+.hero__cta {
+    margin-top: var(--space-sm);
 }
 
 @media (max-width: 768px) {

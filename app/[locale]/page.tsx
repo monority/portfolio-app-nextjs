@@ -6,7 +6,7 @@ export default function HomePage() {
         <>
             <SideNav />
             <Header />
-            <main>
+            <main id="main-content">
                 <Hero />
                 <About />
                 <Projects />
